@@ -1,0 +1,6 @@
+C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\bin\Debug\BlackjackService.dll.config
+C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\bin\Debug\BlackjackService.dll
+C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\bin\Debug\BlackjackService.pdb
+C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\obj\Debug\BlackjackService.csprojResolveAssemblyReference.cache
+C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\obj\Debug\BlackjackService.dll
+C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\obj\Debug\BlackjackService.pdb
