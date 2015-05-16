@@ -71,5 +71,10 @@ namespace BlackJackClient
             panelLobby.Show();
             panelLobby.BringToFront();
         }
+
+        private void btnJoin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

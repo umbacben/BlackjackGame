@@ -165,6 +165,7 @@
             this.btnJoin.TabIndex = 0;
             this.btnJoin.Text = "Join Player";
             this.btnJoin.UseVisualStyleBackColor = true;
+            this.btnJoin.Click += new System.EventHandler(this.btnJoin_Click);
             // 
             // btnExit
             // 
