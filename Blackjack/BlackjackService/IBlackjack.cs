@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace BlackjackService
 {
@@ -40,6 +42,7 @@ namespace BlackjackService
             set { stringValue = value; }
         }
     }
+
     [DataContract]
     public class DBHandler
     {
@@ -49,6 +52,13 @@ namespace BlackjackService
                                       database=dbi271495;
                                       Convert Zero Datetime=True;
                                       Allow Zero Datetime=True;";
+        [DataMember]
+        private MySqlConnection connection;
+
+        public DBHandler()
+        {
+            connection = new MySqlConnection(connectionInfo);
+        }
     }
 
 }
