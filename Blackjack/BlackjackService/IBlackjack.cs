@@ -50,4 +50,5 @@ namespace BlackjackService
                                       Convert Zero Datetime=True;
                                       Allow Zero Datetime=True;";
     }
+
 }
