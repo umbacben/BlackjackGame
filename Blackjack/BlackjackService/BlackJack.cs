@@ -4,19 +4,46 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace BlackjackService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class BlackJack : IBlackjack, IPortal
     {
+        private DBHandler handler = new DBHandler();
+        
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
         }
-        public bool LogIn(string User, string Password)
+
+        public bool Login(string user, string password)
         {
-            return true;
+            string sql = "SELECT * FROM User WHERE userName = '"+user+"' AND password = '"+password+"'";
+            MySqlCommand command = new MySqlCommand(sql, handler.connection);
+            try
+            {
+                handler.connection.Open();
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                handler.connection.Close();
+            }
         }
     }
 }

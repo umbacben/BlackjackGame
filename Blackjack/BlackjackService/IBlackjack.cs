@@ -53,7 +53,7 @@ namespace BlackjackService
                                       Convert Zero Datetime=True;
                                       Allow Zero Datetime=True;";
         [DataMember]
-        private MySqlConnection connection;
+        public MySqlConnection connection { get; set; }
 
         public DBHandler()
         {
@@ -61,4 +61,10 @@ namespace BlackjackService
         }
     }
 
+    [ServiceContract]
+    public interface IPortal
+    {
+        [OperationContract]
+        bool Login(string username, string password);
+    }
 }
