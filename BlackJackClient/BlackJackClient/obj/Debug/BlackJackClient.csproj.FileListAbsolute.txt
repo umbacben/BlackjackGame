@@ -1,1 +1,2 @@
 C:\Users\Stoyan\Documents\GitHub\MyBlackJack\BlackJackClient\BlackJackClient\bin\Debug\BlackJackClient.exe.config
+C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\bin\Debug\BlackJackClient.exe.config
