@@ -43,12 +43,11 @@ namespace BlackjackService
     [DataContract]
     public class DBHandler
     {
-        String connectionInfo =  @"server=rbui.asuscomm.com;
-                                      port=2021;
-                                      userid=root;
-                                      password=2LE5AsuX;
-                                      database=Event Database;
+        String connectionInfo =  @"server=athena01.fhict.local;
+                                      userid=dbi271495;
+                                      password=FHBQCP47aR;
+                                      database=dbi271495;
                                       Convert Zero Datetime=True;
-                                      Allow Zero Datetime=True;";";
+                                      Allow Zero Datetime=True;";
     }
 }
