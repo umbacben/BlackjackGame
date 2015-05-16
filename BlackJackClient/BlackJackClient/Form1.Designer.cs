@@ -33,42 +33,40 @@
             this.tbPass = new System.Windows.Forms.TextBox();
             this.tbUser = new System.Windows.Forms.TextBox();
             this.panelLobby = new System.Windows.Forms.Panel();
-            this.btnJoin = new System.Windows.Forms.Button();
-            this.btnPlaySolo = new System.Windows.Forms.Button();
-            this.btnSpectate = new System.Windows.Forms.Button();
-            this.labelPlayers = new System.Windows.Forms.Label();
             this.LbPlayersOnline = new System.Windows.Forms.ListBox();
-            this.panelGame = new System.Windows.Forms.Panel();
-            this.pb1Player1 = new System.Windows.Forms.PictureBox();
-            this.pb2Player1 = new System.Windows.Forms.PictureBox();
-            this.pb3Player1 = new System.Windows.Forms.PictureBox();
-            this.pb3User = new System.Windows.Forms.PictureBox();
-            this.pb2User = new System.Windows.Forms.PictureBox();
-            this.pb1User = new System.Windows.Forms.PictureBox();
+            this.labelPlayers = new System.Windows.Forms.Label();
+            this.btnSpectate = new System.Windows.Forms.Button();
+            this.btnPlaySolo = new System.Windows.Forms.Button();
+            this.btnJoin = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.labelPot = new System.Windows.Forms.Label();
+            this.btnStand = new System.Windows.Forms.Button();
+            this.btnHit = new System.Windows.Forms.Button();
+            this.btnCall = new System.Windows.Forms.Button();
+            this.btnRaise = new System.Windows.Forms.Button();
+            this.labelDealer = new System.Windows.Forms.Label();
+            this.labelUser = new System.Windows.Forms.Label();
+            this.labelPlayer = new System.Windows.Forms.Label();
             this.pb3Dealer = new System.Windows.Forms.PictureBox();
             this.pb2Dealer = new System.Windows.Forms.PictureBox();
             this.pb1Dealer = new System.Windows.Forms.PictureBox();
-            this.labelPlayer1 = new System.Windows.Forms.Label();
-            this.labelUser = new System.Windows.Forms.Label();
-            this.labelDealer = new System.Windows.Forms.Label();
-            this.btnRaise = new System.Windows.Forms.Button();
-            this.btnCall = new System.Windows.Forms.Button();
-            this.btnHit = new System.Windows.Forms.Button();
-            this.btnStand = new System.Windows.Forms.Button();
-            this.labelPot = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.pb3User = new System.Windows.Forms.PictureBox();
+            this.pb2User = new System.Windows.Forms.PictureBox();
+            this.pb1User = new System.Windows.Forms.PictureBox();
+            this.pb3Player = new System.Windows.Forms.PictureBox();
+            this.pb2Player = new System.Windows.Forms.PictureBox();
+            this.pb1Player = new System.Windows.Forms.PictureBox();
             this.panelLogIn.SuspendLayout();
             this.panelLobby.SuspendLayout();
-            this.panelGame.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb1Player1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb2Player1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb3Player1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb3User)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb2User)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb1User)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb3Dealer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2Dealer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb1Dealer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3User)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2User)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1User)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3Player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2Player)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1Player)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLogIn
@@ -111,35 +109,33 @@
             // 
             // panelLobby
             // 
-            this.panelLobby.Controls.Add(this.panelGame);
             this.panelLobby.Controls.Add(this.LbPlayersOnline);
             this.panelLobby.Controls.Add(this.labelPlayers);
             this.panelLobby.Controls.Add(this.btnSpectate);
             this.panelLobby.Controls.Add(this.btnPlaySolo);
             this.panelLobby.Controls.Add(this.btnJoin);
-            this.panelLobby.Location = new System.Drawing.Point(15, 9);
+            this.panelLobby.Location = new System.Drawing.Point(12, 12);
             this.panelLobby.Name = "panelLobby";
             this.panelLobby.Size = new System.Drawing.Size(730, 382);
             this.panelLobby.TabIndex = 3;
+            this.panelLobby.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLobby_Paint);
             // 
-            // btnJoin
+            // LbPlayersOnline
             // 
-            this.btnJoin.Location = new System.Drawing.Point(191, 62);
-            this.btnJoin.Name = "btnJoin";
-            this.btnJoin.Size = new System.Drawing.Size(242, 77);
-            this.btnJoin.TabIndex = 0;
-            this.btnJoin.Text = "Join Player";
-            this.btnJoin.UseVisualStyleBackColor = true;
+            this.LbPlayersOnline.FormattingEnabled = true;
+            this.LbPlayersOnline.Location = new System.Drawing.Point(606, 44);
+            this.LbPlayersOnline.Name = "LbPlayersOnline";
+            this.LbPlayersOnline.Size = new System.Drawing.Size(120, 95);
+            this.LbPlayersOnline.TabIndex = 4;
             // 
-            // btnPlaySolo
+            // labelPlayers
             // 
-            this.btnPlaySolo.Location = new System.Drawing.Point(191, 144);
-            this.btnPlaySolo.Name = "btnPlaySolo";
-            this.btnPlaySolo.Size = new System.Drawing.Size(242, 77);
-            this.btnPlaySolo.TabIndex = 1;
-            this.btnPlaySolo.Text = "Play Solo";
-            this.btnPlaySolo.UseVisualStyleBackColor = true;
-            this.btnPlaySolo.Click += new System.EventHandler(this.btnPlaySolo_Click);
+            this.labelPlayers.AutoSize = true;
+            this.labelPlayers.Location = new System.Drawing.Point(603, 21);
+            this.labelPlayers.Name = "labelPlayers";
+            this.labelPlayers.Size = new System.Drawing.Size(77, 13);
+            this.labelPlayers.TabIndex = 3;
+            this.labelPlayers.Text = "Players Online:";
             // 
             // btnSpectate
             // 
@@ -151,210 +147,203 @@
             this.btnSpectate.UseVisualStyleBackColor = true;
             this.btnSpectate.Click += new System.EventHandler(this.btnSpectate_Click);
             // 
-            // labelPlayers
+            // btnPlaySolo
             // 
-            this.labelPlayers.AutoSize = true;
-            this.labelPlayers.Location = new System.Drawing.Point(603, 21);
-            this.labelPlayers.Name = "labelPlayers";
-            this.labelPlayers.Size = new System.Drawing.Size(77, 13);
-            this.labelPlayers.TabIndex = 3;
-            this.labelPlayers.Text = "Players Online:";
+            this.btnPlaySolo.Location = new System.Drawing.Point(191, 144);
+            this.btnPlaySolo.Name = "btnPlaySolo";
+            this.btnPlaySolo.Size = new System.Drawing.Size(242, 77);
+            this.btnPlaySolo.TabIndex = 1;
+            this.btnPlaySolo.Text = "Play Solo";
+            this.btnPlaySolo.UseVisualStyleBackColor = true;
+            this.btnPlaySolo.Click += new System.EventHandler(this.btnPlaySolo_Click);
             // 
-            // LbPlayersOnline
+            // btnJoin
             // 
-            this.LbPlayersOnline.FormattingEnabled = true;
-            this.LbPlayersOnline.Location = new System.Drawing.Point(606, 44);
-            this.LbPlayersOnline.Name = "LbPlayersOnline";
-            this.LbPlayersOnline.Size = new System.Drawing.Size(120, 95);
-            this.LbPlayersOnline.TabIndex = 4;
+            this.btnJoin.Location = new System.Drawing.Point(191, 62);
+            this.btnJoin.Name = "btnJoin";
+            this.btnJoin.Size = new System.Drawing.Size(242, 77);
+            this.btnJoin.TabIndex = 0;
+            this.btnJoin.Text = "Join Player";
+            this.btnJoin.UseVisualStyleBackColor = true;
             // 
-            // panelGame
+            // btnExit
             // 
-            this.panelGame.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelGame.Controls.Add(this.btnExit);
-            this.panelGame.Controls.Add(this.labelPot);
-            this.panelGame.Controls.Add(this.btnStand);
-            this.panelGame.Controls.Add(this.btnHit);
-            this.panelGame.Controls.Add(this.btnCall);
-            this.panelGame.Controls.Add(this.btnRaise);
-            this.panelGame.Controls.Add(this.labelDealer);
-            this.panelGame.Controls.Add(this.labelUser);
-            this.panelGame.Controls.Add(this.labelPlayer1);
-            this.panelGame.Controls.Add(this.pb3Dealer);
-            this.panelGame.Controls.Add(this.pb2Dealer);
-            this.panelGame.Controls.Add(this.pb1Dealer);
-            this.panelGame.Controls.Add(this.pb3User);
-            this.panelGame.Controls.Add(this.pb2User);
-            this.panelGame.Controls.Add(this.pb1User);
-            this.panelGame.Controls.Add(this.pb3Player1);
-            this.panelGame.Controls.Add(this.pb2Player1);
-            this.panelGame.Controls.Add(this.pb1Player1);
-            this.panelGame.Location = new System.Drawing.Point(0, 0);
-            this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(730, 385);
-            this.panelGame.TabIndex = 5;
-            // 
-            // pb1Player1
-            // 
-            this.pb1Player1.Location = new System.Drawing.Point(41, 222);
-            this.pb1Player1.Name = "pb1Player1";
-            this.pb1Player1.Size = new System.Drawing.Size(56, 84);
-            this.pb1Player1.TabIndex = 0;
-            this.pb1Player1.TabStop = false;
-            // 
-            // pb2Player1
-            // 
-            this.pb2Player1.Location = new System.Drawing.Point(103, 222);
-            this.pb2Player1.Name = "pb2Player1";
-            this.pb2Player1.Size = new System.Drawing.Size(56, 84);
-            this.pb2Player1.TabIndex = 1;
-            this.pb2Player1.TabStop = false;
-            // 
-            // pb3Player1
-            // 
-            this.pb3Player1.Location = new System.Drawing.Point(165, 222);
-            this.pb3Player1.Name = "pb3Player1";
-            this.pb3Player1.Size = new System.Drawing.Size(56, 84);
-            this.pb3Player1.TabIndex = 2;
-            this.pb3Player1.TabStop = false;
-            // 
-            // pb3User
-            // 
-            this.pb3User.Location = new System.Drawing.Point(492, 222);
-            this.pb3User.Name = "pb3User";
-            this.pb3User.Size = new System.Drawing.Size(56, 84);
-            this.pb3User.TabIndex = 5;
-            this.pb3User.TabStop = false;
-            // 
-            // pb2User
-            // 
-            this.pb2User.Location = new System.Drawing.Point(430, 222);
-            this.pb2User.Name = "pb2User";
-            this.pb2User.Size = new System.Drawing.Size(56, 84);
-            this.pb2User.TabIndex = 4;
-            this.pb2User.TabStop = false;
-            // 
-            // pb1User
-            // 
-            this.pb1User.Location = new System.Drawing.Point(368, 222);
-            this.pb1User.Name = "pb1User";
-            this.pb1User.Size = new System.Drawing.Size(56, 84);
-            this.pb1User.TabIndex = 3;
-            this.pb1User.TabStop = false;
-            // 
-            // pb3Dealer
-            // 
-            this.pb3Dealer.Location = new System.Drawing.Point(373, 43);
-            this.pb3Dealer.Name = "pb3Dealer";
-            this.pb3Dealer.Size = new System.Drawing.Size(56, 84);
-            this.pb3Dealer.TabIndex = 8;
-            this.pb3Dealer.TabStop = false;
-            // 
-            // pb2Dealer
-            // 
-            this.pb2Dealer.Location = new System.Drawing.Point(311, 43);
-            this.pb2Dealer.Name = "pb2Dealer";
-            this.pb2Dealer.Size = new System.Drawing.Size(56, 84);
-            this.pb2Dealer.TabIndex = 7;
-            this.pb2Dealer.TabStop = false;
-            // 
-            // pb1Dealer
-            // 
-            this.pb1Dealer.Location = new System.Drawing.Point(249, 43);
-            this.pb1Dealer.Name = "pb1Dealer";
-            this.pb1Dealer.Size = new System.Drawing.Size(56, 84);
-            this.pb1Dealer.TabIndex = 6;
-            this.pb1Dealer.TabStop = false;
-            // 
-            // labelPlayer1
-            // 
-            this.labelPlayer1.AutoSize = true;
-            this.labelPlayer1.Location = new System.Drawing.Point(100, 195);
-            this.labelPlayer1.Name = "labelPlayer1";
-            this.labelPlayer1.Size = new System.Drawing.Size(42, 13);
-            this.labelPlayer1.TabIndex = 9;
-            this.labelPlayer1.Text = "Player1";
-            // 
-            // labelUser
-            // 
-            this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(438, 195);
-            this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(29, 13);
-            this.labelUser.TabIndex = 10;
-            this.labelUser.Text = "User";
-            // 
-            // labelDealer
-            // 
-            this.labelDealer.AutoSize = true;
-            this.labelDealer.Location = new System.Drawing.Point(308, 11);
-            this.labelDealer.Name = "labelDealer";
-            this.labelDealer.Size = new System.Drawing.Size(38, 13);
-            this.labelDealer.TabIndex = 11;
-            this.labelDealer.Text = "Dealer";
-            // 
-            // btnRaise
-            // 
-            this.btnRaise.Location = new System.Drawing.Point(605, 195);
-            this.btnRaise.Name = "btnRaise";
-            this.btnRaise.Size = new System.Drawing.Size(93, 36);
-            this.btnRaise.TabIndex = 12;
-            this.btnRaise.Text = "Raise";
-            this.btnRaise.UseVisualStyleBackColor = true;
-            // 
-            // btnCall
-            // 
-            this.btnCall.Location = new System.Drawing.Point(605, 237);
-            this.btnCall.Name = "btnCall";
-            this.btnCall.Size = new System.Drawing.Size(93, 36);
-            this.btnCall.TabIndex = 13;
-            this.btnCall.Text = "Call";
-            this.btnCall.UseVisualStyleBackColor = true;
-            // 
-            // btnHit
-            // 
-            this.btnHit.Location = new System.Drawing.Point(368, 318);
-            this.btnHit.Name = "btnHit";
-            this.btnHit.Size = new System.Drawing.Size(88, 36);
-            this.btnHit.TabIndex = 14;
-            this.btnHit.Text = "Hit";
-            this.btnHit.UseVisualStyleBackColor = true;
-            // 
-            // btnStand
-            // 
-            this.btnStand.Location = new System.Drawing.Point(462, 318);
-            this.btnStand.Name = "btnStand";
-            this.btnStand.Size = new System.Drawing.Size(88, 36);
-            this.btnStand.TabIndex = 15;
-            this.btnStand.Text = "Stand";
-            this.btnStand.UseVisualStyleBackColor = true;
+            this.btnExit.Location = new System.Drawing.Point(646, 26);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 35;
+            this.btnExit.Text = "Exit Game";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // labelPot
             // 
             this.labelPot.AutoSize = true;
-            this.labelPot.Location = new System.Drawing.Point(308, 157);
+            this.labelPot.Location = new System.Drawing.Point(300, 184);
             this.labelPot.Name = "labelPot";
             this.labelPot.Size = new System.Drawing.Size(59, 13);
-            this.labelPot.TabIndex = 16;
+            this.labelPot.TabIndex = 34;
             this.labelPot.Text = "PotAmount";
-            this.labelPot.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnExit
+            // btnStand
             // 
-            this.btnExit.Location = new System.Drawing.Point(654, -1);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 17;
-            this.btnExit.Text = "Exit Game";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnStand.Location = new System.Drawing.Point(454, 345);
+            this.btnStand.Name = "btnStand";
+            this.btnStand.Size = new System.Drawing.Size(88, 36);
+            this.btnStand.TabIndex = 33;
+            this.btnStand.Text = "Stand";
+            this.btnStand.UseVisualStyleBackColor = true;
+            // 
+            // btnHit
+            // 
+            this.btnHit.Location = new System.Drawing.Point(360, 345);
+            this.btnHit.Name = "btnHit";
+            this.btnHit.Size = new System.Drawing.Size(88, 36);
+            this.btnHit.TabIndex = 32;
+            this.btnHit.Text = "Hit";
+            this.btnHit.UseVisualStyleBackColor = true;
+            // 
+            // btnCall
+            // 
+            this.btnCall.Location = new System.Drawing.Point(597, 264);
+            this.btnCall.Name = "btnCall";
+            this.btnCall.Size = new System.Drawing.Size(93, 36);
+            this.btnCall.TabIndex = 31;
+            this.btnCall.Text = "Call";
+            this.btnCall.UseVisualStyleBackColor = true;
+            // 
+            // btnRaise
+            // 
+            this.btnRaise.Location = new System.Drawing.Point(597, 222);
+            this.btnRaise.Name = "btnRaise";
+            this.btnRaise.Size = new System.Drawing.Size(93, 36);
+            this.btnRaise.TabIndex = 30;
+            this.btnRaise.Text = "Raise";
+            this.btnRaise.UseVisualStyleBackColor = true;
+            // 
+            // labelDealer
+            // 
+            this.labelDealer.AutoSize = true;
+            this.labelDealer.Location = new System.Drawing.Point(300, 38);
+            this.labelDealer.Name = "labelDealer";
+            this.labelDealer.Size = new System.Drawing.Size(38, 13);
+            this.labelDealer.TabIndex = 29;
+            this.labelDealer.Text = "Dealer";
+            // 
+            // labelUser
+            // 
+            this.labelUser.AutoSize = true;
+            this.labelUser.Location = new System.Drawing.Point(430, 222);
+            this.labelUser.Name = "labelUser";
+            this.labelUser.Size = new System.Drawing.Size(29, 13);
+            this.labelUser.TabIndex = 28;
+            this.labelUser.Text = "User";
+            // 
+            // labelPlayer
+            // 
+            this.labelPlayer.AutoSize = true;
+            this.labelPlayer.Location = new System.Drawing.Point(92, 222);
+            this.labelPlayer.Name = "labelPlayer";
+            this.labelPlayer.Size = new System.Drawing.Size(42, 13);
+            this.labelPlayer.TabIndex = 27;
+            this.labelPlayer.Text = "Player1";
+            // 
+            // pb3Dealer
+            // 
+            this.pb3Dealer.Location = new System.Drawing.Point(365, 70);
+            this.pb3Dealer.Name = "pb3Dealer";
+            this.pb3Dealer.Size = new System.Drawing.Size(56, 84);
+            this.pb3Dealer.TabIndex = 26;
+            this.pb3Dealer.TabStop = false;
+            // 
+            // pb2Dealer
+            // 
+            this.pb2Dealer.Location = new System.Drawing.Point(303, 70);
+            this.pb2Dealer.Name = "pb2Dealer";
+            this.pb2Dealer.Size = new System.Drawing.Size(56, 84);
+            this.pb2Dealer.TabIndex = 25;
+            this.pb2Dealer.TabStop = false;
+            // 
+            // pb1Dealer
+            // 
+            this.pb1Dealer.Location = new System.Drawing.Point(241, 70);
+            this.pb1Dealer.Name = "pb1Dealer";
+            this.pb1Dealer.Size = new System.Drawing.Size(56, 84);
+            this.pb1Dealer.TabIndex = 24;
+            this.pb1Dealer.TabStop = false;
+            // 
+            // pb3User
+            // 
+            this.pb3User.Location = new System.Drawing.Point(484, 249);
+            this.pb3User.Name = "pb3User";
+            this.pb3User.Size = new System.Drawing.Size(56, 84);
+            this.pb3User.TabIndex = 23;
+            this.pb3User.TabStop = false;
+            // 
+            // pb2User
+            // 
+            this.pb2User.Location = new System.Drawing.Point(422, 249);
+            this.pb2User.Name = "pb2User";
+            this.pb2User.Size = new System.Drawing.Size(56, 84);
+            this.pb2User.TabIndex = 22;
+            this.pb2User.TabStop = false;
+            // 
+            // pb1User
+            // 
+            this.pb1User.Location = new System.Drawing.Point(360, 249);
+            this.pb1User.Name = "pb1User";
+            this.pb1User.Size = new System.Drawing.Size(56, 84);
+            this.pb1User.TabIndex = 21;
+            this.pb1User.TabStop = false;
+            // 
+            // pb3Player
+            // 
+            this.pb3Player.Location = new System.Drawing.Point(157, 249);
+            this.pb3Player.Name = "pb3Player";
+            this.pb3Player.Size = new System.Drawing.Size(56, 84);
+            this.pb3Player.TabIndex = 20;
+            this.pb3Player.TabStop = false;
+            // 
+            // pb2Player
+            // 
+            this.pb2Player.Location = new System.Drawing.Point(95, 249);
+            this.pb2Player.Name = "pb2Player";
+            this.pb2Player.Size = new System.Drawing.Size(56, 84);
+            this.pb2Player.TabIndex = 19;
+            this.pb2Player.TabStop = false;
+            // 
+            // pb1Player
+            // 
+            this.pb1Player.Location = new System.Drawing.Point(33, 249);
+            this.pb1Player.Name = "pb1Player";
+            this.pb1Player.Size = new System.Drawing.Size(56, 84);
+            this.pb1Player.TabIndex = 18;
+            this.pb1Player.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 406);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.labelPot);
+            this.Controls.Add(this.btnStand);
             this.Controls.Add(this.panelLobby);
+            this.Controls.Add(this.btnHit);
+            this.Controls.Add(this.btnCall);
+            this.Controls.Add(this.btnRaise);
+            this.Controls.Add(this.labelDealer);
+            this.Controls.Add(this.labelUser);
+            this.Controls.Add(this.labelPlayer);
+            this.Controls.Add(this.pb3Dealer);
+            this.Controls.Add(this.pb2Dealer);
+            this.Controls.Add(this.pb1Dealer);
+            this.Controls.Add(this.pb3User);
+            this.Controls.Add(this.pb2User);
+            this.Controls.Add(this.pb1User);
+            this.Controls.Add(this.pb3Player);
+            this.Controls.Add(this.pb2Player);
+            this.Controls.Add(this.pb1Player);
             this.Controls.Add(this.panelLogIn);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -362,18 +351,17 @@
             this.panelLogIn.PerformLayout();
             this.panelLobby.ResumeLayout(false);
             this.panelLobby.PerformLayout();
-            this.panelGame.ResumeLayout(false);
-            this.panelGame.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb1Player1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb2Player1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb3Player1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb3User)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb2User)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb1User)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb3Dealer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2Dealer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb1Dealer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3User)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2User)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1User)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb3Player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb2Player)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb1Player)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -389,7 +377,7 @@
         private System.Windows.Forms.Button btnSpectate;
         private System.Windows.Forms.Button btnPlaySolo;
         private System.Windows.Forms.Button btnJoin;
-        private System.Windows.Forms.Panel panelGame;
+        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label labelPot;
         private System.Windows.Forms.Button btnStand;
         private System.Windows.Forms.Button btnHit;
@@ -397,17 +385,16 @@
         private System.Windows.Forms.Button btnRaise;
         private System.Windows.Forms.Label labelDealer;
         private System.Windows.Forms.Label labelUser;
-        private System.Windows.Forms.Label labelPlayer1;
+        private System.Windows.Forms.Label labelPlayer;
         private System.Windows.Forms.PictureBox pb3Dealer;
         private System.Windows.Forms.PictureBox pb2Dealer;
         private System.Windows.Forms.PictureBox pb1Dealer;
         private System.Windows.Forms.PictureBox pb3User;
         private System.Windows.Forms.PictureBox pb2User;
         private System.Windows.Forms.PictureBox pb1User;
-        private System.Windows.Forms.PictureBox pb3Player1;
-        private System.Windows.Forms.PictureBox pb2Player1;
-        private System.Windows.Forms.PictureBox pb1Player1;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.PictureBox pb3Player;
+        private System.Windows.Forms.PictureBox pb2Player;
+        private System.Windows.Forms.PictureBox pb1Player;
     }
 }
 

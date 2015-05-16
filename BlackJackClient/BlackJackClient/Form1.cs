@@ -15,8 +15,9 @@ namespace BlackJackClient
         public Form1()
         {
             InitializeComponent();
+            
             panelLobby.Hide();
-            panelGame.Visible = false;
+            panelLogIn.BringToFront();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -33,6 +34,7 @@ namespace BlackJackClient
         {
             panelLogIn.Hide();
             panelLobby.Show();
+            panelLobby.BringToFront();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -52,15 +54,22 @@ namespace BlackJackClient
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            panelGame.Visible = true;
-            panelLobby.Show();
         }
 
         private void btnSpectate_Click(object sender, EventArgs e)
         {
-            btnHit.Show();
             panelLobby.Hide();
-            panelGame.Show();
+        }
+
+        private void panelLobby_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            panelLobby.Show();
+            panelLobby.BringToFront();
         }
     }
 }
