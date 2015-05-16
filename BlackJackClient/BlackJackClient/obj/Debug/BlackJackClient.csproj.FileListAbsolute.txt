@@ -1,1 +1,10 @@
 C:\Users\Stoyan\Documents\GitHub\MyBlackJack\BlackJackClient\BlackJackClient\bin\Debug\BlackJackClient.exe.config
+C:\Users\Popa Vlad\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\bin\Debug\BlackJackClient.exe.config
+C:\Users\Popa Vlad\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\bin\Debug\BlackJackClient.exe
+C:\Users\Popa Vlad\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\bin\Debug\BlackJackClient.pdb
+C:\Users\Popa Vlad\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\obj\Debug\BlackJackClient.csprojResolveAssemblyReference.cache
+C:\Users\Popa Vlad\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\obj\Debug\BlackJackClient.Form1.resources
+C:\Users\Popa Vlad\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\obj\Debug\BlackJackClient.Properties.Resources.resources
+C:\Users\Popa Vlad\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\obj\Debug\BlackJackClient.csproj.GenerateResource.Cache
+C:\Users\Popa Vlad\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\obj\Debug\BlackJackClient.exe
+C:\Users\Popa Vlad\Documents\GitHub\BlackjackGame\BlackJackClient\BlackJackClient\obj\Debug\BlackJackClient.pdb
