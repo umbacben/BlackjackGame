@@ -40,4 +40,14 @@ namespace BlackjackService
             set { stringValue = value; }
         }
     }
+    [DataContract]
+    public class DBHandler
+    {
+        String connectionInfo =  @"server=athena01.fhict.local;
+                                      userid=dbi271495;
+                                      password=FHBQCP47aR;
+                                      database=dbi271495;
+                                      Convert Zero Datetime=True;
+                                      Allow Zero Datetime=True;";
+    }
 }
