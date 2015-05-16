@@ -9,7 +9,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_GameForm_</panel_attributes>
+    <panel_attributes>_Form_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -100,7 +100,7 @@ Me Button</panel_attributes>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;
-AddtoHand(Card1)</panel_attributes>
+AddToHand(Card1)</panel_attributes>
     <additional_attributes>340;50;30;50</additional_attributes>
   </element>
   <element>

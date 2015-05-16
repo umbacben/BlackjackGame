@@ -9,7 +9,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_GameForm_</panel_attributes>
+    <panel_attributes>_Form_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -115,15 +115,48 @@ LeaveGame()</panel_attributes>
     <additional_attributes>200;50;30;50</additional_attributes>
   </element>
   <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>810</x>
+      <y>230</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_PortalPanel_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>340</y>
+      <x>850</x>
+      <y>250</y>
+      <w>30</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;280.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>850</x>
+      <y>430</y>
+      <w>20</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>430</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-this.Close</panel_attributes>
-    <additional_attributes>10.0;50.0;60.0;50.0;60.0;10.0;10.0;10.0</additional_attributes>
+BringToFront()</panel_attributes>
+    <additional_attributes>10.0;50.0;50.0;50.0;50.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

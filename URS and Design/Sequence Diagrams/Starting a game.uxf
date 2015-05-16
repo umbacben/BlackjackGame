@@ -9,7 +9,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_PortalForm_</panel_attributes>
+    <panel_attributes>_PortalPanel_</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -77,19 +77,8 @@ gamebutton</panel_attributes>
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>_GameForm_</panel_attributes>
+    <panel_attributes>_User_</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <type>com.baselet.element.old.element.Relation</type>
-    <coordinates>
-      <x>660</x>
-      <y>230</y>
-      <w>50</w>
-      <h>330</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>30;30;30;310</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -118,12 +107,23 @@ JoinGame(new BlackJackGame())</panel_attributes>
     <type>com.baselet.element.old.element.Relation</type>
     <coordinates>
       <x>480</x>
-      <y>330</y>
-      <w>220</w>
-      <h>70</h>
+      <y>300</y>
+      <w>146</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;
-GameForm.Activate</panel_attributes>
-    <additional_attributes>200;50;30;50</additional_attributes>
+Hide()</panel_attributes>
+    <additional_attributes>30;70;100;70;100;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>660</x>
+      <y>230</y>
+      <w>50</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>30;30;30;310</additional_attributes>
   </element>
 </diagram>
