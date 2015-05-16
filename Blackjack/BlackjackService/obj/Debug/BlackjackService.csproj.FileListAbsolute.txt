@@ -5,3 +5,10 @@ C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\obj\Debu
 C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\obj\Debug\BlackjackService.dll
 C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\obj\Debug\BlackjackService.pdb
 C:\Users\Stoyan\Documents\GitHub\MyBlackJack\Blackjack\BlackjackService\bin\Debug\mysql.data.dll
+C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bin\Debug\BlackjackService.dll.config
+C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bin\Debug\BlackjackService.dll
+C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bin\Debug\BlackjackService.pdb
+C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bin\Debug\mysql.data.dll
+C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\obj\Debug\BlackjackService.csprojResolveAssemblyReference.cache
+C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\obj\Debug\BlackjackService.dll
+C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\obj\Debug\BlackjackService.pdb

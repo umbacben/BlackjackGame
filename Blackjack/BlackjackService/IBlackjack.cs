@@ -16,6 +16,8 @@ namespace BlackjackService
         [OperationContract]
         string GetData(int value);
 
+        [OperationContract]
+        bool Login(string username, string password);
 
         // TODO: Add your service operations here
     }
@@ -59,12 +61,5 @@ namespace BlackjackService
         {
             connection = new MySqlConnection(connectionInfo);
         }
-    }
-
-    [ServiceContract]
-    public interface IPortal
-    {
-        [OperationContract]
-        bool Login(string username, string password);
     }
 }
