@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2ff5556a-a124-4507-a803-f89f7ed4bb4f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/BlackjackService/Service1/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="08f70efc-df23-47df-a922-ad87839c3e51" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/Service1/mex" />
+    <MetadataFile FileName="ChatCallbacks.wsdl" MetadataType="Wsdl" ID="0cc85f4e-e46e-4801-a57b-02ac51e046e7" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/Service1/mex" />
+    <MetadataFile FileName="LoginContract.wsdl" MetadataType="Wsdl" ID="f09b08a1-425e-49bf-b1ff-1d065b8bb67d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="ad7aa3fc-8521-4393-8bb1-1d58edbe1567" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="9dcb249c-72be-4848-a747-83ffea2a4311" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/Service1/mex" />
+    <MetadataFile FileName="ChatCallbacks.xsd" MetadataType="Schema" ID="9f646dff-df6a-4541-a151-474525d683f6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/Service1/mex" />
+    <MetadataFile FileName="LoginContract.xsd" MetadataType="Schema" ID="9d69f5e6-bc30-47ac-82fe-9d5d03a6b87c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/Service1/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

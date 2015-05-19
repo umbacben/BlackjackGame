@@ -16,9 +16,6 @@ namespace BlackjackService
         [OperationContract]
         string GetData(int value);
 
-        [OperationContract]
-        bool Login(string username, string password);
-
         // TODO: Add your service operations here
     }
 

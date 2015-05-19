@@ -48,6 +48,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBlackjack.cs" />
+    <Compile Include="IChat.cs" />
+    <Compile Include="IChatCallback.cs" />
+    <Compile Include="ILogin.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BlackJack.cs" />
   </ItemGroup>
