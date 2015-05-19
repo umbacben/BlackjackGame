@@ -50,8 +50,6 @@ namespace BlackJackClient
         {
             bool temp = logproxy.LogIn(tbUser.Text,tbPass.Text);
 
-           
-
             if (temp)
             {
                 panelLogIn.Hide();
