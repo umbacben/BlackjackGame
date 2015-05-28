@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 
 namespace BlackjackService
 {
-    public class Player
+    public class User
     {
         public int credit;
         [DataMember]
@@ -19,7 +19,7 @@ namespace BlackjackService
         public IChatCallback chatCallBack; 
 
 
-        public Player(int Credit, string Name, int PlayerId)
+        public User(int Credit, string Name, int PlayerId)
         {
             this.credit = Credit;
             this.name = Name;
@@ -27,7 +27,7 @@ namespace BlackjackService
         }
 
 
-        public Player(string username)
+        public User(string username)
         {
             this.name = username;
         }
