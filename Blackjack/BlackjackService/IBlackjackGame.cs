@@ -23,7 +23,7 @@ namespace BlackjackService
         void IncreasePot(int mon);
 
         [OperationContract]
-        List<Player> GetPlayers();
+        Player GetOtherPlayer(Player current);
 
         [OperationContract]
         int GetPot();
@@ -32,10 +32,13 @@ namespace BlackjackService
         bool AddPlayer(Player player);
 
         [OperationContract]
-        void nextRound();
+        void StartRound();
 
         [OperationContract]
         Player DetermineWinner();
+
+        [OperationContract]
+        bool LeaveGame(Player leave);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
@@ -87,16 +90,24 @@ namespace BlackjackService
         public List<Card> PlayHand { get; set; }
 
         [DataMember]
+        public User UserName { get; set; }
+
+        [DataMember]
         public int HandVal { get; set; }
 
         [DataMember]
         public bool RoundDone { get; set; }
 
-        public Player()
+        [DataMember]
+        public bool Ready { get; set; }
+
+        public Player(User use)
         {
+            UserName = use;
             PlayHand = new List<Card>();
             HandVal = 0;
             RoundDone = false;
+            Ready = false;
         }
 
     }

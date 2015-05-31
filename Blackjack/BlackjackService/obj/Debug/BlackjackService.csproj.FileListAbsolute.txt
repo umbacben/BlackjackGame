@@ -8,6 +8,5 @@ C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bi
 C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bin\Debug\BlackjackService.dll
 C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bin\Debug\BlackjackService.pdb
 C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bin\Debug\mysql.data.dll
-C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\obj\Debug\BlackjackService.csprojResolveAssemblyReference.cache
 C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\obj\Debug\BlackjackService.dll
 C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\obj\Debug\BlackjackService.pdb

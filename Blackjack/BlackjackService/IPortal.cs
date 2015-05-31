@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 using System.ServiceModel;
 
 namespace BlackjackService
@@ -11,9 +12,18 @@ namespace BlackjackService
     public interface IPortal
     {
         [OperationContract]
-        public void SendMessage(string message);
-        [OperationContract]
-        public bool LogIn(string User, string Password);
+        bool Login(String user);
 
+        [OperationContract]
+        bool Register(String user);
+
+        [OperationContract]
+        bool Logout(User user);
+
+        [OperationContract]
+        bool JoinGame(BlackJackGame game);
+
+        [OperationContract]
+        void CreateGame();
     }
 }

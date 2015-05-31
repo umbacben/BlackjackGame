@@ -11,13 +11,7 @@ namespace BlackjackService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class Chat : IChat
     {
-        private List<User> UserList;
         private static readonly List<IChatCallback> subscribers = new List<IChatCallback>();
-
-        public Chat()
-        {
-            UserList = new List<User>();
-        }
 
         public void AddMessage(string playerName, string message)
         {

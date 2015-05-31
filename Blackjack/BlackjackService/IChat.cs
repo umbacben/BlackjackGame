@@ -8,7 +8,7 @@ using System.ServiceModel;
 
 namespace BlackjackService
 {
-    [ServiceContract(Namespace = "ChatCallbacks", CallbackContract = typeof(IChatCallback))]
+    [ServiceContract(Namespace = "BlackjackService", CallbackContract = typeof(IChatCallback))]
     public interface IChat
     {
         [OperationContract]
@@ -19,5 +19,10 @@ namespace BlackjackService
 
         [OperationContract]
         bool UnSubscribe();
+    }
+    public interface IChatCallback
+    {
+        [OperationContract(IsOneWay = true)]
+        void onMessageAdded(DateTime dt, string playerName, string message);
     }
 }

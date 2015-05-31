@@ -4,8 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace BlackjackService
 {
@@ -14,17 +12,17 @@ namespace BlackjackService
     {
         IBlackJackGameCallBack callback;
         IBustEvent subscriber;
-        private int maxPlayers = 2;
         public int Pot { get; set; }
-        public List<Player> Players { get; set; }
+        public Player Host { get; set; }
+        public Player Player2 { get; set; }
         private Deck GameDeck { get; set; }
         static Action m_Event = delegate { };
+        public bool inRound = false;
 
         public BlackJackGame(Player creator)
         {
             Pot = 0;
-            Players = new List<Player>();
-            Players.Add(creator);
+            Host = creator;
             GameDeck = new Deck();
         }
 
@@ -56,9 +54,16 @@ namespace BlackjackService
             Pot += mon;
         }
 
-        public List<Player> GetPlayers()
+        public Player GetOtherPlayer(Player current)
         {
-            return Players;
+            if (current == Host)
+            {
+                return Player2;
+            }
+            else
+            {
+                return Host;
+            }
         }
 
         public int GetPot()
@@ -69,9 +74,9 @@ namespace BlackjackService
         public bool AddPlayer(Player player)
         {
             callback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
-            if (Players.Count != maxPlayers)
+            if (Player2 == null)
             {
-                Players.Add(player);
+                Player2 = player;
                 return true;
             }
             else
@@ -80,25 +85,31 @@ namespace BlackjackService
             }
         }
 
-        public void renextRound()
+        public void StartRound()
         {
             callback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
             Pot = 0;
-            GameDeck = new Deck();
+            inRound = true;
+            Host.PlayHand.Add(GameDeck.getNextCard());
+            Host.PlayHand.Add(GameDeck.getNextCard());
+            Player2.PlayHand.Add(GameDeck.getNextCard());
+            Player2.PlayHand.Add(GameDeck.getNextCard());
         }
 
         public Player DetermineWinner()
         {
             callback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
-            Player winner = Players.First();
-            for (int i = 1; i < Players.Count; i++)
+            Player winner = null;
+            if (Host.HandVal>Player2.HandVal)
             {
-                Player temp = Players.ElementAt(i);
-                if (temp.HandVal>winner.HandVal)
-                {
-                    winner = temp;
-                }
+                winner = Host;
             }
+            else if (Player2.HandVal >Host.HandVal)
+            {
+                winner = Player2;
+            }
+            inRound = false;
+            GameDeck = new Deck();
             return winner;
         }
 
@@ -147,59 +158,9 @@ namespace BlackjackService
             m_Event();
         }
 
-        //public User IsUser(string username, string password)
-        //{
-        //    User player = null;
-        //    string sql = "SELECT password FROM User WHERE userName = '" + username + "'";
-        //    MySqlCommand command = new MySqlCommand(sql, handler.connection);
-        //    try
-        //    {
-        //        handler.connection.Open();
-        //        MySqlDataReader reader = command.ExecuteReader();
-        //        string pass = "";
-        //        if (reader.Read())
-        //        {
-        //            pass = Convert.ToString(reader["password"]);
-
-        //            player = new User(username);
-        //        }
-
-        //    }
-        //    catch
-        //    {
-
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        handler.connection.Close();
-        //    }
-        //    return player;
-
-        //}
-
-
-
-
-
-        //bool ILogin.LogIn(string username, string password)
-        //{
-               
-        //    User user = this.IsUser(username, password);
-        //    if (user != null)
-        //    {
-        //        foreach (User item in UserList)
-        //        {
-        //            if (item.name == username)
-        //            {
-        //                return false;
-        //            }
-        //        }
-        //        UserList.Add(user);
-        //        return true;
-        //    }
-        //    return false;
-        
-        //}
+        public bool LeaveGame(Player leave)
+        {
+            return true;
+        }
     }
 }
