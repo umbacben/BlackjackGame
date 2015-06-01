@@ -8,36 +8,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ServiceModel;
-using BlackJackClient.ServiceReference1;
+using BlackJackClient.BlackjackService;
 
 
 namespace BlackJackClient
 {
-    public partial class Form1 : Form, IChatCallback
+    public partial class Form1 : Form
     {
-        DateTime dt;
-        public string username;
-        ChatClient chatProxy;
-        //private BlackJackService.BlackjackClient client;
+        private User user;
+        private BlackjackGameClient blackjackClient;
+        private ChatClient chatClient;
+        private PortalClient portalClient;
         InstanceContext context;
-        LoginClient logproxy;
         public Form1()
         {
             InitializeComponent();
             context = new InstanceContext(this);
-            chatProxy = new ChatClient(context);
-            logproxy = new LoginClient();
-            chatProxy.Subscribe();
-
-            //client = new BlackJackService.BlackjackClient();
-         
+            blackjackClient = new BlackjackGameClient(context);
+            chatClient = new ChatClient(context);
+            portalClient = new PortalClient();
+            user = new User();
+            chatClient.Subscribe1();
             panelLobby.Hide();
             panelLobby.BringToFront();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            chatProxy.UnSubscribe();
+            chatClient.UnSubscribe();
         }
 
         public void onMessageAdded(DateTime time, string playerName, string message)
@@ -48,10 +46,11 @@ namespace BlackJackClient
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            bool temp = logproxy.LogIn(tbUser.Text,tbPass.Text);
+            bool temp = portalClient.Login(tbUser.Text);
 
             if (temp)
             {
+                user.Name = tbUser.Text; 
                 panelLogIn.Hide();
                 panelLobby.Show();
                 panelLobby.BringToFront();
@@ -81,7 +80,7 @@ namespace BlackJackClient
             tbChat.Text = "";
             tbChat.Focus();
 
-            chatProxy.AddMessageAsync(username,message);
+            chatClient.AddMessage(user.Name, message);
         }
     }
 }
