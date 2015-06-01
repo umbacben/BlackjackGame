@@ -4,8 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 
 namespace BlackjackService
 {
@@ -44,26 +42,22 @@ namespace BlackjackService
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "BlackjackService.ContractType".
 
+    [DataContract]
     public class Card
     {
-        int value = 0;
+        [DataMember]
+        public int Value { get; set; }
 
         public Card(int val)
         {
             Value = val;
         }
-
-
-        public int Value
-        {
-            get { return value; }
-            set { this.value = value; }
-        }
     }
 
-
+    [DataContract]
     public class Deck
     {
+        [DataMember]
         List<Card> CardList { get; set; }
         public Deck()
         {
@@ -103,8 +97,8 @@ namespace BlackjackService
 
         public Player(User use)
         {
-            UserName = use;
-            PlayHand = new List<Card>();
+            //UserName = use;
+            //PlayHand = new List<Card>();
             HandVal = 0;
             RoundDone = false;
             Ready = false;
@@ -123,22 +117,4 @@ namespace BlackjackService
         [OperationContract(IsOneWay = true)]
         void Event();
     }
-
-//    [DataContract]
-//    public class DBHandler
-//    {
-//        String connectionInfo =  @"server=athena01.fhict.local;
-//                                      userid=dbi271495;
-//                                      password=FHBQCP47aR;
-//                                      database=dbi271495;
-//                                      Convert Zero Datetime=True;
-//                                      Allow Zero Datetime=True;";
-//        [DataMember]
-//        public MySqlConnection connection { get; set; }
-
-//        public DBHandler()
-//        {
-//            connection = new MySqlConnection(connectionInfo);
-//        }
-//    }
 }
