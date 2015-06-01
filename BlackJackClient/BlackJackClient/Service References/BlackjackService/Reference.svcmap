@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f62f59a4-785c-4c98-8c4c-bea875735b34" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="83dc7152-4b82-4971-ba09-ffc6b56980d1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,12 +22,12 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="BlackjackService.wsdl" MetadataType="Wsdl" ID="ef9c68c2-6a67-41e7-9ad1-860a5831f899" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="583012bc-05f1-4483-8bb8-b5a6689ba815" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
-    <MetadataFile FileName="BlackjackService.xsd" MetadataType="Schema" ID="a2168f4c-aa04-4564-a9ed-326392b16490" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="089b8e37-06ca-40f8-97ce-f7c7e831bf6a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
-    <MetadataFile FileName="BlackjackService1.xsd" MetadataType="Schema" ID="4df60826-d5c7-41bb-ab39-b412b5779acc" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="c8ed772d-f219-41c6-ac48-4e74b10a9a24" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
+    <MetadataFile FileName="BlackjackService.wsdl" MetadataType="Wsdl" ID="1892a46d-93ba-4568-ac1c-1363477eae62" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="c50cdf5e-2943-4487-a20e-b49bc85c08af" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
+    <MetadataFile FileName="BlackjackService.xsd" MetadataType="Schema" ID="4a1bda86-e58c-494d-83fa-6c25f53b0306" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d34a1c23-9cbc-4a4f-8b76-bf3f1dc68f1f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
+    <MetadataFile FileName="BlackjackService1.xsd" MetadataType="Schema" ID="85dd31cc-5577-4b58-b24e-c1a98e93b060" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="6aa58a7a-f900-4fb9-887b-f4efc9957286" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
