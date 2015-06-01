@@ -8,7 +8,7 @@ using System.ServiceModel;
 
 namespace BlackjackService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
+   // [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class Chat : IChat
     {
         private static readonly List<IChatCallback> subscribers = new List<IChatCallback>();
@@ -28,7 +28,7 @@ namespace BlackjackService
             });
         }
 
-        public bool Subscribe()
+        public bool Subscribe1()
         {
             try
             {

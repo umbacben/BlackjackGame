@@ -15,7 +15,7 @@ namespace BlackjackService
         void AddMessage(string playerName, string message);
 
         [OperationContract]
-        bool Subscribe();
+        bool Subscribe1();
 
         [OperationContract]
         bool UnSubscribe();

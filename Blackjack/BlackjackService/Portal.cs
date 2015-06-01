@@ -8,7 +8,7 @@ using System.ServiceModel;
 
 namespace BlackjackService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
+    //[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class Portal:IPortal
     {
         List<BlackJackGame> GameList { get; set; }

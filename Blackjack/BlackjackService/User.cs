@@ -9,6 +9,7 @@ using System.Runtime.Serialization;
 
 namespace BlackjackService
 {
+    [DataContract]
     public class User
     {
         [DataMember]
