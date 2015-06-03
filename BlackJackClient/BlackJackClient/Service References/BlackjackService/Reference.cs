@@ -177,6 +177,9 @@ namespace BlackJackClient.BlackjackService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PicLocField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ValueField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -186,6 +189,19 @@ namespace BlackJackClient.BlackjackService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PicLoc {
+            get {
+                return this.PicLocField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PicLocField, value) != true)) {
+                    this.PicLocField = value;
+                    this.RaisePropertyChanged("PicLoc");
+                }
             }
         }
         
@@ -362,6 +378,12 @@ namespace BlackJackClient.BlackjackService {
         
         [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/LeaveGame", ReplyAction="BlackjackService/IBlackjackGame/LeaveGameResponse")]
         System.Threading.Tasks.Task<bool> LeaveGameAsync(BlackJackClient.BlackjackService.Player leave);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/ReadyPlayer", ReplyAction="BlackjackService/IBlackjackGame/ReadyPlayerResponse")]
+        void ReadyPlayer(BlackJackClient.BlackjackService.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/ReadyPlayer", ReplyAction="BlackjackService/IBlackjackGame/ReadyPlayerResponse")]
+        System.Threading.Tasks.Task ReadyPlayerAsync(BlackJackClient.BlackjackService.Player player);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -470,6 +492,14 @@ namespace BlackJackClient.BlackjackService {
         public System.Threading.Tasks.Task<bool> LeaveGameAsync(BlackJackClient.BlackjackService.Player leave) {
             return base.Channel.LeaveGameAsync(leave);
         }
+        
+        public void ReadyPlayer(BlackJackClient.BlackjackService.Player player) {
+            base.Channel.ReadyPlayer(player);
+        }
+        
+        public System.Threading.Tasks.Task ReadyPlayerAsync(BlackJackClient.BlackjackService.Player player) {
+            return base.Channel.ReadyPlayerAsync(player);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -560,10 +590,10 @@ namespace BlackJackClient.BlackjackService {
     public interface IPortal {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPortal/Login", ReplyAction="http://tempuri.org/IPortal/LoginResponse")]
-        bool Login(string user);
+        BlackJackClient.BlackjackService.User Login(string user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPortal/Login", ReplyAction="http://tempuri.org/IPortal/LoginResponse")]
-        System.Threading.Tasks.Task<bool> LoginAsync(string user);
+        System.Threading.Tasks.Task<BlackJackClient.BlackjackService.User> LoginAsync(string user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPortal/Register", ReplyAction="http://tempuri.org/IPortal/RegisterResponse")]
         bool Register(string user);
@@ -578,16 +608,22 @@ namespace BlackJackClient.BlackjackService {
         System.Threading.Tasks.Task<bool> LogoutAsync(BlackJackClient.BlackjackService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPortal/JoinGame", ReplyAction="http://tempuri.org/IPortal/JoinGameResponse")]
-        bool JoinGame(BlackJackClient.BlackjackService.BlackJackGame game);
+        BlackJackClient.BlackjackService.Player JoinGame(BlackJackClient.BlackjackService.BlackJackGame game, BlackJackClient.BlackjackService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPortal/JoinGame", ReplyAction="http://tempuri.org/IPortal/JoinGameResponse")]
-        System.Threading.Tasks.Task<bool> JoinGameAsync(BlackJackClient.BlackjackService.BlackJackGame game);
+        System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Player> JoinGameAsync(BlackJackClient.BlackjackService.BlackJackGame game, BlackJackClient.BlackjackService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPortal/CreateGame", ReplyAction="http://tempuri.org/IPortal/CreateGameResponse")]
-        void CreateGame();
+        BlackJackClient.BlackjackService.Player CreateGame(BlackJackClient.BlackjackService.User user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPortal/CreateGame", ReplyAction="http://tempuri.org/IPortal/CreateGameResponse")]
-        System.Threading.Tasks.Task CreateGameAsync();
+        System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Player> CreateGameAsync(BlackJackClient.BlackjackService.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPortal/GetGameList", ReplyAction="http://tempuri.org/IPortal/GetGameListResponse")]
+        BlackJackClient.BlackjackService.BlackJackGame[] GetGameList();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPortal/GetGameList", ReplyAction="http://tempuri.org/IPortal/GetGameListResponse")]
+        System.Threading.Tasks.Task<BlackJackClient.BlackjackService.BlackJackGame[]> GetGameListAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -617,11 +653,11 @@ namespace BlackJackClient.BlackjackService {
                 base(binding, remoteAddress) {
         }
         
-        public bool Login(string user) {
+        public BlackJackClient.BlackjackService.User Login(string user) {
             return base.Channel.Login(user);
         }
         
-        public System.Threading.Tasks.Task<bool> LoginAsync(string user) {
+        public System.Threading.Tasks.Task<BlackJackClient.BlackjackService.User> LoginAsync(string user) {
             return base.Channel.LoginAsync(user);
         }
         
@@ -641,20 +677,28 @@ namespace BlackJackClient.BlackjackService {
             return base.Channel.LogoutAsync(user);
         }
         
-        public bool JoinGame(BlackJackClient.BlackjackService.BlackJackGame game) {
-            return base.Channel.JoinGame(game);
+        public BlackJackClient.BlackjackService.Player JoinGame(BlackJackClient.BlackjackService.BlackJackGame game, BlackJackClient.BlackjackService.User user) {
+            return base.Channel.JoinGame(game, user);
         }
         
-        public System.Threading.Tasks.Task<bool> JoinGameAsync(BlackJackClient.BlackjackService.BlackJackGame game) {
-            return base.Channel.JoinGameAsync(game);
+        public System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Player> JoinGameAsync(BlackJackClient.BlackjackService.BlackJackGame game, BlackJackClient.BlackjackService.User user) {
+            return base.Channel.JoinGameAsync(game, user);
         }
         
-        public void CreateGame() {
-            base.Channel.CreateGame();
+        public BlackJackClient.BlackjackService.Player CreateGame(BlackJackClient.BlackjackService.User user) {
+            return base.Channel.CreateGame(user);
         }
         
-        public System.Threading.Tasks.Task CreateGameAsync() {
-            return base.Channel.CreateGameAsync();
+        public System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Player> CreateGameAsync(BlackJackClient.BlackjackService.User user) {
+            return base.Channel.CreateGameAsync(user);
+        }
+        
+        public BlackJackClient.BlackjackService.BlackJackGame[] GetGameList() {
+            return base.Channel.GetGameList();
+        }
+        
+        public System.Threading.Tasks.Task<BlackJackClient.BlackjackService.BlackJackGame[]> GetGameListAsync() {
+            return base.Channel.GetGameListAsync();
         }
     }
 }

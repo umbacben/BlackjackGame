@@ -37,6 +37,9 @@ namespace BlackjackService
 
         [OperationContract]
         bool LeaveGame(Player leave);
+
+        [OperationContract]
+        void ReadyPlayer(Player player);
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
@@ -48,9 +51,13 @@ namespace BlackjackService
         [DataMember]
         public int Value { get; set; }
 
-        public Card(int val)
+        [DataMember]
+        public String PicLoc { get; set; }
+
+        public Card(int val, String picloc)
         {
             Value = val;
+            PicLoc = picloc;
         }
     }
 

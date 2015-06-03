@@ -115,10 +115,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="OnValueChange">
+  <xs:element name="ReadyPlayer">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="player" nillable="true" type="q8:Player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadyPlayerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OnValueChange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="player" nillable="true" type="q9:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -126,6 +126,12 @@
   <wsdl:message name="IPortal_CreateGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IPortal_GetGameList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameList" />
+  </wsdl:message>
+  <wsdl:message name="IPortal_GetGameList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameListResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPortal">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IPortal/Login" message="tns:IPortal_Login_InputMessage" />
@@ -146,6 +152,10 @@
     <wsdl:operation name="CreateGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IPortal/CreateGame" message="tns:IPortal_CreateGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPortal/CreateGameResponse" message="tns:IPortal_CreateGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGameList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortal/GetGameList" message="tns:IPortal_GetGameList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortal/GetGameListResponse" message="tns:IPortal_GetGameList_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IBlackjackGame" type="i0:IBlackjackGame">
@@ -225,6 +235,15 @@
     </wsdl:operation>
     <wsdl:operation name="LeaveGame">
       <soap12:operation soapAction="BlackjackService/IBlackjackGame/LeaveGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadyPlayer">
+      <soap12:operation soapAction="BlackjackService/IBlackjackGame/ReadyPlayer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -320,6 +339,15 @@
     </wsdl:operation>
     <wsdl:operation name="CreateGame">
       <soap12:operation soapAction="http://tempuri.org/IPortal/CreateGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGameList">
+      <soap12:operation soapAction="http://tempuri.org/IPortal/GetGameList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

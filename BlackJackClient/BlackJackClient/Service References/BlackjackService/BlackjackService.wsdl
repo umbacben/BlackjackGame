@@ -61,6 +61,12 @@
   <wsdl:message name="IBlackjackGame_LeaveGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:LeaveGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IBlackjackGame_ReadyPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadyPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IBlackjackGame_ReadyPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadyPlayerResponse" />
+  </wsdl:message>
   <wsdl:message name="IBlackjackGame_OnValueChange_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnValueChange" />
   </wsdl:message>
@@ -124,6 +130,10 @@
     <wsdl:operation name="LeaveGame">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/LeaveGame" message="tns:IBlackjackGame_LeaveGame_InputMessage" />
       <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/LeaveGameResponse" message="tns:IBlackjackGame_LeaveGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadyPlayer">
+      <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/ReadyPlayer" message="tns:IBlackjackGame_ReadyPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/ReadyPlayerResponse" message="tns:IBlackjackGame_ReadyPlayer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="OnValueChange">
       <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/OnValueChange" message="tns:IBlackjackGame_OnValueChange_OutputCallbackMessage" />

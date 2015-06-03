@@ -18,6 +18,7 @@
   <xs:element name="ArrayOfCard" nillable="true" type="tns:ArrayOfCard" />
   <xs:complexType name="Card">
     <xs:sequence>
+      <xs:element minOccurs="0" name="PicLoc" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Value" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
@@ -37,4 +38,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="BlackJackGame" nillable="true" type="tns:BlackJackGame" />
+  <xs:complexType name="ArrayOfBlackJackGame">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BlackJackGame" nillable="true" type="tns:BlackJackGame" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBlackJackGame" nillable="true" type="tns:ArrayOfBlackJackGame" />
 </xs:schema>

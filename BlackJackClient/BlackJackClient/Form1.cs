@@ -20,45 +20,28 @@ namespace BlackJackClient
         private ChatClient chatClient;
         private PortalClient portalClient;
         InstanceContext context;
+        private Player curPlayer;
         public Form1()
         {
             InitializeComponent();
             context = new InstanceContext(this);
             blackjackClient = new BlackjackGameClient(context);
-            chatClient = new ChatClient(context);
+            //chatClient = new ChatClient(context);
             portalClient = new PortalClient();
-            user = new User();
-            chatClient.Subscribe1();
+           // chatClient.Subscribe1();
             panelLobby.Hide();
-            panelLobby.BringToFront();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            chatClient.UnSubscribe();
+            //chatClient.UnSubscribe();
         }
 
         public void onMessageAdded(DateTime time, string playerName, string message)
         {
-            lbChat.Items.Add(time + ":" + playerName + " > " + message);
+           // lbChat.Items.Add(time + ":" + playerName + " > " + message);
           
          
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            bool temp = portalClient.Login(tbUser.Text);
-
-            if (temp)
-            {
-                user.Name = tbUser.Text; 
-                panelLogIn.Hide();
-                panelLobby.Show();
-                panelLobby.BringToFront();
-            }
-            else
-            {
-                MessageBox.Show("Username or Password is incorrect");
-            }
         }
 
 
@@ -75,12 +58,56 @@ namespace BlackJackClient
 
         private void btnChat_Click(object sender, EventArgs e)
         {
-            string message = tbChat.Text;
+            //string message = tbChat.Text;
 
-            tbChat.Text = "";
-            tbChat.Focus();
+            //tbChat.Text = "";
+            //tbChat.Focus();
 
-            chatClient.AddMessage(user.Name, message);
+            //chatClient.AddMessage(user.Name, message);
+        }
+
+        private void btnRaise_Click(object sender, EventArgs e)
+        {
+            blackjackClient.IncreasePot(Convert.ToInt32(tBoxRaise));
+            labelPot.Text = "Pot amount: " + blackjackClient.GetPot().ToString();
+        }
+
+        private void btnReady_Click(object sender, EventArgs e)
+        {
+            blackjackClient.ReadyPlayer(curPlayer);
+        }
+
+        private void btnHit_Click(object sender, EventArgs e)
+        {
+            blackjackClient.Hit(curPlayer);
+        }
+
+        private void btnStand_Click(object sender, EventArgs e)
+        {
+            blackjackClient.Stay(curPlayer);
+        }
+
+        private void btnCreateGame_Click(object sender, EventArgs e)
+        {
+            curPlayer = portalClient.CreateGame(user);
+            panelLobby.Hide();
+        }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+            user = portalClient.Login(tbUser.Text);
+
+            if (user != null)
+            {
+                user.Name = tbUser.Text;
+                panelLogIn.Hide();
+                panelLobby.Show();
+                panelLobby.BringToFront();
+            }
+            else
+            {
+                MessageBox.Show("Username or Password is incorrect");
+            }
         }
     }
 }

@@ -18,6 +18,8 @@ namespace BlackjackService
         private Deck GameDeck { get; set; }
         static Action m_Event = delegate { };
         public bool inRound = false;
+        List<BlackJackGame> GameList = new List<BlackJackGame>();
+        List<User> users = new List<User>();
 
         public BlackJackGame()
         {
@@ -125,29 +127,7 @@ namespace BlackjackService
             }
             if (play.HandVal > 21)
             {
-                if (play.PlayHand.Exists(x => x.Value == 11))
-                {
-                    play.HandVal = 0;
-                    foreach (Card i in play.PlayHand)
-                    {
-                        if (i.Value == 11)
-                        {
-                            play.HandVal += 1;
-                        }
-                        else
-                        {
-                            play.HandVal += i.Value;
-                        }
-                    }
-                    if (play.HandVal > 21)
-                    {
-                        FireBustEvent();
-                    }
-                }
-                else
-                {
-                    FireBustEvent();
-                }
+                FireBustEvent();
             }
         }
 
@@ -166,6 +146,19 @@ namespace BlackjackService
         {
             return true;
     
+        }
+
+        public void ReadyPlayer(Player player)
+        {
+            if (player == Player2)
+            {
+                Player2.Ready = true;
+            }
+            else
+            {
+                Host.Ready = true;
+            }
+            StartRound();
         }
 
         private static readonly List<IChatCallback> subscribers = new List<IChatCallback>();
@@ -218,21 +211,12 @@ namespace BlackjackService
         }
 
 
-        List<BlackJackGame> GameList { get; set; }
-        List<User> users { get; set; }
 
-
-        public bool Login(String user)
+        public User Login(String user)
         {
-            if (users.Exists(x => x.Name == user))
-            {
-                return false;
-            }
-            else
-            {
-                users.Add(new User(user));
-                return true;
-            }
+            User temp = new User(user);
+            users.Add(temp);
+            return temp;
         }
 
         public bool Register(String user)
@@ -245,14 +229,31 @@ namespace BlackjackService
             return true;
         }
 
-        public bool JoinGame(BlackJackGame game)
+        public Player JoinGame(BlackJackGame game, User user)
         {
-            return true;
+            if (GameList.Find(x=>x==game).Player2==null)
+            {
+                return null;
+            }
+            else
+            {
+                Player temp = new Player(user);
+                GameList.Find(x => x == game).Player2 = temp;
+                return temp;
+            }
         }
 
-        public void CreateGame()
+        public Player CreateGame(User user)
         {
+            Player temp = new Player(user);
+            BlackJackGame Game = new BlackJackGame(temp);
+            GameList.Add(Game);
+            return temp;
+        }
 
+        public List<BlackJackGame> GetGameList()
+        {
+            return GameList;
         }
 
     }

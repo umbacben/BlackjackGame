@@ -12,7 +12,7 @@ namespace BlackjackService
     public interface IPortal
     {
         [OperationContract]
-        bool Login(String user);
+        User Login(String user);
 
         [OperationContract]
         bool Register(String user);
@@ -21,9 +21,13 @@ namespace BlackjackService
         bool Logout(User user);
 
         [OperationContract]
-        bool JoinGame(BlackJackGame game);
+        Player JoinGame(BlackJackGame game, User user);
 
         [OperationContract]
-        void CreateGame();
+        Player CreateGame(User user);
+
+        [OperationContract]
+        List<BlackJackGame> GetGameList();
     }
+
 }

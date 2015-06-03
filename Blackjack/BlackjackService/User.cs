@@ -15,7 +15,7 @@ namespace BlackjackService
         [DataMember]
         public string Name { get; set; }
 
-
+        
         public User(string username)
         {
             this.Name = username;
