@@ -70,6 +70,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -122,6 +123,57 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\betbox.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\cardback.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\dealer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spade2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spade3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spade4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spade5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spade6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spade7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spade8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spade9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spade10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spadeA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spadeJ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spadeK.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\spadeQ.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\user.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

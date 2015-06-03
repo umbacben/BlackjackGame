@@ -21,17 +21,36 @@ namespace BlackJackClient
         private PortalClient portalClient;
         InstanceContext context;
         private Player curPlayer;
+        private List<PictureBox> userhand,opponenthand;
+        private BlackJackGame thegame;
+        private IBlackjackGameCallback blackcallback;
         public Form1()
         {
             InitializeComponent();
+            thegame = new BlackJackGame();
+
             context = new InstanceContext(this);
             blackjackClient = new BlackjackGameClient(context);
             chatClient = new ChatClient(context);
             portalClient = new PortalClient();
-            //blackjackClient.Subscribe();
             panelLobby.Hide();
         }
-
+        public void UpdateVisual()
+        {
+            labelPot.Text=thegame.Pot.ToString();
+            int count=0;
+            count=thegame.Host.PlayHand.Length;
+            for(int i=0;i<count;i++)
+            {
+                userhand[i].ImageLocation=thegame.Host.PlayHand[i].PicLoc;
+            }
+            count=thegame.Player2.PlayHand.Length;
+            for(int i=0;i<count;i++)
+            {
+                opponenthand[i].ImageLocation="\\images\\cardback.jpg";
+            }
+            
+        }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
         }
@@ -45,18 +64,15 @@ namespace BlackJackClient
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
-
+            blackjackClient.AddPlayer(new Player());
         }
 
         private void btnChat_Click(object sender, EventArgs e)
         {
             string message = tbChat.Text;
-
             tbChat.Text = "";
-
             chatClient.AddMessage(user.Name, message);
         }
-
         private void btnRaise_Click(object sender, EventArgs e)
         {
             blackjackClient.IncreasePot(Convert.ToInt32(tBoxRaise));
@@ -66,12 +82,14 @@ namespace BlackJackClient
         private void btnReady_Click(object sender, EventArgs e)
         {
             blackjackClient.ReadyPlayer(curPlayer);
+
         }
 
         private void btnHit_Click(object sender, EventArgs e)
         {
+
             blackjackClient.Hit(curPlayer);
-        }
+        }   
 
         private void btnStand_Click(object sender, EventArgs e)
         {
@@ -82,6 +100,7 @@ namespace BlackJackClient
         {
             curPlayer = portalClient.CreateGame(user);
             panelLobby.Hide();
+            labelUser.Text = user.Name;
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)

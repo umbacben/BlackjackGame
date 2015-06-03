@@ -131,18 +131,6 @@ namespace BlackjackService
             }
         }
 
-        //public void BlackjackSubscribe()
-        //{
-        //    blackjackCallback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
-        //    //subscriber = OperationContext.Current.GetCallbackChannel<IBustEvent>();
-        //    //m_Event += subscriber.Event;
-        //}
-
-        //public void ChatSubscribe()
-        //{
-        //    chatCallback = OperationContext.Current.GetCallbackChannel<IChatCallback>();
-        //}
-
         public void FireBustEvent()
         {
             m_Event();
