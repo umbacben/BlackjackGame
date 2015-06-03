@@ -13,7 +13,7 @@ using BlackJackClient.BlackjackService;
 
 namespace BlackJackClient
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form,IBlackjackGameCallback
     {
         private User user;
         private BlackjackGameClient blackjackClient;
@@ -21,9 +21,27 @@ namespace BlackJackClient
         private PortalClient portalClient;
         InstanceContext context;
         private Player curPlayer;
+        private List<PictureBox> userhand,opponenthand;
+        private BlackJackGame thegame;
+        private IBlackjackGameCallback blackcallback;
         public Form1()
         {
             InitializeComponent();
+            thegame = new BlackJackGame();
+            userhand = new List<PictureBox>();
+            opponenthand = new List<PictureBox>();
+            userhand.Add(pb1User);
+            userhand.Add(pb2User);
+            userhand.Add(pb3User);
+            userhand.Add(pb4User);
+            userhand.Add(pb5User);
+            opponenthand.Add(pb1Player);
+            opponenthand.Add(pb2Player);
+            opponenthand.Add(pb3Player);
+            opponenthand.Add(pb4Player);
+            opponenthand.Add(pb5Player);
+            thegame = new BlackJackGame();
+
             context = new InstanceContext(this);
             blackjackClient = new BlackjackGameClient(context);
             //chatClient = new ChatClient(context);
@@ -31,7 +49,23 @@ namespace BlackJackClient
            // chatClient.Subscribe1();
             panelLobby.Hide();
         }
-
+        public void UpdateVisual()
+        {
+            labelPot.Text=thegame.Pot.ToString();
+            int count=0;
+            count=thegame.Host.PlayHand.Length;
+            for(int i=0;i<count;i++)
+            {
+                userhand[i].ImageLocation=thegame.Host.PlayHand[i].PicLoc;
+            }
+            count=thegame.Player2.PlayHand.Length;
+            for(int i=0;i<count;i++)
+            {
+                opponenthand[i].ImageLocation="C:\\Users\\Popa Vlad\\Documents\\GitHub\\BlackjackGame\\BlackJackClient\\BlackJackClient\\images\\cardback.jpg";
+            }
+            
+        }
+        }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //chatClient.UnSubscribe();
@@ -53,7 +87,7 @@ namespace BlackJackClient
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
-
+            blackjackClient.AddPlayer(new Player());
         }
 
         private void btnChat_Click(object sender, EventArgs e)
@@ -75,12 +109,14 @@ namespace BlackJackClient
         private void btnReady_Click(object sender, EventArgs e)
         {
             blackjackClient.ReadyPlayer(curPlayer);
+
         }
 
         private void btnHit_Click(object sender, EventArgs e)
         {
+            
             blackjackClient.Hit(curPlayer);
-        }
+            
 
         private void btnStand_Click(object sender, EventArgs e)
         {
@@ -91,6 +127,7 @@ namespace BlackJackClient
         {
             curPlayer = portalClient.CreateGame(user);
             panelLobby.Hide();
+            labelUser.Text = user.Name;
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
