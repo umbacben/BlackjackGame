@@ -67,29 +67,17 @@
   <wsdl:message name="IBlackjackGame_ReadyPlayer_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadyPlayerResponse" />
   </wsdl:message>
-  <wsdl:message name="IBlackjackGame_OnValueChange_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnValueChange" />
+  <wsdl:message name="IBlackjackGame_UpdateGame_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGame" />
   </wsdl:message>
-  <wsdl:message name="IBlackjackGame_OnValueChange_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:OnValueChangeResponse" />
+  <wsdl:message name="IBlackjackGame_UpdateGame_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateGameResponse" />
   </wsdl:message>
   <wsdl:message name="IChat_AddMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:AddMessage" />
   </wsdl:message>
   <wsdl:message name="IChat_AddMessage_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddMessageResponse" />
-  </wsdl:message>
-  <wsdl:message name="IChat_Subscribe1_InputMessage">
-    <wsdl:part name="parameters" element="tns:Subscribe1" />
-  </wsdl:message>
-  <wsdl:message name="IChat_Subscribe1_OutputMessage">
-    <wsdl:part name="parameters" element="tns:Subscribe1Response" />
-  </wsdl:message>
-  <wsdl:message name="IChat_UnSubscribe_InputMessage">
-    <wsdl:part name="parameters" element="tns:UnSubscribe" />
-  </wsdl:message>
-  <wsdl:message name="IChat_UnSubscribe_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UnSubscribeResponse" />
   </wsdl:message>
   <wsdl:message name="IChat_onMessageAdded_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:onMessageAdded" />
@@ -135,23 +123,15 @@
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/ReadyPlayer" message="tns:IBlackjackGame_ReadyPlayer_InputMessage" />
       <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/ReadyPlayerResponse" message="tns:IBlackjackGame_ReadyPlayer_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="OnValueChange">
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/OnValueChange" message="tns:IBlackjackGame_OnValueChange_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/OnValueChangeResponse" message="tns:IBlackjackGame_OnValueChange_InputCallbackMessage" />
+    <wsdl:operation name="UpdateGame">
+      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/UpdateGame" message="tns:IBlackjackGame_UpdateGame_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/UpdateGameResponse" message="tns:IBlackjackGame_UpdateGame_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChat">
     <wsdl:operation name="AddMessage">
       <wsdl:input wsaw:Action="BlackjackService/IChat/AddMessage" message="tns:IChat_AddMessage_InputMessage" />
       <wsdl:output wsaw:Action="BlackjackService/IChat/AddMessageResponse" message="tns:IChat_AddMessage_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="Subscribe1">
-      <wsdl:input wsaw:Action="BlackjackService/IChat/Subscribe1" message="tns:IChat_Subscribe1_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IChat/Subscribe1Response" message="tns:IChat_Subscribe1_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="UnSubscribe">
-      <wsdl:input wsaw:Action="BlackjackService/IChat/UnSubscribe" message="tns:IChat_UnSubscribe_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IChat/UnSubscribeResponse" message="tns:IChat_UnSubscribe_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="onMessageAdded">
       <wsdl:output wsaw:Action="BlackjackService/IChat/onMessageAdded" message="tns:IChat_onMessageAdded_OutputCallbackMessage" />

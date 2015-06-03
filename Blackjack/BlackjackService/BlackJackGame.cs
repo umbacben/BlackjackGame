@@ -7,10 +7,11 @@ using System.Text;
 
 namespace BlackjackService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class BlackJackGame : IBlackjackGame, IChat, IPortal
     {
-        IBlackJackGameCallBack callback;
+        IChatCallback chatCallback;
+        IBlackJackGameCallBack blackjackCallback;
         IBustEvent subscriber;
         public int Pot { get; set; }
         public Player Host { get; set; }
@@ -34,11 +35,12 @@ namespace BlackjackService
 
         public bool Hit(Player player)
         {
-            callback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
+            blackjackCallback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
             if (player.PlayHand.Count < 5)
             {
                 player.PlayHand.Add(GameDeck.getNextCard());
                 this.CalcVal(player);
+                blackjackCallback.UpdateGame(this);
                 return true;
             }
             else
@@ -49,14 +51,13 @@ namespace BlackjackService
 
         public void Stay(Player player)
         {
-            callback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
             player.RoundDone = true;
             this.CalcVal(player);
+            blackjackCallback.UpdateGame(this);
         }
 
         public void IncreasePot(int mon)
         {
-            callback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
             Pot += mon;
         }
 
@@ -79,7 +80,6 @@ namespace BlackjackService
 
         public bool AddPlayer(Player player)
         {
-            callback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
             if (Player2 == null)
             {
                 Player2 = player;
@@ -93,18 +93,18 @@ namespace BlackjackService
 
         public void StartRound()
         {
-            callback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
             Pot = 0;
             inRound = true;
             Host.PlayHand.Add(GameDeck.getNextCard());
             Host.PlayHand.Add(GameDeck.getNextCard());
             Player2.PlayHand.Add(GameDeck.getNextCard());
             Player2.PlayHand.Add(GameDeck.getNextCard());
+            blackjackCallback.UpdateGame(this);
         }
 
         public Player DetermineWinner()
         {
-            callback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
+            
             Player winner = null;
             if (Host.HandVal>Player2.HandVal)
             {
@@ -131,11 +131,17 @@ namespace BlackjackService
             }
         }
 
-        public void Subscribe()
-        {
-            subscriber = OperationContext.Current.GetCallbackChannel<IBustEvent>();
-            m_Event += subscriber.Event;
-        }
+        //public void BlackjackSubscribe()
+        //{
+        //    blackjackCallback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
+        //    //subscriber = OperationContext.Current.GetCallbackChannel<IBustEvent>();
+        //    //m_Event += subscriber.Event;
+        //}
+
+        //public void ChatSubscribe()
+        //{
+        //    chatCallback = OperationContext.Current.GetCallbackChannel<IChatCallback>();
+        //}
 
         public void FireBustEvent()
         {
@@ -161,53 +167,11 @@ namespace BlackjackService
             StartRound();
         }
 
-        private static readonly List<IChatCallback> subscribers = new List<IChatCallback>();
 
         public void AddMessage(string playerName, string message)
         {
-            subscribers.ForEach(delegate(IChatCallback callback)
-            {
-                if (((ICommunicationObject)callback).State == CommunicationState.Opened)
-                {
-                    callback.onMessageAdded(DateTime.Now, playerName, message);
-                }
-                else
-                {
-                    subscribers.Remove(callback);
-                }
-            });
-        }
-
-        public bool Subscribe1()
-        {
-            try
-            {
-                IChatCallback chatCallBack = OperationContext.Current.GetCallbackChannel<IChatCallback>();
-                if (!subscribers.Contains(chatCallBack))
-
-                    subscribers.Add(chatCallBack);
-                return true;
-
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public bool UnSubscribe()
-        {
-            try
-            {
-                IChatCallback callback = OperationContext.Current.GetCallbackChannel<IChatCallback>();
-                if (subscribers.Contains(callback))
-                    subscribers.Remove(callback);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            chatCallback = OperationContext.Current.GetCallbackChannel<IChatCallback>();
+            chatCallback.onMessageAdded(DateTime.Now, playerName, message);
         }
 
 

@@ -84,10 +84,10 @@
             this.panelLobby.Controls.Add(this.btnSpectate);
             this.panelLobby.Controls.Add(this.btnCreateGame);
             this.panelLobby.Controls.Add(this.btnJoin);
-            this.panelLobby.Location = new System.Drawing.Point(186, 32);
+            this.panelLobby.Location = new System.Drawing.Point(227, 32);
             this.panelLobby.Margin = new System.Windows.Forms.Padding(4);
             this.panelLobby.Name = "panelLobby";
-            this.panelLobby.Size = new System.Drawing.Size(961, 470);
+            this.panelLobby.Size = new System.Drawing.Size(982, 470);
             this.panelLobby.TabIndex = 3;
             // 
             // tbChat

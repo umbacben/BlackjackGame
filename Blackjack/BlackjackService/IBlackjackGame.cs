@@ -7,7 +7,6 @@ using System.Text;
 
 namespace BlackjackService
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract(Namespace = "BlackjackService", CallbackContract = typeof(IBlackJackGameCallBack))]
     public interface IBlackjackGame
     {
@@ -40,6 +39,9 @@ namespace BlackjackService
 
         [OperationContract]
         void ReadyPlayer(Player player);
+
+        //[OperationContract]
+        //void Subscribe();
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
@@ -69,6 +71,7 @@ namespace BlackjackService
         public Deck()
         {
             CardList = new List<Card>();
+            CardList.Add(new Card(5,"nvshjbv"));
         }
 
         /// <summary>
@@ -104,8 +107,8 @@ namespace BlackjackService
 
         public Player(User use)
         {
-            //UserName = use;
-            //PlayHand = new List<Card>();
+            UserName = use;
+            PlayHand = new List<Card>();
             HandVal = 0;
             RoundDone = false;
             Ready = false;
@@ -116,7 +119,7 @@ namespace BlackjackService
     public interface IBlackJackGameCallBack
     {
         [OperationContract]
-        void OnValueChange(Player player);
+        void UpdateGame(BlackJackGame game);
     }
 
     public interface IBustEvent

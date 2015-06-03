@@ -13,12 +13,6 @@ namespace BlackjackService
     {
         [OperationContract]
         void AddMessage(string playerName, string message);
-
-        [OperationContract]
-        bool Subscribe1();
-
-        [OperationContract]
-        bool UnSubscribe();
     }
     public interface IChatCallback
     {

@@ -251,8 +251,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="OnValueChange">
-      <soap12:operation soapAction="BlackjackService/IBlackjackGame/OnValueChange" style="document" />
+    <wsdl:operation name="UpdateGame">
+      <soap12:operation soapAction="BlackjackService/IBlackjackGame/UpdateGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -266,24 +266,6 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="AddMessage">
       <soap12:operation soapAction="BlackjackService/IChat/AddMessage" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="Subscribe1">
-      <soap12:operation soapAction="BlackjackService/IChat/Subscribe1" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="UnSubscribe">
-      <soap12:operation soapAction="BlackjackService/IChat/UnSubscribe" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -127,14 +127,14 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="OnValueChange">
+  <xs:element name="UpdateGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="player" nillable="true" type="q9:Player" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q9:BlackJackGame" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="OnValueChangeResponse">
+  <xs:element name="UpdateGameResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -150,30 +150,6 @@
   <xs:element name="AddMessageResponse">
     <xs:complexType>
       <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Subscribe1">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Subscribe1Response">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="Subscribe1Result" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UnSubscribe">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UnSubscribeResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="UnSubscribeResult" type="xs:boolean" />
-      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="onMessageAdded">

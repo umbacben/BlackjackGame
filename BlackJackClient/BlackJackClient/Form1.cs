@@ -13,7 +13,7 @@ using BlackJackClient.BlackjackService;
 
 namespace BlackJackClient
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IBlackjackGameCallback, IChatCallback
     {
         private User user;
         private BlackjackGameClient blackjackClient;
@@ -26,22 +26,14 @@ namespace BlackJackClient
             InitializeComponent();
             context = new InstanceContext(this);
             blackjackClient = new BlackjackGameClient(context);
-            //chatClient = new ChatClient(context);
+            chatClient = new ChatClient(context);
             portalClient = new PortalClient();
-           // chatClient.Subscribe1();
+            //blackjackClient.Subscribe();
             panelLobby.Hide();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //chatClient.UnSubscribe();
-        }
-
-        public void onMessageAdded(DateTime time, string playerName, string message)
-        {
-           // lbChat.Items.Add(time + ":" + playerName + " > " + message);
-          
-         
         }
 
 
@@ -58,12 +50,11 @@ namespace BlackJackClient
 
         private void btnChat_Click(object sender, EventArgs e)
         {
-            //string message = tbChat.Text;
+            string message = tbChat.Text;
 
-            //tbChat.Text = "";
-            //tbChat.Focus();
+            tbChat.Text = "";
 
-            //chatClient.AddMessage(user.Name, message);
+            chatClient.AddMessage(user.Name, message);
         }
 
         private void btnRaise_Click(object sender, EventArgs e)
@@ -108,6 +99,17 @@ namespace BlackJackClient
             {
                 MessageBox.Show("Username or Password is incorrect");
             }
+        }
+
+        public void onMessageAdded(DateTime time, string playerName, string message)
+        {
+            string temp = (time.ToString() + ":" + playerName + " > " + message);
+            lbChat.Items.Add(temp);
+        }
+
+        public void UpdateGame(BlackJackGame game)
+        {
+            
         }
     }
 }

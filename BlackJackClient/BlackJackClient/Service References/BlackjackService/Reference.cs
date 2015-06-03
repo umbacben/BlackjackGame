@@ -389,8 +389,8 @@ namespace BlackJackClient.BlackjackService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IBlackjackGameCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/OnValueChange", ReplyAction="BlackjackService/IBlackjackGame/OnValueChangeResponse")]
-        void OnValueChange(BlackJackClient.BlackjackService.Player player);
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/UpdateGame", ReplyAction="BlackjackService/IBlackjackGame/UpdateGameResponse")]
+        void UpdateGame(BlackJackClient.BlackjackService.BlackJackGame game);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -511,18 +511,6 @@ namespace BlackJackClient.BlackjackService {
         
         [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/AddMessage", ReplyAction="BlackjackService/IChat/AddMessageResponse")]
         System.Threading.Tasks.Task AddMessageAsync(string playerName, string message);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/Subscribe1", ReplyAction="BlackjackService/IChat/Subscribe1Response")]
-        bool Subscribe1();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/Subscribe1", ReplyAction="BlackjackService/IChat/Subscribe1Response")]
-        System.Threading.Tasks.Task<bool> Subscribe1Async();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/UnSubscribe", ReplyAction="BlackjackService/IChat/UnSubscribeResponse")]
-        bool UnSubscribe();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/UnSubscribe", ReplyAction="BlackjackService/IChat/UnSubscribeResponse")]
-        System.Threading.Tasks.Task<bool> UnSubscribeAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -566,22 +554,6 @@ namespace BlackJackClient.BlackjackService {
         
         public System.Threading.Tasks.Task AddMessageAsync(string playerName, string message) {
             return base.Channel.AddMessageAsync(playerName, message);
-        }
-        
-        public bool Subscribe1() {
-            return base.Channel.Subscribe1();
-        }
-        
-        public System.Threading.Tasks.Task<bool> Subscribe1Async() {
-            return base.Channel.Subscribe1Async();
-        }
-        
-        public bool UnSubscribe() {
-            return base.Channel.UnSubscribe();
-        }
-        
-        public System.Threading.Tasks.Task<bool> UnSubscribeAsync() {
-            return base.Channel.UnSubscribeAsync();
         }
     }
     
