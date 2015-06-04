@@ -28,10 +28,10 @@ namespace BlackJackClient
         {
             InitializeComponent();
             thegame = new BlackJackGame();
-
             context = new InstanceContext(this);
             blackjackClient = new BlackjackGameClient(context);
             chatClient = new ChatClient(context);
+            chatClient.Subscribe();
             portalClient = new PortalClient();
             panelLobby.Hide();
         }
@@ -53,6 +53,7 @@ namespace BlackJackClient
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            chatClient.Unsubscribe();
         }
 
 
@@ -72,6 +73,7 @@ namespace BlackJackClient
             string message = tbChat.Text;
             tbChat.Text = "";
             chatClient.AddMessage(user.Name, message);
+            Console.Write("hello");
         }
         private void btnRaise_Click(object sender, EventArgs e)
         {
@@ -82,12 +84,10 @@ namespace BlackJackClient
         private void btnReady_Click(object sender, EventArgs e)
         {
             blackjackClient.ReadyPlayer(curPlayer);
-
         }
 
         private void btnHit_Click(object sender, EventArgs e)
         {
-
             blackjackClient.Hit(curPlayer);
         }   
 
@@ -122,7 +122,7 @@ namespace BlackJackClient
 
         public void onMessageAdded(DateTime time, string playerName, string message)
         {
-            string temp = (time.ToString() + ":" + playerName + " > " + message);
+            string temp = (time.TimeOfDay.ToString() + ":" + playerName + " > " + message);
             lbChat.Items.Add(temp);
         }
 

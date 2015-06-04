@@ -7,12 +7,11 @@ using System.Text;
 
 namespace BlackjackService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Multiple)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class BlackJackGame : IBlackjackGame, IChat, IPortal
     {
-        IChatCallback chatCallback;
         IBlackJackGameCallBack blackjackCallback;
-        IBustEvent subscriber;
+        List<IChatCallback> chatCallbacks = new List<IChatCallback>();
         public int Pot { get; set; }
         public Player Host { get; set; }
         public Player Player2 { get; set; }
@@ -155,14 +154,39 @@ namespace BlackjackService
             StartRound();
         }
 
+        public void Subscribe()
+        {
+            IChatCallback call = OperationContext.Current.GetCallbackChannel<IChatCallback>();
+            chatCallbacks.Add(call);
+        }
 
         public void AddMessage(string playerName, string message)
         {
-            chatCallback = OperationContext.Current.GetCallbackChannel<IChatCallback>();
-            chatCallback.onMessageAdded(DateTime.Now, playerName, message);
+            chatCallbacks.ForEach(delegate(IChatCallback callback)
+            {
+                if (((ICommunicationObject)callback).State == CommunicationState.Opened)
+                {
+                    callback.onMessageAdded(DateTime.Now, playerName, message);
+                }
+                else
+                {
+                    chatCallbacks.Remove(callback);
+                }
+            });
         }
 
-
+        public void Unsubscribe()
+        {
+            try
+            {
+                IChatCallback callback = OperationContext.Current.GetCallbackChannel<IChatCallback>();
+                if (chatCallbacks.Contains(callback))
+                    chatCallbacks.Remove(callback);
+            }
+            catch
+            {
+            }
+        }
 
         public User Login(String user)
         {

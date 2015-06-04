@@ -506,17 +506,29 @@ namespace BlackJackClient.BlackjackService {
     [System.ServiceModel.ServiceContractAttribute(Namespace="BlackjackService", ConfigurationName="BlackjackService.IChat", CallbackContract=typeof(BlackJackClient.BlackjackService.IChatCallback))]
     public interface IChat {
         
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/AddMessage", ReplyAction="BlackjackService/IChat/AddMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/Subscribe", ReplyAction="BlackjackService/IChat/SubscribeResponse")]
+        void Subscribe();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/Subscribe", ReplyAction="BlackjackService/IChat/SubscribeResponse")]
+        System.Threading.Tasks.Task SubscribeAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/Unsubscribe", ReplyAction="BlackjackService/IChat/UnsubscribeResponse")]
+        void Unsubscribe();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/Unsubscribe", ReplyAction="BlackjackService/IChat/UnsubscribeResponse")]
+        System.Threading.Tasks.Task UnsubscribeAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IChat/AddMessage")]
         void AddMessage(string playerName, string message);
         
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/AddMessage", ReplyAction="BlackjackService/IChat/AddMessageResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IChat/AddMessage")]
         System.Threading.Tasks.Task AddMessageAsync(string playerName, string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IChatCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IChat/onMessageAdded")]
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/onMessageAdded", ReplyAction="BlackjackService/IChat/onMessageAddedResponse")]
         void onMessageAdded(System.DateTime dt, string playerName, string message);
     }
     
@@ -546,6 +558,22 @@ namespace BlackJackClient.BlackjackService {
         
         public ChatClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void Subscribe() {
+            base.Channel.Subscribe();
+        }
+        
+        public System.Threading.Tasks.Task SubscribeAsync() {
+            return base.Channel.SubscribeAsync();
+        }
+        
+        public void Unsubscribe() {
+            base.Channel.Unsubscribe();
+        }
+        
+        public System.Threading.Tasks.Task UnsubscribeAsync() {
+            return base.Channel.UnsubscribeAsync();
         }
         
         public void AddMessage(string playerName, string message) {
