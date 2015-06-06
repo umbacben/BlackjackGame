@@ -13,7 +13,7 @@ using BlackJackClient.BlackjackService;
 
 namespace BlackJackClient
 {
-    public partial class Form1 : Form, IBlackjackGameCallback, IChatCallback
+    public partial class Form1 : Form, IBlackjackGameCallback, IChatCallback, IPortalCallback
     {
         private User user;
         private BlackjackGameClient blackjackClient;
@@ -22,17 +22,17 @@ namespace BlackJackClient
         InstanceContext context;
         private Player curPlayer;
         private List<PictureBox> userhand,opponenthand;
-        private BlackJackGame thegame;
+        private Game thegame;
         private IBlackjackGameCallback blackcallback;
         public Form1()
         {
             InitializeComponent();
-            thegame = new BlackJackGame();
+            thegame = new Game();
             context = new InstanceContext(this);
             blackjackClient = new BlackjackGameClient(context);
             chatClient = new ChatClient(context);
-            chatClient.Subscribe();
-            portalClient = new PortalClient();
+            chatClient.SubscribeChat();
+            portalClient = new PortalClient(context);
             panelLobby.Hide();
         }
         public void UpdateVisual()

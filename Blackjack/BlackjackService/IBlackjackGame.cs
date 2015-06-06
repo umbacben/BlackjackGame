@@ -11,38 +11,109 @@ namespace BlackjackService
     public interface IBlackjackGame
     {
         [OperationContract]
-        bool Hit(Player player);
+        bool Hit(Game game, Player player);
 
         [OperationContract]
-        void Stay(Player player);
+        void Stay(Game game, Player player);
 
         [OperationContract]
-        void IncreasePot(int mon);
+        void IncreasePot(Game game, int mon);
 
         [OperationContract]
-        Player GetOtherPlayer(Player current);
+        Player GetOtherPlayer(Game game, Player current);
 
         [OperationContract]
-        int GetPot();
+        bool AddPlayer(Game game, Player player);
 
         [OperationContract]
-        bool AddPlayer(Player player);
+        void DetermineWinner(Game game);
 
         [OperationContract]
-        void StartRound();
+        void LeaveGame(Game game, Player leave);
 
         [OperationContract]
-        Player DetermineWinner();
+        void ReadyPlayer(Game game, Player player);
 
         [OperationContract]
-        bool LeaveGame(Player leave);
+        void SubscribeGame();
 
         [OperationContract]
-        void ReadyPlayer(Player player);
+        void UnsubscribeGame();
     }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "BlackjackService.ContractType".
+
+    [DataContract]
+    public class Game
+    {
+        [DataMember]
+        public int GameId { get; set; }
+
+        [DataMember]
+        public Player Player1 { get; set; }
+
+        [DataMember]
+        public Player Player2 { get; set; }
+
+        [DataMember]
+        public bool inRound { get; set; }
+
+        [DataMember]
+        public int Pot { get; set; }
+
+        [DataMember]
+        public Deck GameDeck { get; set; }
+
+        public Game(Player creator)
+        {
+            Pot = 0;
+            this.Player1 = creator;
+            this.GameDeck = new Deck();
+        }
+
+        public bool CalcVal(Player play)
+        {
+            if (play.UserName == Player1.UserName)
+            {
+                Player1 = play;
+                Player1.HandVal = 0;
+                foreach (Card i in Player1.PlayHand)
+                {
+                    Player1.HandVal += i.Value;
+                }
+                if (Player1.HandVal > 21)
+                {
+                    return false;
+                }
+                else return true;
+            }
+            else
+            {
+                Player2 = play;
+                Player2.HandVal = 0;
+                foreach (Card i in Player2.PlayHand)
+                {
+                    Player2.HandVal += i.Value;
+                }
+                if (Player2.HandVal > 21)
+                {
+                    return false;
+                }
+                else return true;
+            }
+        }
+
+        public void StartRound()
+        {
+            this.Pot = 0;
+            this.inRound = true;
+            this.Player1.PlayHand.Add(this.GameDeck.getNextCard());
+            this.Player1.PlayHand.Add(this.GameDeck.getNextCard());
+            this.Player2.PlayHand.Add(this.GameDeck.getNextCard());
+            this.Player2.PlayHand.Add(this.GameDeck.getNextCard());
+        }
+    }
 
     [DataContract]
     public class Card
@@ -116,7 +187,7 @@ namespace BlackjackService
     public interface IBlackJackGameCallBack
     {
         [OperationContract]
-        void UpdateGame(BlackJackGame game);
+        void UpdateGame(Game game);
     }
 
     public interface IBustEvent

@@ -27,7 +27,6 @@
     <MetadataFile FileName="BlackjackService.xsd" MetadataType="Schema" ID="4a1bda86-e58c-494d-83fa-6c25f53b0306" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d34a1c23-9cbc-4a4f-8b76-bf3f1dc68f1f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
     <MetadataFile FileName="BlackjackService1.xsd" MetadataType="Schema" ID="85dd31cc-5577-4b58-b24e-c1a98e93b060" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="6aa58a7a-f900-4fb9-887b-f4efc9957286" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/BlackjackService/BlackJackGame/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

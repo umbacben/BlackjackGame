@@ -10,36 +10,25 @@ namespace BlackjackService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class BlackJackGame : IBlackjackGame, IChat, IPortal
     {
-        IBlackJackGameCallBack blackjackCallback;
+        List<IBlackJackGameCallBack> blackjackCallbacks = new List<IBlackJackGameCallBack>();
         List<IChatCallback> chatCallbacks = new List<IChatCallback>();
-        public int Pot { get; set; }
-        public Player Host { get; set; }
-        public Player Player2 { get; set; }
-        private Deck GameDeck { get; set; }
+        List<IPortalChatback> portalCallbacks = new List<IPortalChatback>();
         static Action m_Event = delegate { };
-        public bool inRound = false;
-        List<BlackJackGame> GameList = new List<BlackJackGame>();
+        List<Game> GameList = new List<Game>();
         List<User> users = new List<User>();
 
-        public BlackJackGame()
+        public bool Hit(Game game, Player player)
         {
-
-        }
-        public BlackJackGame(Player creator)
-        {
-            Pot = 0;
-            Host = creator;
-            GameDeck = new Deck();
-        }
-
-        public bool Hit(Player player)
-        {
-            blackjackCallback = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
             if (player.PlayHand.Count < 5)
             {
-                player.PlayHand.Add(GameDeck.getNextCard());
-                this.CalcVal(player);
-                blackjackCallback.UpdateGame(this);
+                player.PlayHand.Add(game.GameDeck.getNextCard());
+                
+                bool temp = game.CalcVal(player);
+                if (!temp)
+                {
+                    FireBustEvent();
+                }
+                this.UpdateGames(game);
                 return true;
             }
             else
@@ -48,40 +37,37 @@ namespace BlackjackService
             }
         }
 
-        public void Stay(Player player)
+        public void Stay(Game game, Player player)
         {
             player.RoundDone = true;
-            this.CalcVal(player);
-            blackjackCallback.UpdateGame(this);
+            game.CalcVal(player);
+            this.UpdateGames(game);
         }
 
-        public void IncreasePot(int mon)
+        public void IncreasePot(Game game, int mon)
         {
-            Pot += mon;
+            game.Pot += mon;
+            this.UpdateGames(game);
         }
 
-        public Player GetOtherPlayer(Player current)
+        public Player GetOtherPlayer(Game game, Player you)
         {
-            if (current == Host)
+            if (game.Player1 == you)
             {
-                return Player2;
+                return game.Player2;
             }
             else
             {
-                return Host;
+                return game.Player2;
             }
         }
 
-        public int GetPot()
+        public bool AddPlayer(Game game, Player player)
         {
-            return Pot;
-        }
-
-        public bool AddPlayer(Player player)
-        {
-            if (Player2 == null)
+            if (game.Player2 == null)
             {
-                Player2 = player;
+                game.Player2 = player;
+                this.UpdateGames(game);
                 return true;
             }
             else
@@ -90,71 +76,126 @@ namespace BlackjackService
             }
         }
 
-        public void StartRound()
-        {
-            Pot = 0;
-            inRound = true;
-            Host.PlayHand.Add(GameDeck.getNextCard());
-            Host.PlayHand.Add(GameDeck.getNextCard());
-            Player2.PlayHand.Add(GameDeck.getNextCard());
-            Player2.PlayHand.Add(GameDeck.getNextCard());
-            blackjackCallback.UpdateGame(this);
-        }
-
-        public Player DetermineWinner()
+        public void DetermineWinner(Game game)
         {
             
             Player winner = null;
-            if (Host.HandVal>Player2.HandVal)
+            if (game.Player1.HandVal>game.Player2.HandVal)
             {
-                winner = Host;
+                winner = game.Player1;
             }
-            else if (Player2.HandVal >Host.HandVal)
+            else if (game.Player1.HandVal < game.Player2.HandVal)
             {
-                winner = Player2;
+                winner = game.Player2;
             }
-            inRound = false;
-            GameDeck = new Deck();
-            return winner;
+            game.inRound = false;
+            game.GameDeck = new Deck();
+            this.UpdateGames(game);
         }
 
-        private void CalcVal(Player play)
-        {
-            foreach (Card i in play.PlayHand)
-            {
-                play.HandVal += i.Value;
-            }
-            if (play.HandVal > 21)
-            {
-                FireBustEvent();
-            }
-        }
+
 
         public void FireBustEvent()
         {
             m_Event();
         }
 
-        public bool LeaveGame(Player leave)
+        public void LeaveGame(Game game, Player leave)
         {
-            return true;
-    
-        }
-
-        public void ReadyPlayer(Player player)
-        {
-            if (player == Player2)
+            if (GameList.Find(x => x == game).inRound)
             {
-                Player2.Ready = true;
+                return;
             }
             else
             {
-                Host.Ready = true;
+                if (GameList.Find(x => x == game).Player1 == leave)
+                {
+                    GameList.Find(x => x == game).Player1 = null;
+                    if (this.checkGame(game))
+                    {
+                        this.UpdateGames(game);
+                        return;
+                    }
+                    else
+                    {
+                        this.GameList.Remove(game);
+                        return;
+                    }
+                }
+                else
+                {
+                    GameList.Find(x => x == game).Player2 = null;
+                    if (this.checkGame(game))
+                    {
+                        this.UpdateGames(game);
+                        return;
+                    }
+                    else
+                    {
+                        this.GameList.Remove(game);
+                        return;
+                    }
+                }
             }
-            StartRound();
         }
 
-        public void Subscribe()
+        private bool checkGame(Game game)
+        {
+            if (game.Player1 == null && game.Player2 == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public void ReadyPlayer(Game game, Player player)
+        {
+            if (player == game.Player2)
+            {
+                game.Player2.Ready = true;
+            }
+            else
+            {
+                game.Player1.Ready = true;
+            }
+            game.StartRound();
+            this.UpdateGames(game);
+        }
+
+        public void SubscribeGame()
+        {
+            IBlackJackGameCallBack call = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
+            blackjackCallbacks.Add(call);
+        }
+
+        private void UpdateGames(Game game)
+        {
+            blackjackCallbacks.ForEach(delegate(IBlackJackGameCallBack call)
+            {
+                if (((ICommunicationObject)call).State == CommunicationState.Opened)
+                {
+                    call.UpdateGame(game);
+                }
+            });
+        }
+
+        public void UnsubscribeGame()
+        {
+            try
+            {
+                IBlackJackGameCallBack call = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
+                if (blackjackCallbacks.Contains(call))
+                    blackjackCallbacks.Remove(call);
+            }
+            catch
+            {
+            }
+        }
+
+        public void SubscribeChat()
         {
             IChatCallback call = OperationContext.Current.GetCallbackChannel<IChatCallback>();
             chatCallbacks.Add(call);
@@ -175,7 +216,7 @@ namespace BlackjackService
             });
         }
 
-        public void Unsubscribe()
+        public void UnsubscribeChat()
         {
             try
             {
@@ -190,22 +231,32 @@ namespace BlackjackService
 
         public User Login(String user)
         {
+            if (users.Exists(x=>x.Name==user))
+            {
+                return null;
+            }
             User temp = new User(user);
             users.Add(temp);
             return temp;
         }
 
-        public bool Register(String user)
+        public User Register(String user)
         {
-            return true;
+            if (users.Exists(x => x.Name == user))
+            {
+                return null;
+            }
+            User temp = new User(user);
+            users.Add(temp);
+            return temp;
         }
 
-        public bool Logout(User user)
+        public void Logout(User user)
         {
-            return true;
+            users.Remove(user);
         }
 
-        public Player JoinGame(BlackJackGame game, User user)
+        public Player JoinGame(Game game, User user)
         {
             if (GameList.Find(x=>x==game).Player2==null)
             {
@@ -222,16 +273,40 @@ namespace BlackjackService
         public Player CreateGame(User user)
         {
             Player temp = new Player(user);
-            BlackJackGame Game = new BlackJackGame(temp);
-            GameList.Add(Game);
+            Game BJGame = new Game(temp);
+            GameList.Add(BJGame);
             return temp;
         }
 
-        public List<BlackJackGame> GetGameList()
+        public void GetGameList()
         {
-            return GameList;
+            portalCallbacks.ForEach(delegate(IPortalChatback call)
+            {
+                if (((ICommunicationObject)call).State == CommunicationState.Opened)
+                {
+                    call.UpdateGameList(this.GameList);
+                }
+            });
         }
 
+        public void SubscribePortal()
+        {
+            IPortalChatback call = OperationContext.Current.GetCallbackChannel<IPortalChatback>();
+            portalCallbacks.Add(call);
+        }
+
+        public void UnSubscribePortal()
+        {
+            try
+            {
+                IPortalChatback call = OperationContext.Current.GetCallbackChannel<IPortalChatback>();
+                if (portalCallbacks.Contains(call))
+                    portalCallbacks.Remove(call);
+            }
+            catch
+            {
+            }
+        }
     }
 
 }

@@ -88,76 +88,7 @@
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsdl:import namespace="BlackjackService" location="" />
-  <wsdl:types>
-    <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import namespace="http://tempuri.org/" />
-      <xsd:import namespace="BlackjackService" />
-      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import namespace="http://schemas.datacontract.org/2004/07/BlackjackService" />
-    </xsd:schema>
-  </wsdl:types>
-  <wsdl:message name="IPortal_Login_InputMessage">
-    <wsdl:part name="parameters" element="tns:Login" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_Login_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LoginResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_Register_InputMessage">
-    <wsdl:part name="parameters" element="tns:Register" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_Register_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RegisterResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_Logout_InputMessage">
-    <wsdl:part name="parameters" element="tns:Logout" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_Logout_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LogoutResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_JoinGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:JoinGame" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_JoinGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:JoinGameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_CreateGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateGame" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_CreateGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateGameResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_GetGameList_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetGameList" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_GetGameList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetGameListResponse" />
-  </wsdl:message>
-  <wsdl:portType name="IPortal">
-    <wsdl:operation name="Login">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPortal/Login" message="tns:IPortal_Login_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPortal/LoginResponse" message="tns:IPortal_Login_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="Register">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPortal/Register" message="tns:IPortal_Register_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPortal/RegisterResponse" message="tns:IPortal_Register_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="Logout">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPortal/Logout" message="tns:IPortal_Logout_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPortal/LogoutResponse" message="tns:IPortal_Logout_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="JoinGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPortal/JoinGame" message="tns:IPortal_JoinGame_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPortal/JoinGameResponse" message="tns:IPortal_JoinGame_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPortal/CreateGame" message="tns:IPortal_CreateGame_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPortal/CreateGameResponse" message="tns:IPortal_CreateGame_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetGameList">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPortal/GetGameList" message="tns:IPortal_GetGameList_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPortal/GetGameListResponse" message="tns:IPortal_GetGameList_OutputMessage" />
-    </wsdl:operation>
-  </wsdl:portType>
+  <wsdl:types />
   <wsdl:binding name="NetTcpBinding_IBlackjackGame" type="i0:IBlackjackGame">
     <wsp:PolicyReference URI="#NetTcpBinding_IBlackjackGame_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
@@ -197,26 +128,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPot">
-      <soap12:operation soapAction="BlackjackService/IBlackjackGame/GetPot" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="AddPlayer">
       <soap12:operation soapAction="BlackjackService/IBlackjackGame/AddPlayer" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="StartRound">
-      <soap12:operation soapAction="BlackjackService/IBlackjackGame/StartRound" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -251,6 +164,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="SubscribeGame">
+      <soap12:operation soapAction="BlackjackService/IBlackjackGame/SubscribeGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnsubscribeGame">
+      <soap12:operation soapAction="BlackjackService/IBlackjackGame/UnsubscribeGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateGame">
       <soap12:operation soapAction="BlackjackService/IBlackjackGame/UpdateGame" style="document" />
       <wsdl:input>
@@ -264,8 +195,8 @@
   <wsdl:binding name="NetTcpBinding_IChat" type="i0:IChat">
     <wsp:PolicyReference URI="#NetTcpBinding_IChat_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="Subscribe">
-      <soap12:operation soapAction="BlackjackService/IChat/Subscribe" style="document" />
+    <wsdl:operation name="SubscribeChat">
+      <soap12:operation soapAction="BlackjackService/IChat/SubscribeChat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -273,8 +204,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Unsubscribe">
-      <soap12:operation soapAction="BlackjackService/IChat/Unsubscribe" style="document" />
+    <wsdl:operation name="UnsubscribeChat">
+      <soap12:operation soapAction="BlackjackService/IChat/UnsubscribeChat" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -298,11 +229,11 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="NetTcpBinding_IPortal" type="tns:IPortal">
+  <wsdl:binding name="NetTcpBinding_IPortal" type="i0:IPortal">
     <wsp:PolicyReference URI="#NetTcpBinding_IPortal_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="Login">
-      <soap12:operation soapAction="http://tempuri.org/IPortal/Login" style="document" />
+      <soap12:operation soapAction="BlackjackService/IPortal/Login" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -311,7 +242,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Register">
-      <soap12:operation soapAction="http://tempuri.org/IPortal/Register" style="document" />
+      <soap12:operation soapAction="BlackjackService/IPortal/Register" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -320,7 +251,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Logout">
-      <soap12:operation soapAction="http://tempuri.org/IPortal/Logout" style="document" />
+      <soap12:operation soapAction="BlackjackService/IPortal/Logout" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -329,7 +260,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="JoinGame">
-      <soap12:operation soapAction="http://tempuri.org/IPortal/JoinGame" style="document" />
+      <soap12:operation soapAction="BlackjackService/IPortal/JoinGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -338,7 +269,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateGame">
-      <soap12:operation soapAction="http://tempuri.org/IPortal/CreateGame" style="document" />
+      <soap12:operation soapAction="BlackjackService/IPortal/CreateGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -347,7 +278,34 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetGameList">
-      <soap12:operation soapAction="http://tempuri.org/IPortal/GetGameList" style="document" />
+      <soap12:operation soapAction="BlackjackService/IPortal/GetGameList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubscribePortal">
+      <soap12:operation soapAction="BlackjackService/IPortal/SubscribePortal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnSubscribePortal">
+      <soap12:operation soapAction="BlackjackService/IPortal/UnSubscribePortal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateGameList">
+      <soap12:operation soapAction="BlackjackService/IPortal/UpdateGameList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

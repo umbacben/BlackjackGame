@@ -12,10 +12,10 @@ namespace BlackjackService
     public interface IChat
     {
         [OperationContract]
-        void Subscribe();
+        void SubscribeChat();
 
         [OperationContract]
-        void Unsubscribe();
+        void UnsubscribeChat();
 
         [OperationContract(IsOneWay = true)]
         void AddMessage(string playerName, string message);

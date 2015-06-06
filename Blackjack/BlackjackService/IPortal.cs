@@ -8,26 +8,37 @@ using System.ServiceModel;
 
 namespace BlackjackService
 {
-    [ServiceContract]
+    [ServiceContract(Namespace = "BlackjackService", CallbackContract = typeof(IPortalChatback))]
     public interface IPortal
     {
         [OperationContract]
         User Login(String user);
 
         [OperationContract]
-        bool Register(String user);
+        User Register(String user);
 
         [OperationContract]
-        bool Logout(User user);
+        void Logout(User user);
 
         [OperationContract]
-        Player JoinGame(BlackJackGame game, User user);
+        Player JoinGame(Game game, User user);
 
         [OperationContract]
         Player CreateGame(User user);
 
         [OperationContract]
-        List<BlackJackGame> GetGameList();
+        void GetGameList();
+
+        [OperationContract]
+        void SubscribePortal();
+
+        [OperationContract]
+        void UnSubscribePortal();
+    }
+    public interface IPortalChatback
+    {
+        [OperationContract]
+        void UpdateGameList(List<Game> gameList);
     }
 
 }
