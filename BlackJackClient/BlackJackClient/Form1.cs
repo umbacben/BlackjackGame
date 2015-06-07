@@ -39,10 +39,10 @@ namespace BlackJackClient
         {
             labelPot.Text=thegame.Pot.ToString();
             int count=0;
-            count=thegame.Host.PlayHand.Length;
+            count=thegame.Player1.PlayHand.Length;
             for(int i=0;i<count;i++)
             {
-                userhand[i].ImageLocation=thegame.Host.PlayHand[i].PicLoc;
+                userhand[i].ImageLocation = thegame.Player1.PlayHand[i].PicLoc;
             }
             count=thegame.Player2.PlayHand.Length;
             for(int i=0;i<count;i++)
@@ -53,7 +53,7 @@ namespace BlackJackClient
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            chatClient.Unsubscribe();
+            chatClient.UnsubscribeChat();
         }
 
 
@@ -78,7 +78,7 @@ namespace BlackJackClient
         private void btnRaise_Click(object sender, EventArgs e)
         {
             blackjackClient.IncreasePot(Convert.ToInt32(tBoxRaise));
-            labelPot.Text = "Pot amount: " + blackjackClient.GetPot().ToString();
+            labelPot.Text = "Pot amount: " + thegame.Pot.ToString();
         }
 
         private void btnReady_Click(object sender, EventArgs e)
@@ -126,7 +126,7 @@ namespace BlackJackClient
             lbChat.Items.Add(temp);
         }
 
-        public void UpdateGame(BlackJackGame game)
+        public void UpdateGame(Game game)
         {
             
         }

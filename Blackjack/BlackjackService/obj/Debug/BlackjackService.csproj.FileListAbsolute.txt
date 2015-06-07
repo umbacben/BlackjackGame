@@ -9,3 +9,4 @@ C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bi
 C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\bin\Debug\BlackjackService.pdb
 C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\obj\Debug\BlackjackService.dll
 C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\obj\Debug\BlackjackService.pdb
+C:\Users\Ben Umbach\Documents\GitHub\BlackjackGame\Blackjack\BlackjackService\obj\Debug\BlackjackService.csprojResolveAssemblyReference.cache
