@@ -359,11 +359,14 @@
             // 
             // btnLogIn
             // 
-            this.btnLogIn.Location = new System.Drawing.Point(390, 268);
+            this.btnLogIn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogIn.BackgroundImage")));
+            this.btnLogIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogIn.Location = new System.Drawing.Point(361, 258);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(75, 23);
+            this.btnLogIn.Size = new System.Drawing.Size(130, 53);
             this.btnLogIn.TabIndex = 2;
-            this.btnLogIn.Text = "Log In";
             this.btnLogIn.UseVisualStyleBackColor = true;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
@@ -374,6 +377,7 @@
             this.panelLogIn.Controls.Add(this.tbPass);
             this.panelLogIn.Controls.Add(this.tbUser);
             this.panelLogIn.Location = new System.Drawing.Point(12, 12);
+            this.panelLogIn.Margin = new System.Windows.Forms.Padding(0);
             this.panelLogIn.Name = "panelLogIn";
             this.panelLogIn.Size = new System.Drawing.Size(883, 430);
             this.panelLogIn.TabIndex = 41;
