@@ -85,30 +85,30 @@
             this.panelLobby.Controls.Add(this.btnSpectate);
             this.panelLobby.Controls.Add(this.btnCreateGame);
             this.panelLobby.Controls.Add(this.btnJoin);
-            this.panelLobby.Location = new System.Drawing.Point(227, 32);
+            this.panelLobby.Location = new System.Drawing.Point(84, 1);
             this.panelLobby.Margin = new System.Windows.Forms.Padding(4);
             this.panelLobby.Name = "panelLobby";
-            this.panelLobby.Size = new System.Drawing.Size(982, 470);
+            this.panelLobby.Size = new System.Drawing.Size(1010, 470);
             this.panelLobby.TabIndex = 3;
             // 
             // tbChat
             // 
-            this.tbChat.Location = new System.Drawing.Point(21, 169);
+            this.tbChat.Location = new System.Drawing.Point(3, 331);
             this.tbChat.Name = "tbChat";
-            this.tbChat.Size = new System.Drawing.Size(118, 20);
+            this.tbChat.Size = new System.Drawing.Size(155, 20);
             this.tbChat.TabIndex = 7;
             // 
             // lbChat
             // 
             this.lbChat.FormattingEnabled = true;
-            this.lbChat.Location = new System.Drawing.Point(19, 58);
+            this.lbChat.Location = new System.Drawing.Point(3, 58);
             this.lbChat.Name = "lbChat";
-            this.lbChat.Size = new System.Drawing.Size(120, 95);
+            this.lbChat.Size = new System.Drawing.Size(155, 264);
             this.lbChat.TabIndex = 6;
             // 
             // btnChat
             // 
-            this.btnChat.Location = new System.Drawing.Point(19, 198);
+            this.btnChat.Location = new System.Drawing.Point(3, 357);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(75, 23);
             this.btnChat.TabIndex = 5;
@@ -337,21 +337,21 @@
             // tBoxRaise
             // 
             this.tBoxRaise.Location = new System.Drawing.Point(682, 240);
-            this.tBoxRaise.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tBoxRaise.Margin = new System.Windows.Forms.Padding(2);
             this.tBoxRaise.Name = "tBoxRaise";
             this.tBoxRaise.Size = new System.Drawing.Size(94, 20);
             this.tBoxRaise.TabIndex = 40;
             // 
             // tbUser
             // 
-            this.tbUser.Location = new System.Drawing.Point(9, 3);
+            this.tbUser.Location = new System.Drawing.Point(379, 193);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(100, 20);
             this.tbUser.TabIndex = 0;
             // 
             // tbPass
             // 
-            this.tbPass.Location = new System.Drawing.Point(9, 29);
+            this.tbPass.Location = new System.Drawing.Point(378, 227);
             this.tbPass.Name = "tbPass";
             this.tbPass.PasswordChar = '!';
             this.tbPass.Size = new System.Drawing.Size(100, 20);
@@ -359,7 +359,7 @@
             // 
             // btnLogIn
             // 
-            this.btnLogIn.Location = new System.Drawing.Point(24, 55);
+            this.btnLogIn.Location = new System.Drawing.Point(390, 268);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(75, 23);
             this.btnLogIn.TabIndex = 2;
@@ -369,18 +369,20 @@
             // 
             // panelLogIn
             // 
+            this.panelLogIn.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelLogIn.Controls.Add(this.btnLogIn);
             this.panelLogIn.Controls.Add(this.tbPass);
             this.panelLogIn.Controls.Add(this.tbUser);
-            this.panelLogIn.Location = new System.Drawing.Point(10, 11);
+            this.panelLogIn.Location = new System.Drawing.Point(12, 12);
             this.panelLogIn.Name = "panelLogIn";
-            this.panelLogIn.Size = new System.Drawing.Size(117, 86);
+            this.panelLogIn.Size = new System.Drawing.Size(883, 430);
             this.panelLogIn.TabIndex = 41;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(934, 453);
             this.Controls.Add(this.panelLogIn);
             this.Controls.Add(this.tBoxRaise);

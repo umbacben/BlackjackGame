@@ -122,7 +122,7 @@ namespace BlackJackClient
 
         public void onMessageAdded(DateTime time, string playerName, string message)
         {
-            string temp = (time.TimeOfDay.ToString() + ":" + playerName + " > " + message);
+            string temp = ("(" + time.Hour +" : " + time.Minute +  ") " + playerName + " : " + message);
             lbChat.Items.Add(temp);
         }
 
