@@ -10,34 +10,34 @@ namespace BlackjackService
     [ServiceContract(Namespace = "BlackjackService", CallbackContract = typeof(IBlackJackGameCallBack))]
     public interface IBlackjackGame
     {
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         bool Hit(Game game, Player player);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Stay(Game game, Player player);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void IncreasePot(Game game, int mon);
 
         [OperationContract]
         Player GetOtherPlayer(Game game, Player current);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         bool AddPlayer(Game game, Player player);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void DetermineWinner(Game game);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void LeaveGame(Game game, Player leave);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void ReadyPlayer(Game game, Player player);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void SubscribeGame();
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void UnsubscribeGame();
     }
 

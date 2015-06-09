@@ -256,26 +256,26 @@ namespace BlackjackService
             users.Remove(user);
         }
 
-        public Player JoinGame(Game game, User user)
+        public void JoinGame(Game game, User user)
         {
             if (GameList.Find(x=>x==game).Player2==null)
             {
-                return null;
+                UpdateGames(null);
             }
             else
             {
                 Player temp = new Player(user);
                 GameList.Find(x => x == game).Player2 = temp;
-                return temp;
+                UpdateGames(game);
             }
         }
 
-        public Player CreateGame(User user)
+        public void CreateGame(User user)
         {
             Player temp = new Player(user);
             Game BJGame = new Game(temp);
             GameList.Add(BJGame);
-            return temp;
+            UpdateGames(BJGame);
         }
 
         public void GetGameList()
