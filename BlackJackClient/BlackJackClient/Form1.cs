@@ -13,7 +13,7 @@ using BlackJackClient.BlackjackService;
 
 namespace BlackJackClient
 {
-    public partial class Form1 : Form, IBlackjackGameCallback, IChatCallback, IPortalCallback
+    public partial class Form1 : Form, IBlackjackGameCallback, IChatCallback//, IPortalCallback
     {
         private User user;
         private BlackjackGameClient blackjackClient;
@@ -28,6 +28,7 @@ namespace BlackJackClient
         {
             InitializeComponent();
             thegame = new Game();
+            user = new User();
             context = new InstanceContext(this);
             blackjackClient = new BlackjackGameClient(context);
             chatClient = new ChatClient(context);
@@ -65,7 +66,7 @@ namespace BlackJackClient
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
-            blackjackClient.AddPlayer(new Player());
+            blackjackClient.AddPlayer(thegame, new Player());
         }
 
         private void btnChat_Click(object sender, EventArgs e)
@@ -77,23 +78,23 @@ namespace BlackJackClient
         }
         private void btnRaise_Click(object sender, EventArgs e)
         {
-            blackjackClient.IncreasePot(Convert.ToInt32(tBoxRaise));
+            blackjackClient.IncreasePot(thegame, Convert.ToInt32(tBoxRaise));
             labelPot.Text = "Pot amount: " + thegame.Pot.ToString();
         }
 
         private void btnReady_Click(object sender, EventArgs e)
         {
-            blackjackClient.ReadyPlayer(curPlayer);
+            blackjackClient.ReadyPlayer(thegame, curPlayer);
         }
 
         private void btnHit_Click(object sender, EventArgs e)
         {
-            blackjackClient.Hit(curPlayer);
+            blackjackClient.Hit(thegame, curPlayer);
         }   
 
         private void btnStand_Click(object sender, EventArgs e)
         {
-            blackjackClient.Stay(curPlayer);
+            blackjackClient.Stay(thegame, curPlayer);
         }
 
         private void btnCreateGame_Click(object sender, EventArgs e)
@@ -105,19 +106,19 @@ namespace BlackJackClient
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            user = portalClient.Login(tbUser.Text);
+            //user = portalClient.Login(tbUser.Text);
 
-            if (user != null)
-            {
+            //if (user != null)
+            //{
                 user.Name = tbUser.Text;
                 panelLogIn.Hide();
                 panelLobby.Show();
                 panelLobby.BringToFront();
-            }
-            else
-            {
-                MessageBox.Show("Username or Password is incorrect");
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Username or Password is incorrect");
+            //}
         }
 
         public void onMessageAdded(DateTime time, string playerName, string message)
