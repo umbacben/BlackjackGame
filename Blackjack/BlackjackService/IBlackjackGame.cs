@@ -19,8 +19,11 @@ namespace BlackjackService
         [OperationContract(IsOneWay = true)]
         void IncreasePot(Game game, int mon);
 
-        [OperationContract(IsOneWay = true)]
-        void DetermineWinner(Game game);
+        //[OperationContract]
+        //Player DetermineWinner(Game game);
+
+        [OperationContract]
+        Player GetWinner(Game game);
 
         [OperationContract(IsOneWay = true)]
         void LeaveGame(Game game, Player leave);
@@ -64,6 +67,34 @@ namespace BlackjackService
             Pot = 0;
             this.Player1 = creator;
             this.GameDeck = new Deck();
+        }
+
+        /// <summary>
+        /// checks which player won if none went bust
+        /// </summary>
+        /// <param name="game"></param>
+        public Player DetermineWinner()
+        {
+            Player winner = null;
+            if (this.Player1.HandVal > this.Player2.HandVal && (!this.Player1.bust || !this.Player2.bust))
+            {
+                this.Player1.Money += this.Pot;
+                winner = this.Player1;
+            }
+            else if (this.Player1.HandVal < this.Player2.HandVal && (!this.Player1.bust || !this.Player2.bust))
+            {
+                this.Player2.Money += this.Pot;
+                winner = this.Player2;
+            }
+            else
+            {
+                this.Player1.Money += this.Pot / 2;
+                this.Player2.Money += this.Pot / 2;
+            }
+            this.Pot = 0;
+            this.inRound = false;
+            this.GameDeck = new Deck();
+            return winner;
         }
 
         public bool CalcVal(Player play)
@@ -142,15 +173,15 @@ namespace BlackjackService
                 {
                     if (j<11)
                     {
-                        CardList.Add(new Card(j, "images/" + j.ToString() + ".jpg"));
+                        CardList.Add(new Card(j,j.ToString()));
                     }
                     else if (j!=14)
                     {
-                        CardList.Add(new Card(10, "images/" + j.ToString() + ".jpg"));
+                        CardList.Add(new Card(10,j.ToString()));
                     }
                     else
                     {
-                        CardList.Add(new Card(11, "images/" + j.ToString() + ".jpg"));
+                        CardList.Add(new Card(11,j.ToString()));
                     }
                 }
             }
@@ -185,7 +216,12 @@ namespace BlackjackService
         public bool RoundDone { get; set; }
 
         [DataMember]
+        public int Money { get; set; }
+
+        [DataMember]
         public bool Ready { get; set; }
+
+        public bool bust { get; set; }
 
         public Player(User use)
         {
@@ -194,10 +230,13 @@ namespace BlackjackService
             HandVal = 0;
             RoundDone = false;
             Ready = false;
+            bust = false;
+            Money = 1000;
         }
 
     }
 
+    
     public interface IBlackJackGameCallBack
     {
         [OperationContract(IsOneWay = true)]

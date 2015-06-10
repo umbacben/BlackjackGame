@@ -32,14 +32,27 @@ namespace BlackjackService
         /// <param name="player"></param>
         public void Hit(Game game, Player player)
         {
-                player.PlayHand.Add(game.GameDeck.getNextCard());
-                
-                bool temp = game.CalcVal(player);
+            bool temp;
+            if (game.Player1.UserName.Name == player.UserName.Name)
+            {
+                game.Player1.PlayHand.Add(game.GameDeck.getNextCard());
+                temp = game.CalcVal(game.Player1);
                 if (!temp)
                 {
-                    FireBustEvent(game, player);
+                    FireBustEvent(game, game.Player1);
                 }
                 this.UpdateGames(game);
+            }
+            else
+            {
+                game.Player2.PlayHand.Add(game.GameDeck.getNextCard());
+                temp = game.CalcVal(game.Player2);
+                if (!temp)
+                {
+                    FireBustEvent(game, game.Player2);
+                }
+                this.UpdateGames(game);
+            }
         }
 
         /// <summary>
@@ -50,7 +63,7 @@ namespace BlackjackService
         /// <param name="player"></param>
         public void Stay(Game game, Player player)
         {
-            if (game.Player1 == player)
+            if (game.Player1.UserName.Name == player.UserName.Name)
             {
                 game.Player1.RoundDone = true;
             }
@@ -72,26 +85,38 @@ namespace BlackjackService
             this.UpdateGames(game);
         }
 
-        /// <summary>
-        /// checks which player won if none went bust
-        /// </summary>
-        /// <param name="game"></param>
-        public void DetermineWinner(Game game)
+        public Player GetWinner(Game game)
         {
-            
-            Player winner = null;
-            if (game.Player1.HandVal>game.Player2.HandVal)
-            {
-                winner = game.Player1;
-            }
-            else if (game.Player1.HandVal < game.Player2.HandVal)
-            {
-                winner = game.Player2;
-            }
-            game.inRound = false;
-            game.GameDeck = new Deck();
-            this.UpdateGames(game);
+            return GameList.Find(x => x.GameId == game.GameId).DetermineWinner();
         }
+
+        ///// <summary>
+        ///// checks which player won if none went bust
+        ///// </summary>
+        ///// <param name="game"></param>
+        //public Player DetermineWinner(Game game)
+        //{
+        //    Player winner = null;
+        //    if (GameList.Find(x => x.GameId == game.GameId).Player1.HandVal > GameList.Find(x => x.GameId == game.GameId).Player2.HandVal && (!GameList.Find(x=>x.GameId == game.GameId).Player1.bust || !GameList.Find(x=>x.GameId == game.GameId).Player2.bust))
+        //    {
+        //        GameList.Find(x => x.GameId == game.GameId).Player1.Money += GameList.Find(x => x.GameId == game.GameId).Pot;
+        //        winner = GameList.Find(x => x.GameId == game.GameId).Player1;
+        //    }
+        //    else if (GameList.Find(x => x.GameId == game.GameId).Player1.HandVal < GameList.Find(x => x.GameId == game.GameId).Player2.HandVal && (!GameList.Find(x => x.GameId == game.GameId).Player1.bust || !GameList.Find(x => x.GameId == game.GameId).Player2.bust))
+        //    {
+        //        GameList.Find(x => x.GameId == game.GameId).Player2.Money += GameList.Find(x => x.GameId == game.GameId).Pot;
+        //        winner = GameList.Find(x => x.GameId == game.GameId).Player2;
+        //    }
+        //    else
+        //    {
+        //        GameList.Find(x => x.GameId == game.GameId).Player1.Money += GameList.Find(x => x.GameId == game.GameId).Pot/2;
+        //        GameList.Find(x => x.GameId == game.GameId).Player2.Money += GameList.Find(x => x.GameId == game.GameId).Pot/2;
+        //    }
+        //    GameList.Find(x => x.GameId == game.GameId).Pot = 0;
+        //    GameList.Find(x => x.GameId == game.GameId).inRound = false;
+        //    GameList.Find(x => x.GameId == game.GameId).GameDeck = new Deck();
+        //    return winner;
+        //}
 
 
         /// <summary>

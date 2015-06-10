@@ -13,6 +13,7 @@ using BlackJackClient.BlackjackService;
 
 namespace BlackJackClient
 {
+    [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant, UseSynchronizationContext = false)]
     public partial class Form1 : Form, IBlackjackGameCallback, IChatCallback, IPortalCallback
     {
         private User user;
@@ -25,6 +26,7 @@ namespace BlackJackClient
         private List<PictureBox> userhand,opponenthand;
         private Game thegame;
         private List<Game> gList;
+        private Player winner;
 
         public Form1()
         {
@@ -54,10 +56,16 @@ namespace BlackJackClient
             portalClient.SubscribePortal();
             panelLobby.Hide();
             blackjackClient.SubscribeGame();
-            
+            winner = new Player();
         }
         public void UpdateVisual()
         {
+            if (thegame.Player1.RoundDone && thegame.Player2.RoundDone)
+            {
+                DetermineWinner();
+                DisableStuff();
+                return;
+            }
             labelPot.Text = "Pot amount: " + thegame.Pot.ToString();
             if (user.Name == thegame.Player1.UserName.Name)
             {
@@ -70,10 +78,10 @@ namespace BlackJackClient
                 opponentPlayer = thegame.Player1;
             }
             int count=0;
-            count=thegame.Player1.PlayHand.Length;
+            count = curPlayer.PlayHand.Length;
             for(int i=0;i<count;i++)
             {
-                userhand[i].ImageLocation = thegame.Player1.PlayHand[i].PicLoc;
+                userhand[i].Image = getImage(curPlayer.PlayHand.ElementAt(i).PicLoc);
             }
             if (opponentPlayer.UserName.Name == "")
             {
@@ -81,9 +89,9 @@ namespace BlackJackClient
             }
             labelPlayer.Text = opponentPlayer.UserName.Name;
             count = opponentPlayer.PlayHand.Length;
-            for (int i = 0; i < count; i++)
+            if (count != 0)
             {
-                opponenthand[i].ImageLocation = "\\images\\cardback.jpg";
+                opponenthand[0].Image = getImage(opponentPlayer.PlayHand.ElementAt(0).PicLoc);
             }
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -112,7 +120,7 @@ namespace BlackJackClient
                 panelLobby.Hide();
                 labelUser.Text = user.Name;
             }
-
+            DisableStuff();
         }
 
         private void btnChat_Click(object sender, EventArgs e)
@@ -131,10 +139,17 @@ namespace BlackJackClient
         private void btnReady_Click(object sender, EventArgs e)
         {
             blackjackClient.ReadyPlayer(thegame, curPlayer);
+            EnableStuff();
         }
 
         private void btnHit_Click(object sender, EventArgs e)
         {
+            if (curPlayer.PlayHand.Count()>4)
+            {
+                MessageBox.Show("Cant hit anymore");
+                btnStand_Click(sender, e);
+                return;
+            }
             blackjackClient.Hit(thegame, curPlayer);
         }   
 
@@ -150,6 +165,7 @@ namespace BlackJackClient
             portalClient.GetGameList();
             panelLobby.Hide();
             labelUser.Text = user.Name;
+            DisableStuff();
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -187,6 +203,36 @@ namespace BlackJackClient
             }
         }
 
+        private void DetermineWinner()
+        {
+            winner = blackjackClient.GetWinner(thegame);
+            if (winner == null)
+            {
+                MessageBox.Show("Tie");
+            }
+            else
+            {
+                MessageBox.Show("The Winner is " + winner.UserName.Name);
+            }
+            DisableStuff();
+        }
+
+        private void DisableStuff()
+        {
+            btnHit.Enabled = false;
+            btnStand.Enabled = false;
+            btnReady.Enabled = true;
+            btnRaise.Enabled = true;
+        }
+
+        private void EnableStuff()
+        {
+            btnHit.Enabled = true;
+            btnStand.Enabled = true;
+            btnReady.Enabled = false;
+            btnRaise.Enabled = false;
+        }
+
         public void UpdateGameList(Game[] gameList)
         {
             gList = gameList.ToList<Game>();
@@ -200,6 +246,54 @@ namespace BlackJackClient
             {
                 LbPlayersOnline.Items.Add(i.GameId.ToString());
             }
+        }
+
+        private Image getImage(string imgNum)
+        {
+            Image temp = null;
+            switch (imgNum)
+            {
+                case "2":
+                    temp = BlackJackClient.Properties.Resources._2;
+                    break;
+                case "3":
+                    temp = BlackJackClient.Properties.Resources._3;
+                    break;
+                case "4":
+                    temp = BlackJackClient.Properties.Resources._4;
+                    break;
+                case "5":
+                    temp = BlackJackClient.Properties.Resources._5;
+                    break;
+                case "6":
+                    temp = BlackJackClient.Properties.Resources._6;
+                    break;
+                case "7":
+                    temp = BlackJackClient.Properties.Resources._7;
+                    break;
+                case "8":
+                    temp = BlackJackClient.Properties.Resources._8;
+                    break;
+                case "9":
+                    temp = BlackJackClient.Properties.Resources._9;
+                    break;
+                case "10":
+                    temp = BlackJackClient.Properties.Resources._10;
+                    break;
+                case "11":
+                    temp = BlackJackClient.Properties.Resources._11;
+                    break;
+                case "12":
+                    temp = BlackJackClient.Properties.Resources._12;
+                    break;
+                case "13":
+                    temp = BlackJackClient.Properties.Resources._13;
+                    break;
+                case "14":
+                    temp = BlackJackClient.Properties.Resources._14;
+                    break;
+            }
+            return temp;
         }
     }
 }
