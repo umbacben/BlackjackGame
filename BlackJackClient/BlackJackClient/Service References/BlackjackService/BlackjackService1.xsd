@@ -33,6 +33,7 @@
   <xs:complexType name="Player">
     <xs:sequence>
       <xs:element minOccurs="0" name="HandVal" type="xs:int" />
+      <xs:element minOccurs="0" name="Money" type="xs:int" />
       <xs:element minOccurs="0" name="PlayHand" nillable="true" type="tns:ArrayOfCard" />
       <xs:element minOccurs="0" name="Ready" type="xs:boolean" />
       <xs:element minOccurs="0" name="RoundDone" type="xs:boolean" />

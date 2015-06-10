@@ -110,11 +110,14 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="DetermineWinner">
-      <soap12:operation soapAction="BlackjackService/IBlackjackGame/DetermineWinner" style="document" />
+    <wsdl:operation name="GetWinner">
+      <soap12:operation soapAction="BlackjackService/IBlackjackGame/GetWinner" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="LeaveGame">
       <soap12:operation soapAction="BlackjackService/IBlackjackGame/LeaveGame" style="document" />

@@ -16,8 +16,11 @@
   <wsdl:message name="IBlackjackGame_IncreasePot_InputMessage">
     <wsdl:part name="parameters" element="tns:IncreasePot" />
   </wsdl:message>
-  <wsdl:message name="IBlackjackGame_DetermineWinner_InputMessage">
-    <wsdl:part name="parameters" element="tns:DetermineWinner" />
+  <wsdl:message name="IBlackjackGame_GetWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWinner" />
+  </wsdl:message>
+  <wsdl:message name="IBlackjackGame_GetWinner_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWinnerResponse" />
   </wsdl:message>
   <wsdl:message name="IBlackjackGame_LeaveGame_InputMessage">
     <wsdl:part name="parameters" element="tns:LeaveGame" />
@@ -116,8 +119,9 @@
     <wsdl:operation name="IncreasePot">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/IncreasePot" message="tns:IBlackjackGame_IncreasePot_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="DetermineWinner">
-      <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/DetermineWinner" message="tns:IBlackjackGame_DetermineWinner_InputMessage" />
+    <wsdl:operation name="GetWinner">
+      <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/GetWinner" message="tns:IBlackjackGame_GetWinner_InputMessage" />
+      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/GetWinnerResponse" message="tns:IBlackjackGame_GetWinner_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="LeaveGame">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/LeaveGame" message="tns:IBlackjackGame_LeaveGame_InputMessage" />

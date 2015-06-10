@@ -85,6 +85,9 @@
     <None Include="Service References\BlackjackService\BlackJackClient.BlackjackService.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\BlackjackService\BlackJackClient.BlackjackService.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BlackjackService\BlackJackClient.BlackjackService.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

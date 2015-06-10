@@ -196,6 +196,9 @@ namespace BlackJackClient.BlackjackService {
         private int HandValField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MoneyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private BlackJackClient.BlackjackService.Card[] PlayHandField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -226,6 +229,19 @@ namespace BlackJackClient.BlackjackService {
                 if ((this.HandValField.Equals(value) != true)) {
                     this.HandValField = value;
                     this.RaisePropertyChanged("HandVal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Money {
+            get {
+                return this.MoneyField;
+            }
+            set {
+                if ((this.MoneyField.Equals(value) != true)) {
+                    this.MoneyField = value;
+                    this.RaisePropertyChanged("Money");
                 }
             }
         }
@@ -420,11 +436,11 @@ namespace BlackJackClient.BlackjackService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IBlackjackGame/IncreasePot")]
         System.Threading.Tasks.Task IncreasePotAsync(BlackJackClient.BlackjackService.Game game, int mon);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IBlackjackGame/DetermineWinner")]
-        void DetermineWinner(BlackJackClient.BlackjackService.Game game);
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/GetWinner", ReplyAction="BlackjackService/IBlackjackGame/GetWinnerResponse")]
+        BlackJackClient.BlackjackService.Player GetWinner(BlackJackClient.BlackjackService.Game game);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IBlackjackGame/DetermineWinner")]
-        System.Threading.Tasks.Task DetermineWinnerAsync(BlackJackClient.BlackjackService.Game game);
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/GetWinner", ReplyAction="BlackjackService/IBlackjackGame/GetWinnerResponse")]
+        System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Player> GetWinnerAsync(BlackJackClient.BlackjackService.Game game);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IBlackjackGame/LeaveGame")]
         void LeaveGame(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player leave);
@@ -510,12 +526,12 @@ namespace BlackJackClient.BlackjackService {
             return base.Channel.IncreasePotAsync(game, mon);
         }
         
-        public void DetermineWinner(BlackJackClient.BlackjackService.Game game) {
-            base.Channel.DetermineWinner(game);
+        public BlackJackClient.BlackjackService.Player GetWinner(BlackJackClient.BlackjackService.Game game) {
+            return base.Channel.GetWinner(game);
         }
         
-        public System.Threading.Tasks.Task DetermineWinnerAsync(BlackJackClient.BlackjackService.Game game) {
-            return base.Channel.DetermineWinnerAsync(game);
+        public System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Player> GetWinnerAsync(BlackJackClient.BlackjackService.Game game) {
+            return base.Channel.GetWinnerAsync(game);
         }
         
         public void LeaveGame(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player leave) {
