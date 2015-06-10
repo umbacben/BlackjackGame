@@ -100,12 +100,15 @@ namespace BlackjackService
 
         public void StartRound()
         {
+            if (this.Player1.Ready && this.Player2.Ready)
+            {
             this.Pot = 0;
             this.inRound = true;
             this.Player1.PlayHand.Add(this.GameDeck.getNextCard());
             this.Player1.PlayHand.Add(this.GameDeck.getNextCard());
             this.Player2.PlayHand.Add(this.GameDeck.getNextCard());
             this.Player2.PlayHand.Add(this.GameDeck.getNextCard());
+            }
         }
     }
 
@@ -133,7 +136,24 @@ namespace BlackjackService
         public Deck()
         {
             CardList = new List<Card>();
-            CardList.Add(new Card(5,"nvshjbv"));
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 2; j < 15; j++)
+                {
+                    if (j<11)
+                    {
+                        CardList.Add(new Card(j, "images/" + j.ToString() + ".jpg"));
+                    }
+                    else if (j!=14)
+                    {
+                        CardList.Add(new Card(10, "images/" + j.ToString() + ".jpg"));
+                    }
+                    else
+                    {
+                        CardList.Add(new Card(11, "images/" + j.ToString() + ".jpg"));
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -180,7 +200,7 @@ namespace BlackjackService
 
     public interface IBlackJackGameCallBack
     {
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void UpdateGame(Game game);
     }
 

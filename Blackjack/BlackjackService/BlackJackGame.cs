@@ -171,7 +171,7 @@ namespace BlackjackService
         /// <param name="player"></param>
         public void ReadyPlayer(Game game, Player player)
         {
-            if (player == game.Player2)
+            if (player.UserName.Name == game.Player2.UserName.Name)
             {
                 game.Player2.Ready = true;
             }
@@ -328,18 +328,25 @@ namespace BlackjackService
         /// <param name="game"></param>
         /// <param name="user"></param>
         /// <returns></returns>
-        public Game JoinGame(Game game, User user)
+        public bool JoinGame(Game game, User user)
         {
-            if (GameList.Find(x=>x==game).Player2==null)
+            if (GameList.Exists(x => x.GameId == game.GameId))
             {
-                return null;
+                if (game.Player2.UserName.Name!="")
+                {
+                    return false;
+                }
+                else
+                {
+                    Player temp = new Player(user);
+                    game.Player2 = temp;
+                    UpdateGames(game);
+                    return true;
+                }
             }
             else
             {
-                Player temp = new Player(user);
-                GameList.Find(x => x == game).Player2 = temp;
-                UpdateGames(game);
-                return game;
+                return false;
             }
         }
 
@@ -351,6 +358,7 @@ namespace BlackjackService
         {
             Player temp = new Player(user);
             Game BJGame = new Game(temp);
+            BJGame.Player2 = new Player(new User(""));
             GameList.Add(BJGame);
             return BJGame;
         }

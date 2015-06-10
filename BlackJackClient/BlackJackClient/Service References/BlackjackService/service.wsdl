@@ -110,21 +110,6 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="GetOtherPlayer">
-      <soap12:operation soapAction="BlackjackService/IBlackjackGame/GetOtherPlayer" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AddPlayer">
-      <soap12:operation soapAction="BlackjackService/IBlackjackGame/AddPlayer" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="DetermineWinner">
       <soap12:operation soapAction="BlackjackService/IBlackjackGame/DetermineWinner" style="document" />
       <wsdl:input>
@@ -157,9 +142,6 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateGame">
       <soap12:operation soapAction="BlackjackService/IBlackjackGame/UpdateGame" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
@@ -237,21 +219,24 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="CreateGame">
       <soap12:operation soapAction="BlackjackService/IPortal/CreateGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetGameList">
       <soap12:operation soapAction="BlackjackService/IPortal/GetGameList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="SubscribePortal">
       <soap12:operation soapAction="BlackjackService/IPortal/SubscribePortal" style="document" />

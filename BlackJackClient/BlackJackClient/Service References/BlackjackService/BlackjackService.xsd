@@ -25,49 +25,26 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetOtherPlayer">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q6:Game" />
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="current" nillable="true" type="q7:Player" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetOtherPlayerResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="GetOtherPlayerResult" nillable="true" type="q8:Player" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="AddPlayer">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q9:Game" />
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="player" nillable="true" type="q10:Player" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="DetermineWinner">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q11:Game" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q6:Game" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="LeaveGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q12:Game" />
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="leave" nillable="true" type="q13:Player" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q7:Game" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="leave" nillable="true" type="q8:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ReadyPlayer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q14:Game" />
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="player" nillable="true" type="q15:Player" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q9:Game" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="player" nillable="true" type="q10:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -84,13 +61,8 @@
   <xs:element name="UpdateGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q16:Game" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q11:Game" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateGameResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="SubscribeChat">
@@ -145,7 +117,7 @@
   <xs:element name="LoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="LoginResult" nillable="true" type="q17:User" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="LoginResult" nillable="true" type="q12:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -159,14 +131,14 @@
   <xs:element name="RegisterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="RegisterResult" nillable="true" type="q18:User" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="RegisterResult" nillable="true" type="q13:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Logout">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="user" nillable="true" type="q19:User" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="user" nillable="true" type="q14:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -178,24 +150,33 @@
   <xs:element name="JoinGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q20:Game" />
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="user" nillable="true" type="q21:User" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="game" nillable="true" type="q15:Game" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="user" nillable="true" type="q16:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JoinGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="JoinGameResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateGame">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="user" nillable="true" type="q22:User" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="user" nillable="true" type="q17:User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="CreateGameResult" nillable="true" type="q18:Game" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetGameList">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetGameListResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -223,7 +204,7 @@
   <xs:element name="UpdateGameList">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="gameList" nillable="true" type="q23:ArrayOfGame" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/BlackjackService" minOccurs="0" name="gameList" nillable="true" type="q19:ArrayOfGame" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

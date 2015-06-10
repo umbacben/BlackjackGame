@@ -82,7 +82,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\BlackjackService\BlackJackClient.BlackjackService.Player.datasource">
+    <None Include="Service References\BlackjackService\BlackJackClient.BlackjackService.Game.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\BlackjackService\BlackJackClient.BlackjackService.User.datasource">
@@ -119,57 +119,53 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\betbox.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="images\cardback.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\dealer.jpg" />
+    <None Include="images\2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spade2.jpg" />
+    <None Include="images\3.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spade3.jpg" />
+    <None Include="images\4.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spade4.jpg" />
+    <None Include="images\5.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spade5.jpg" />
+    <None Include="images\6.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spade6.jpg" />
+    <None Include="images\7.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spade7.jpg" />
+    <None Include="images\8.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spade8.jpg" />
+    <None Include="images\9.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spade9.jpg" />
+    <None Include="images\10.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spade10.jpg" />
+    <None Include="images\14.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spadeA.jpg" />
+    <None Include="images\11.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spadeJ.jpg" />
+    <None Include="images\13.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\spadeK.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="images\spadeQ.jpg" />
+    <None Include="images\12.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="images\user.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\betbox.jpg" />
+    <Content Include="images\dealer.jpg" />
     <Content Include="images\login-button.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

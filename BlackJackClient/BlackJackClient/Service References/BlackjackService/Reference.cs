@@ -420,18 +420,6 @@ namespace BlackJackClient.BlackjackService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IBlackjackGame/IncreasePot")]
         System.Threading.Tasks.Task IncreasePotAsync(BlackJackClient.BlackjackService.Game game, int mon);
         
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/GetOtherPlayer", ReplyAction="BlackjackService/IBlackjackGame/GetOtherPlayerResponse")]
-        BlackJackClient.BlackjackService.Player GetOtherPlayer(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player current);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/GetOtherPlayer", ReplyAction="BlackjackService/IBlackjackGame/GetOtherPlayerResponse")]
-        System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Player> GetOtherPlayerAsync(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player current);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IBlackjackGame/AddPlayer")]
-        void AddPlayer(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player player);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IBlackjackGame/AddPlayer")]
-        System.Threading.Tasks.Task AddPlayerAsync(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player player);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IBlackjackGame/DetermineWinner")]
         void DetermineWinner(BlackJackClient.BlackjackService.Game game);
         
@@ -466,7 +454,7 @@ namespace BlackJackClient.BlackjackService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IBlackjackGameCallback {
         
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IBlackjackGame/UpdateGame", ReplyAction="BlackjackService/IBlackjackGame/UpdateGameResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IBlackjackGame/UpdateGame")]
         void UpdateGame(BlackJackClient.BlackjackService.Game game);
     }
     
@@ -520,22 +508,6 @@ namespace BlackJackClient.BlackjackService {
         
         public System.Threading.Tasks.Task IncreasePotAsync(BlackJackClient.BlackjackService.Game game, int mon) {
             return base.Channel.IncreasePotAsync(game, mon);
-        }
-        
-        public BlackJackClient.BlackjackService.Player GetOtherPlayer(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player current) {
-            return base.Channel.GetOtherPlayer(game, current);
-        }
-        
-        public System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Player> GetOtherPlayerAsync(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player current) {
-            return base.Channel.GetOtherPlayerAsync(game, current);
-        }
-        
-        public void AddPlayer(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player player) {
-            base.Channel.AddPlayer(game, player);
-        }
-        
-        public System.Threading.Tasks.Task AddPlayerAsync(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.Player player) {
-            return base.Channel.AddPlayerAsync(game, player);
         }
         
         public void DetermineWinner(BlackJackClient.BlackjackService.Game game) {
@@ -684,22 +656,22 @@ namespace BlackJackClient.BlackjackService {
         [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IPortal/Logout", ReplyAction="BlackjackService/IPortal/LogoutResponse")]
         System.Threading.Tasks.Task LogoutAsync(BlackJackClient.BlackjackService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IPortal/JoinGame")]
-        void JoinGame(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IPortal/JoinGame", ReplyAction="BlackjackService/IPortal/JoinGameResponse")]
+        bool JoinGame(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IPortal/JoinGame")]
-        System.Threading.Tasks.Task JoinGameAsync(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IPortal/JoinGame", ReplyAction="BlackjackService/IPortal/JoinGameResponse")]
+        System.Threading.Tasks.Task<bool> JoinGameAsync(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IPortal/CreateGame")]
-        void CreateGame(BlackJackClient.BlackjackService.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IPortal/CreateGame", ReplyAction="BlackjackService/IPortal/CreateGameResponse")]
+        BlackJackClient.BlackjackService.Game CreateGame(BlackJackClient.BlackjackService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IPortal/CreateGame")]
-        System.Threading.Tasks.Task CreateGameAsync(BlackJackClient.BlackjackService.User user);
+        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IPortal/CreateGame", ReplyAction="BlackjackService/IPortal/CreateGameResponse")]
+        System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Game> CreateGameAsync(BlackJackClient.BlackjackService.User user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IPortal/GetGameList", ReplyAction="BlackjackService/IPortal/GetGameListResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IPortal/GetGameList")]
         void GetGameList();
         
-        [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IPortal/GetGameList", ReplyAction="BlackjackService/IPortal/GetGameListResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IPortal/GetGameList")]
         System.Threading.Tasks.Task GetGameListAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IPortal/SubscribePortal", ReplyAction="BlackjackService/IPortal/SubscribePortalResponse")]
@@ -774,19 +746,19 @@ namespace BlackJackClient.BlackjackService {
             return base.Channel.LogoutAsync(user);
         }
         
-        public void JoinGame(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.User user) {
-            base.Channel.JoinGame(game, user);
+        public bool JoinGame(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.User user) {
+            return base.Channel.JoinGame(game, user);
         }
         
-        public System.Threading.Tasks.Task JoinGameAsync(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.User user) {
+        public System.Threading.Tasks.Task<bool> JoinGameAsync(BlackJackClient.BlackjackService.Game game, BlackJackClient.BlackjackService.User user) {
             return base.Channel.JoinGameAsync(game, user);
         }
         
-        public void CreateGame(BlackJackClient.BlackjackService.User user) {
-            base.Channel.CreateGame(user);
+        public BlackJackClient.BlackjackService.Game CreateGame(BlackJackClient.BlackjackService.User user) {
+            return base.Channel.CreateGame(user);
         }
         
-        public System.Threading.Tasks.Task CreateGameAsync(BlackJackClient.BlackjackService.User user) {
+        public System.Threading.Tasks.Task<BlackJackClient.BlackjackService.Game> CreateGameAsync(BlackJackClient.BlackjackService.User user) {
             return base.Channel.CreateGameAsync(user);
         }
         

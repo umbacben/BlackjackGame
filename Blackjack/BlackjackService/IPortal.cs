@@ -20,13 +20,13 @@ namespace BlackjackService
         [OperationContract]
         void Logout(User user);
 
-        [OperationContract(IsOneWay = true)]
-        Game JoinGame(Game game, User user);
+        [OperationContract]
+        bool JoinGame(Game game, User user);
 
         [OperationContract]
         Game CreateGame(User user);
 
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void GetGameList();
 
         [OperationContract]
