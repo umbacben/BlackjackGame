@@ -10,6 +10,9 @@ namespace BlackjackService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class BlackJackGame : IBlackjackGame, IChat, IPortal
     {
+        /// <summary>
+        /// properties
+        /// </summary>
         List<IBlackJackGameCallBack> blackjackCallbacks = new List<IBlackJackGameCallBack>();
         List<IChatCallback> chatCallbacks = new List<IChatCallback>();
         List<IPortalChatback> portalCallbacks = new List<IPortalChatback>();
@@ -17,10 +20,18 @@ namespace BlackjackService
         List<Game> GameList = new List<Game>();
         List<User> users = new List<User>();
 
-        public bool Hit(Game game, Player player)
+        ///
+        ///IBlackjackGame methods
+        ///
+
+        /// <summary>
+        /// Hit method where the player gets another card and if that 
+        /// player is bust will trigger bust event for that player
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="player"></param>
+        public void Hit(Game game, Player player)
         {
-            if (player.PlayHand.Count < 5)
-            {
                 player.PlayHand.Add(game.GameDeck.getNextCard());
                 
                 bool temp = game.CalcVal(player);
@@ -29,50 +40,48 @@ namespace BlackjackService
                     FireBustEvent();
                 }
                 this.UpdateGames(game);
-                return true;
+        }
+
+        /// <summary>
+        /// Tells the system that that specific player is done
+        /// taking cards for that round and updates the game
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="player"></param>
+        public void Stay(Game game, Player player)
+        {
+            if (game.Player1 == player)
+            {
+                game.Player1.RoundDone = true;
             }
             else
             {
-                return false;
+                game.Player2.RoundDone = true;
             }
+            UpdateGames(game);
         }
 
-        public void Stay(Game game, Player player)
-        {
-            player.RoundDone = true;
-            game.CalcVal(player);
-            this.UpdateGames(game);
-        }
-
+        /// <summary>
+        /// increases the pot and updates the game
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="mon"></param>
         public void IncreasePot(Game game, int mon)
         {
             game.Pot += mon;
             this.UpdateGames(game);
         }
 
-        public Player GetOtherPlayer(Game game, Player you)
-        {
-            if (game.Player1 == you)
-            {
-                return game.Player2;
-            }
-            else
-            {
-                return game.Player2;
-            }
-        }
-
-        public bool AddPlayer(Game game, Player player)
+        public void AddPlayer(Game game, Player player)
         {
             if (game.Player2 == null)
             {
                 game.Player2 = player;
                 this.UpdateGames(game);
-                return true;
             }
             else
             {
-                return false;
+                this.UpdateGames(null);
             }
         }
 

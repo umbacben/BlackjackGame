@@ -99,7 +99,7 @@ namespace BlackJackClient
 
         private void btnCreateGame_Click(object sender, EventArgs e)
         {
-            curPlayer = portalClient.CreateGame(user);
+            portalClient.CreateGame(user);
             panelLobby.Hide();
             labelUser.Text = user.Name;
         }

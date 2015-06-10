@@ -10,20 +10,11 @@
   <wsdl:message name="IBlackjackGame_Hit_InputMessage">
     <wsdl:part name="parameters" element="tns:Hit" />
   </wsdl:message>
-  <wsdl:message name="IBlackjackGame_Hit_OutputMessage">
-    <wsdl:part name="parameters" element="tns:HitResponse" />
-  </wsdl:message>
   <wsdl:message name="IBlackjackGame_Stay_InputMessage">
     <wsdl:part name="parameters" element="tns:Stay" />
   </wsdl:message>
-  <wsdl:message name="IBlackjackGame_Stay_OutputMessage">
-    <wsdl:part name="parameters" element="tns:StayResponse" />
-  </wsdl:message>
   <wsdl:message name="IBlackjackGame_IncreasePot_InputMessage">
     <wsdl:part name="parameters" element="tns:IncreasePot" />
-  </wsdl:message>
-  <wsdl:message name="IBlackjackGame_IncreasePot_OutputMessage">
-    <wsdl:part name="parameters" element="tns:IncreasePotResponse" />
   </wsdl:message>
   <wsdl:message name="IBlackjackGame_GetOtherPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:GetOtherPlayer" />
@@ -34,38 +25,20 @@
   <wsdl:message name="IBlackjackGame_AddPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:AddPlayer" />
   </wsdl:message>
-  <wsdl:message name="IBlackjackGame_AddPlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddPlayerResponse" />
-  </wsdl:message>
   <wsdl:message name="IBlackjackGame_DetermineWinner_InputMessage">
     <wsdl:part name="parameters" element="tns:DetermineWinner" />
-  </wsdl:message>
-  <wsdl:message name="IBlackjackGame_DetermineWinner_OutputMessage">
-    <wsdl:part name="parameters" element="tns:DetermineWinnerResponse" />
   </wsdl:message>
   <wsdl:message name="IBlackjackGame_LeaveGame_InputMessage">
     <wsdl:part name="parameters" element="tns:LeaveGame" />
   </wsdl:message>
-  <wsdl:message name="IBlackjackGame_LeaveGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LeaveGameResponse" />
-  </wsdl:message>
   <wsdl:message name="IBlackjackGame_ReadyPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:ReadyPlayer" />
-  </wsdl:message>
-  <wsdl:message name="IBlackjackGame_ReadyPlayer_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ReadyPlayerResponse" />
   </wsdl:message>
   <wsdl:message name="IBlackjackGame_SubscribeGame_InputMessage">
     <wsdl:part name="parameters" element="tns:SubscribeGame" />
   </wsdl:message>
-  <wsdl:message name="IBlackjackGame_SubscribeGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SubscribeGameResponse" />
-  </wsdl:message>
   <wsdl:message name="IBlackjackGame_UnsubscribeGame_InputMessage">
     <wsdl:part name="parameters" element="tns:UnsubscribeGame" />
-  </wsdl:message>
-  <wsdl:message name="IBlackjackGame_UnsubscribeGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UnsubscribeGameResponse" />
   </wsdl:message>
   <wsdl:message name="IBlackjackGame_UpdateGame_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateGame" />
@@ -115,14 +88,8 @@
   <wsdl:message name="IPortal_JoinGame_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinGame" />
   </wsdl:message>
-  <wsdl:message name="IPortal_JoinGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:JoinGameResponse" />
-  </wsdl:message>
   <wsdl:message name="IPortal_CreateGame_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateGame" />
-  </wsdl:message>
-  <wsdl:message name="IPortal_CreateGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateGameResponse" />
   </wsdl:message>
   <wsdl:message name="IPortal_GetGameList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGameList" />
@@ -151,15 +118,12 @@
   <wsdl:portType name="IBlackjackGame">
     <wsdl:operation name="Hit">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/Hit" message="tns:IBlackjackGame_Hit_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/HitResponse" message="tns:IBlackjackGame_Hit_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="Stay">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/Stay" message="tns:IBlackjackGame_Stay_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/StayResponse" message="tns:IBlackjackGame_Stay_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="IncreasePot">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/IncreasePot" message="tns:IBlackjackGame_IncreasePot_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/IncreasePotResponse" message="tns:IBlackjackGame_IncreasePot_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetOtherPlayer">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/GetOtherPlayer" message="tns:IBlackjackGame_GetOtherPlayer_InputMessage" />
@@ -167,27 +131,21 @@
     </wsdl:operation>
     <wsdl:operation name="AddPlayer">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/AddPlayer" message="tns:IBlackjackGame_AddPlayer_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/AddPlayerResponse" message="tns:IBlackjackGame_AddPlayer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="DetermineWinner">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/DetermineWinner" message="tns:IBlackjackGame_DetermineWinner_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/DetermineWinnerResponse" message="tns:IBlackjackGame_DetermineWinner_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="LeaveGame">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/LeaveGame" message="tns:IBlackjackGame_LeaveGame_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/LeaveGameResponse" message="tns:IBlackjackGame_LeaveGame_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ReadyPlayer">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/ReadyPlayer" message="tns:IBlackjackGame_ReadyPlayer_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/ReadyPlayerResponse" message="tns:IBlackjackGame_ReadyPlayer_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SubscribeGame">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/SubscribeGame" message="tns:IBlackjackGame_SubscribeGame_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/SubscribeGameResponse" message="tns:IBlackjackGame_SubscribeGame_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UnsubscribeGame">
       <wsdl:input wsaw:Action="BlackjackService/IBlackjackGame/UnsubscribeGame" message="tns:IBlackjackGame_UnsubscribeGame_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/UnsubscribeGameResponse" message="tns:IBlackjackGame_UnsubscribeGame_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateGame">
       <wsdl:output wsaw:Action="BlackjackService/IBlackjackGame/UpdateGame" message="tns:IBlackjackGame_UpdateGame_OutputCallbackMessage" />
@@ -226,11 +184,9 @@
     </wsdl:operation>
     <wsdl:operation name="JoinGame">
       <wsdl:input wsaw:Action="BlackjackService/IPortal/JoinGame" message="tns:IPortal_JoinGame_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IPortal/JoinGameResponse" message="tns:IPortal_JoinGame_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="CreateGame">
       <wsdl:input wsaw:Action="BlackjackService/IPortal/CreateGame" message="tns:IPortal_CreateGame_InputMessage" />
-      <wsdl:output wsaw:Action="BlackjackService/IPortal/CreateGameResponse" message="tns:IPortal_CreateGame_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetGameList">
       <wsdl:input wsaw:Action="BlackjackService/IPortal/GetGameList" message="tns:IPortal_GetGameList_InputMessage" />

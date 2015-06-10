@@ -11,7 +11,7 @@ namespace BlackjackService
     public interface IBlackjackGame
     {
         [OperationContract(IsOneWay = true)]
-        bool Hit(Game game, Player player);
+        void Hit(Game game, Player player);
 
         [OperationContract(IsOneWay = true)]
         void Stay(Game game, Player player);
@@ -19,11 +19,8 @@ namespace BlackjackService
         [OperationContract(IsOneWay = true)]
         void IncreasePot(Game game, int mon);
 
-        [OperationContract]
-        Player GetOtherPlayer(Game game, Player current);
-
         [OperationContract(IsOneWay = true)]
-        bool AddPlayer(Game game, Player player);
+        void AddPlayer(Game game, Player player);
 
         [OperationContract(IsOneWay = true)]
         void DetermineWinner(Game game);
@@ -193,6 +190,6 @@ namespace BlackjackService
     public interface IBustEvent
     {
         [OperationContract(IsOneWay = true)]
-        void Event();
+        void Event(Player player);
     }
 }
