@@ -10,19 +10,19 @@ namespace BlackjackService
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public class BlackJackGame : IBlackjackGame, IChat, IPortal
     {
-        /// <summary>
-        /// properties
-        /// </summary>
+        #region properites
         List<IBlackJackGameCallBack> blackjackCallbacks = new List<IBlackJackGameCallBack>();
         List<IChatCallback> chatCallbacks = new List<IChatCallback>();
         List<IPortalChatback> portalCallbacks = new List<IPortalChatback>();
-        static Action m_Event = delegate { };
+        static Action<Game, Player> m_Event = delegate { };
         List<Game> GameList = new List<Game>();
         List<User> users = new List<User>();
+        #endregion
 
-        ///
-        ///IBlackjackGame methods
-        ///
+        /// <summary>
+        /// IBlackjack methods
+        /// </summary>
+        #region IBlackjackGame
 
         /// <summary>
         /// Hit method where the player gets another card and if that 
@@ -37,7 +37,7 @@ namespace BlackjackService
                 bool temp = game.CalcVal(player);
                 if (!temp)
                 {
-                    FireBustEvent();
+                    FireBustEvent(game, player);
                 }
                 this.UpdateGames(game);
         }
@@ -72,19 +72,10 @@ namespace BlackjackService
             this.UpdateGames(game);
         }
 
-        public void AddPlayer(Game game, Player player)
-        {
-            if (game.Player2 == null)
-            {
-                game.Player2 = player;
-                this.UpdateGames(game);
-            }
-            else
-            {
-                this.UpdateGames(null);
-            }
-        }
-
+        /// <summary>
+        /// checks which player won if none went bust
+        /// </summary>
+        /// <param name="game"></param>
         public void DetermineWinner(Game game)
         {
             
@@ -103,12 +94,19 @@ namespace BlackjackService
         }
 
 
-
-        public void FireBustEvent()
+        /// <summary>
+        /// the event is triggered if a player goes bust
+        /// </summary>
+        public void FireBustEvent(Game game, Player player)
         {
-            m_Event();
+            m_Event(game, player);
         }
 
+        /// <summary>
+        /// player leaves the Game and then the system updates the game
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="leave"></param>
         public void LeaveGame(Game game, Player leave)
         {
             if (GameList.Find(x => x == game).inRound)
@@ -148,6 +146,12 @@ namespace BlackjackService
             }
         }
 
+        /// <summary>
+        /// checks whether or not therer are any players in the game,
+        /// if so returns true, else returns false
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
         private bool checkGame(Game game)
         {
             if (game.Player1 == null && game.Player2 == null)
@@ -160,6 +164,11 @@ namespace BlackjackService
             }
         }
 
+        /// <summary>
+        /// readys the player and checks if both players are ready to 
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="player"></param>
         public void ReadyPlayer(Game game, Player player)
         {
             if (player == game.Player2)
@@ -174,12 +183,19 @@ namespace BlackjackService
             this.UpdateGames(game);
         }
 
+        /// <summary>
+        /// subscribes the user to the blackjack callback
+        /// </summary>
         public void SubscribeGame()
         {
             IBlackJackGameCallBack call = OperationContext.Current.GetCallbackChannel<IBlackJackGameCallBack>();
             blackjackCallbacks.Add(call);
         }
 
+        /// <summary>
+        /// calls the callback
+        /// </summary>
+        /// <param name="game"></param>
         private void UpdateGames(Game game)
         {
             blackjackCallbacks.ForEach(delegate(IBlackJackGameCallBack call)
@@ -191,6 +207,9 @@ namespace BlackjackService
             });
         }
 
+        /// <summary>
+        /// unsubscribes the user to the blackjack callback
+        /// </summary>
         public void UnsubscribeGame()
         {
             try
@@ -203,13 +222,27 @@ namespace BlackjackService
             {
             }
         }
+        #endregion
 
+        /// <summary>
+        /// IChat methods
+        /// </summary>
+        #region IChat
+
+        /// <summary>
+        /// subscribes the user to the chat callback
+        /// </summary>
         public void SubscribeChat()
         {
             IChatCallback call = OperationContext.Current.GetCallbackChannel<IChatCallback>();
             chatCallbacks.Add(call);
         }
 
+        /// <summary>
+        /// utilizes the callbacks for the chat
+        /// </summary>
+        /// <param name="playerName"></param>
+        /// <param name="message"></param>
         public void AddMessage(string playerName, string message)
         {
             chatCallbacks.ForEach(delegate(IChatCallback callback)
@@ -225,6 +258,9 @@ namespace BlackjackService
             });
         }
 
+        /// <summary>
+        /// unsubscribes the user to the chat callback
+        /// </summary>
         public void UnsubscribeChat()
         {
             try
@@ -237,7 +273,19 @@ namespace BlackjackService
             {
             }
         }
+        #endregion
 
+        /// <summary>
+        /// IPortal methods
+        /// </summary>
+        #region IPortal
+
+        /// <summary>
+        /// logs the person in if that username doesnt exist 
+        /// and creates it as a person
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public User Login(String user)
         {
             if (users.Exists(x=>x.Name==user))
@@ -249,6 +297,11 @@ namespace BlackjackService
             return temp;
         }
 
+        /// <summary>
+        /// registers the user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public User Register(String user)
         {
             if (users.Exists(x => x.Name == user))
@@ -260,33 +313,51 @@ namespace BlackjackService
             return temp;
         }
 
+        /// <summary>
+        /// logs the user out
+        /// </summary>
+        /// <param name="user"></param>
         public void Logout(User user)
         {
             users.Remove(user);
         }
 
-        public void JoinGame(Game game, User user)
+        /// <summary>
+        /// Joins the game and updates that game
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public Game JoinGame(Game game, User user)
         {
             if (GameList.Find(x=>x==game).Player2==null)
             {
-                UpdateGames(null);
+                return null;
             }
             else
             {
                 Player temp = new Player(user);
                 GameList.Find(x => x == game).Player2 = temp;
                 UpdateGames(game);
+                return game;
             }
         }
 
-        public void CreateGame(User user)
+        /// <summary>
+        /// creates the game and returns it to the creator
+        /// </summary>
+        /// <param name="user"></param>
+        public Game CreateGame(User user)
         {
             Player temp = new Player(user);
             Game BJGame = new Game(temp);
             GameList.Add(BJGame);
-            UpdateGames(BJGame);
+            return BJGame;
         }
 
+        /// <summary>
+        /// utilizes the callback to update the game list for everyone
+        /// </summary>
         public void GetGameList()
         {
             portalCallbacks.ForEach(delegate(IPortalChatback call)
@@ -298,12 +369,18 @@ namespace BlackjackService
             });
         }
 
+        /// <summary>
+        /// subscribes the user to the Portal callback
+        /// </summary>
         public void SubscribePortal()
         {
             IPortalChatback call = OperationContext.Current.GetCallbackChannel<IPortalChatback>();
             portalCallbacks.Add(call);
         }
 
+        /// <summary>
+        /// unsubscribes the user to the Portal callback
+        /// </summary>
         public void UnSubscribePortal()
         {
             try
@@ -316,6 +393,7 @@ namespace BlackjackService
             {
             }
         }
+        #endregion
     }
 
 }
