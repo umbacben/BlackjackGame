@@ -29,6 +29,18 @@ namespace BlackJackClient
         public Form1()
         {
             InitializeComponent();
+            userhand = new List<PictureBox>();
+            opponenthand=new List<PictureBox>();
+            userhand.Add(pb1User);
+            userhand.Add(pb2User);
+            userhand.Add(pb3User);
+            userhand.Add(pb4User);
+            userhand.Add(pb5User);
+            opponenthand.Add(pb1Player);
+            opponenthand.Add(pb2Player);
+            opponenthand.Add(pb3Player);
+            opponenthand.Add(pb4Player);
+            opponenthand.Add(pb5Player);
             thegame = new Game();
             curPlayer = new Player();
             opponentPlayer = new Player();
