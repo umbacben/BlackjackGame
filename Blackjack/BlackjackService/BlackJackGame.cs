@@ -82,15 +82,6 @@ namespace BlackjackService
             return game.DetermineWinner();
         }
 
-
-        /// <summary>
-        /// the event is triggered if a player goes bust
-        /// </summary>
-        public void FireBustEvent(Game game, Player player)
-        {
-            m_Event(game, player);
-        }
-
         /// <summary>
         /// player leaves the Game and then the system updates the game
         /// </summary>
@@ -98,52 +89,40 @@ namespace BlackjackService
         /// <param name="leave"></param>
         public void LeaveGame(Game game, Player leave)
         {
-            if (GameList.Find(x => x == game).inRound)
-            {
-                return;
-            }
-            else
-            {
-                if (GameList.Find(x => x == game).Player1 == leave)
+                if (game.Player1.UserName.Name == leave.UserName.Name)
                 {
-                    GameList.Find(x => x == game).Player1 = null;
+                    game.Player1 = game.Player2;
+                    game.Player2 = new Player(new User(""));
                     if (this.checkGame(game))
                     {
+                        this.GameList.RemoveAll(x => x.GameId == game.GameId);
+                        this.GameList.Add(game);
                         this.UpdateGames(game);
                         return;
                     }
                     else
                     {
-                        this.GameList.Remove(game);
+                        this.GameList.RemoveAll(x => x.GameId == game.GameId);
                         return;
                     }
                 }
                 else
                 {
-                    GameList.Find(x => x == game).Player2 = null;
-                    if (this.checkGame(game))
-                    {
+                        game.Player2 = new Player(new User(""));
                         this.UpdateGames(game);
                         return;
-                    }
-                    else
-                    {
-                        this.GameList.Remove(game);
-                        return;
-                    }
                 }
-            }
         }
 
         /// <summary>
-        /// checks whether or not therer are any players in the game,
+        /// checks whether or not there are any players in the game,
         /// if so returns true, else returns false
         /// </summary>
         /// <param name="game"></param>
         /// <returns></returns>
         private bool checkGame(Game game)
         {
-            if (game.Player1 == null && game.Player2 == null)
+            if (game.Player1.UserName.Name == "" && game.Player2.UserName.Name == "")
             {
                 return false;
             }
@@ -278,7 +257,7 @@ namespace BlackjackService
         /// <returns></returns>
         public User Login(String user)
         {
-            if (users.Exists(x=>x.Name==user))
+            if (users.Exists(x=>x.Name==user) || user == "")
             {
                 return null;
             }
@@ -322,7 +301,7 @@ namespace BlackjackService
         {
             if (GameList.Exists(x => x.GameId == game.GameId))
             {
-                if (game.Player2.UserName.Name!="")
+                if (game.Player2.UserName.Name != "")
                 {
                     return false;
                 }
@@ -334,10 +313,7 @@ namespace BlackjackService
                     return true;
                 }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         /// <summary>

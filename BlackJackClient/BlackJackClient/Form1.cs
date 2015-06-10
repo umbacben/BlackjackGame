@@ -295,5 +295,14 @@ namespace BlackJackClient
             }
             return temp;
         }
+
+        private void btnLeave_Click(object sender, EventArgs e)
+        {
+            blackjackClient.LeaveGame(thegame, curPlayer);
+            panelLogIn.Hide();
+            panelLobby.Show();
+            panelLobby.BringToFront();
+            portalClient.GetGameList();
+        }
     }
 }

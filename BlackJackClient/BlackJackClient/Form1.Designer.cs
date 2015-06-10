@@ -61,6 +61,7 @@
             this.tbPass = new System.Windows.Forms.TextBox();
             this.btnLogIn = new System.Windows.Forms.Button();
             this.panelLogIn = new System.Windows.Forms.Panel();
+            this.btnLeave = new System.Windows.Forms.Button();
             this.panelLobby.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb3User)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2User)).BeginInit();
@@ -85,8 +86,8 @@
             this.panelLobby.Controls.Add(this.btnSpectate);
             this.panelLobby.Controls.Add(this.btnCreateGame);
             this.panelLobby.Controls.Add(this.btnJoin);
-            this.panelLobby.Location = new System.Drawing.Point(132, 14);
-            this.panelLobby.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panelLobby.Location = new System.Drawing.Point(125, 14);
+            this.panelLobby.Margin = new System.Windows.Forms.Padding(5);
             this.panelLobby.Name = "panelLobby";
             this.panelLobby.Size = new System.Drawing.Size(1347, 578);
             this.panelLobby.TabIndex = 3;
@@ -94,7 +95,7 @@
             // tbChat
             // 
             this.tbChat.Location = new System.Drawing.Point(4, 407);
-            this.tbChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbChat.Margin = new System.Windows.Forms.Padding(4);
             this.tbChat.Name = "tbChat";
             this.tbChat.Size = new System.Drawing.Size(205, 22);
             this.tbChat.TabIndex = 7;
@@ -104,7 +105,7 @@
             this.lbChat.FormattingEnabled = true;
             this.lbChat.ItemHeight = 16;
             this.lbChat.Location = new System.Drawing.Point(4, 71);
-            this.lbChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbChat.Margin = new System.Windows.Forms.Padding(4);
             this.lbChat.Name = "lbChat";
             this.lbChat.Size = new System.Drawing.Size(205, 324);
             this.lbChat.TabIndex = 6;
@@ -112,7 +113,7 @@
             // btnChat
             // 
             this.btnChat.Location = new System.Drawing.Point(4, 439);
-            this.btnChat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChat.Margin = new System.Windows.Forms.Padding(4);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(100, 28);
             this.btnChat.TabIndex = 5;
@@ -125,7 +126,7 @@
             this.LbPlayersOnline.FormattingEnabled = true;
             this.LbPlayersOnline.ItemHeight = 16;
             this.LbPlayersOnline.Location = new System.Drawing.Point(808, 54);
-            this.LbPlayersOnline.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LbPlayersOnline.Margin = new System.Windows.Forms.Padding(4);
             this.LbPlayersOnline.Name = "LbPlayersOnline";
             this.LbPlayersOnline.Size = new System.Drawing.Size(265, 116);
             this.LbPlayersOnline.TabIndex = 4;
@@ -143,7 +144,7 @@
             // btnSpectate
             // 
             this.btnSpectate.Location = new System.Drawing.Point(255, 370);
-            this.btnSpectate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSpectate.Margin = new System.Windows.Forms.Padding(4);
             this.btnSpectate.Name = "btnSpectate";
             this.btnSpectate.Size = new System.Drawing.Size(323, 66);
             this.btnSpectate.TabIndex = 2;
@@ -153,7 +154,7 @@
             // btnCreateGame
             // 
             this.btnCreateGame.Location = new System.Drawing.Point(255, 177);
-            this.btnCreateGame.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateGame.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreateGame.Name = "btnCreateGame";
             this.btnCreateGame.Size = new System.Drawing.Size(323, 95);
             this.btnCreateGame.TabIndex = 1;
@@ -164,7 +165,7 @@
             // btnJoin
             // 
             this.btnJoin.Location = new System.Drawing.Point(255, 76);
-            this.btnJoin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnJoin.Margin = new System.Windows.Forms.Padding(4);
             this.btnJoin.Name = "btnJoin";
             this.btnJoin.Size = new System.Drawing.Size(323, 95);
             this.btnJoin.TabIndex = 0;
@@ -175,7 +176,7 @@
             // btnExit
             // 
             this.btnExit.Location = new System.Drawing.Point(939, -209);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(100, 28);
             this.btnExit.TabIndex = 35;
@@ -196,7 +197,7 @@
             // btnStand
             // 
             this.btnStand.Location = new System.Drawing.Point(373, 425);
-            this.btnStand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStand.Margin = new System.Windows.Forms.Padding(4);
             this.btnStand.Name = "btnStand";
             this.btnStand.Size = new System.Drawing.Size(117, 44);
             this.btnStand.TabIndex = 33;
@@ -207,7 +208,7 @@
             // btnHit
             // 
             this.btnHit.Location = new System.Drawing.Point(248, 425);
-            this.btnHit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHit.Margin = new System.Windows.Forms.Padding(4);
             this.btnHit.Name = "btnHit";
             this.btnHit.Size = new System.Drawing.Size(117, 44);
             this.btnHit.TabIndex = 32;
@@ -218,7 +219,7 @@
             // btnRaise
             // 
             this.btnRaise.Location = new System.Drawing.Point(909, 325);
-            this.btnRaise.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRaise.Margin = new System.Windows.Forms.Padding(4);
             this.btnRaise.Name = "btnRaise";
             this.btnRaise.Size = new System.Drawing.Size(124, 44);
             this.btnRaise.TabIndex = 30;
@@ -251,7 +252,7 @@
             this.pb3User.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pb3User.Image = global::BlackJackClient.Properties.Resources.cardback;
             this.pb3User.Location = new System.Drawing.Point(413, 306);
-            this.pb3User.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb3User.Margin = new System.Windows.Forms.Padding(4);
             this.pb3User.Name = "pb3User";
             this.pb3User.Size = new System.Drawing.Size(75, 103);
             this.pb3User.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -262,7 +263,7 @@
             // 
             this.pb2User.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pb2User.Location = new System.Drawing.Point(331, 306);
-            this.pb2User.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb2User.Margin = new System.Windows.Forms.Padding(4);
             this.pb2User.Name = "pb2User";
             this.pb2User.Size = new System.Drawing.Size(75, 103);
             this.pb2User.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -272,7 +273,7 @@
             // pb1User
             // 
             this.pb1User.Location = new System.Drawing.Point(248, 306);
-            this.pb1User.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb1User.Margin = new System.Windows.Forms.Padding(4);
             this.pb1User.Name = "pb1User";
             this.pb1User.Size = new System.Drawing.Size(75, 103);
             this.pb1User.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -284,7 +285,7 @@
             this.pb3Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pb3Player.Image = global::BlackJackClient.Properties.Resources.cardback;
             this.pb3Player.Location = new System.Drawing.Point(413, 65);
-            this.pb3Player.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb3Player.Margin = new System.Windows.Forms.Padding(4);
             this.pb3Player.Name = "pb3Player";
             this.pb3Player.Size = new System.Drawing.Size(75, 103);
             this.pb3Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -296,7 +297,7 @@
             this.pb2Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pb2Player.Image = global::BlackJackClient.Properties.Resources.cardback;
             this.pb2Player.Location = new System.Drawing.Point(332, 65);
-            this.pb2Player.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb2Player.Margin = new System.Windows.Forms.Padding(4);
             this.pb2Player.Name = "pb2Player";
             this.pb2Player.Size = new System.Drawing.Size(75, 103);
             this.pb2Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -306,7 +307,7 @@
             // pb1Player
             // 
             this.pb1Player.Location = new System.Drawing.Point(249, 65);
-            this.pb1Player.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb1Player.Margin = new System.Windows.Forms.Padding(4);
             this.pb1Player.Name = "pb1Player";
             this.pb1Player.Size = new System.Drawing.Size(75, 103);
             this.pb1Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -318,7 +319,7 @@
             this.pb4Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pb4Player.Image = global::BlackJackClient.Properties.Resources.cardback;
             this.pb4Player.Location = new System.Drawing.Point(497, 65);
-            this.pb4Player.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb4Player.Margin = new System.Windows.Forms.Padding(4);
             this.pb4Player.Name = "pb4Player";
             this.pb4Player.Size = new System.Drawing.Size(75, 103);
             this.pb4Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -330,7 +331,7 @@
             this.pb5Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pb5Player.Image = global::BlackJackClient.Properties.Resources.cardback;
             this.pb5Player.Location = new System.Drawing.Point(580, 65);
-            this.pb5Player.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb5Player.Margin = new System.Windows.Forms.Padding(4);
             this.pb5Player.Name = "pb5Player";
             this.pb5Player.Size = new System.Drawing.Size(75, 103);
             this.pb5Player.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -342,7 +343,7 @@
             this.pb4User.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pb4User.Image = global::BlackJackClient.Properties.Resources.cardback;
             this.pb4User.Location = new System.Drawing.Point(496, 306);
-            this.pb4User.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb4User.Margin = new System.Windows.Forms.Padding(4);
             this.pb4User.Name = "pb4User";
             this.pb4User.Size = new System.Drawing.Size(75, 103);
             this.pb4User.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -354,7 +355,7 @@
             this.pb5User.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pb5User.Image = global::BlackJackClient.Properties.Resources.cardback;
             this.pb5User.Location = new System.Drawing.Point(579, 306);
-            this.pb5User.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pb5User.Margin = new System.Windows.Forms.Padding(4);
             this.pb5User.Name = "pb5User";
             this.pb5User.Size = new System.Drawing.Size(75, 103);
             this.pb5User.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -364,7 +365,7 @@
             // btnReady
             // 
             this.btnReady.Location = new System.Drawing.Point(909, 377);
-            this.btnReady.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReady.Margin = new System.Windows.Forms.Padding(4);
             this.btnReady.Name = "btnReady";
             this.btnReady.Size = new System.Drawing.Size(124, 44);
             this.btnReady.TabIndex = 31;
@@ -383,7 +384,7 @@
             // tbUser
             // 
             this.tbUser.Location = new System.Drawing.Point(505, 238);
-            this.tbUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbUser.Margin = new System.Windows.Forms.Padding(4);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(132, 22);
             this.tbUser.TabIndex = 0;
@@ -391,7 +392,7 @@
             // tbPass
             // 
             this.tbPass.Location = new System.Drawing.Point(504, 279);
-            this.tbPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbPass.Margin = new System.Windows.Forms.Padding(4);
             this.tbPass.Name = "tbPass";
             this.tbPass.PasswordChar = '!';
             this.tbPass.Size = new System.Drawing.Size(132, 22);
@@ -416,11 +417,21 @@
             this.panelLogIn.Controls.Add(this.btnLogIn);
             this.panelLogIn.Controls.Add(this.tbPass);
             this.panelLogIn.Controls.Add(this.tbUser);
-            this.panelLogIn.Location = new System.Drawing.Point(28, 20);
+            this.panelLogIn.Location = new System.Drawing.Point(38, 14);
             this.panelLogIn.Margin = new System.Windows.Forms.Padding(0);
             this.panelLogIn.Name = "panelLogIn";
             this.panelLogIn.Size = new System.Drawing.Size(1177, 529);
             this.panelLogIn.TabIndex = 41;
+            // 
+            // btnLeave
+            // 
+            this.btnLeave.Location = new System.Drawing.Point(910, 428);
+            this.btnLeave.Name = "btnLeave";
+            this.btnLeave.Size = new System.Drawing.Size(124, 44);
+            this.btnLeave.TabIndex = 41;
+            this.btnLeave.Text = "Leave Game";
+            this.btnLeave.UseVisualStyleBackColor = true;
+            this.btnLeave.Click += new System.EventHandler(this.btnLeave_Click);
             // 
             // Form1
             // 
@@ -429,6 +440,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1245, 558);
             this.Controls.Add(this.panelLogIn);
+            this.Controls.Add(this.btnLeave);
             this.Controls.Add(this.tBoxRaise);
             this.Controls.Add(this.pb5User);
             this.Controls.Add(this.pb4User);
@@ -449,7 +461,7 @@
             this.Controls.Add(this.pb3Player);
             this.Controls.Add(this.pb2Player);
             this.Controls.Add(this.pb1Player);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Blackjack";
             this.panelLobby.ResumeLayout(false);
@@ -505,6 +517,7 @@
         private System.Windows.Forms.TextBox tbPass;
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Panel panelLogIn;
+        private System.Windows.Forms.Button btnLeave;
     }
 }
 
