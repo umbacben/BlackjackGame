@@ -62,6 +62,8 @@
             this.btnLogIn = new System.Windows.Forms.Button();
             this.panelLogIn = new System.Windows.Forms.Panel();
             this.btnLeave = new System.Windows.Forms.Button();
+            this.lblOpMon = new System.Windows.Forms.Label();
+            this.lblYourMon = new System.Windows.Forms.Label();
             this.panelLobby.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb3User)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb2User)).BeginInit();
@@ -78,6 +80,7 @@
             // 
             // panelLobby
             // 
+            this.panelLobby.Controls.Add(this.panelLogIn);
             this.panelLobby.Controls.Add(this.tbChat);
             this.panelLobby.Controls.Add(this.lbChat);
             this.panelLobby.Controls.Add(this.btnChat);
@@ -86,7 +89,7 @@
             this.panelLobby.Controls.Add(this.btnSpectate);
             this.panelLobby.Controls.Add(this.btnCreateGame);
             this.panelLobby.Controls.Add(this.btnJoin);
-            this.panelLobby.Location = new System.Drawing.Point(125, 14);
+            this.panelLobby.Location = new System.Drawing.Point(943, 521);
             this.panelLobby.Margin = new System.Windows.Forms.Padding(5);
             this.panelLobby.Name = "panelLobby";
             this.panelLobby.Size = new System.Drawing.Size(1347, 578);
@@ -230,7 +233,7 @@
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(341, 273);
+            this.labelUser.Location = new System.Drawing.Point(332, 473);
             this.labelUser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(33, 17);
@@ -417,7 +420,7 @@
             this.panelLogIn.Controls.Add(this.btnLogIn);
             this.panelLogIn.Controls.Add(this.tbPass);
             this.panelLogIn.Controls.Add(this.tbUser);
-            this.panelLogIn.Location = new System.Drawing.Point(38, 14);
+            this.panelLogIn.Location = new System.Drawing.Point(1099, 54);
             this.panelLogIn.Margin = new System.Windows.Forms.Padding(0);
             this.panelLogIn.Name = "panelLogIn";
             this.panelLogIn.Size = new System.Drawing.Size(1177, 529);
@@ -433,13 +436,32 @@
             this.btnLeave.UseVisualStyleBackColor = true;
             this.btnLeave.Click += new System.EventHandler(this.btnLeave_Click);
             // 
+            // lblOpMon
+            // 
+            this.lblOpMon.AutoSize = true;
+            this.lblOpMon.Location = new System.Drawing.Point(246, 172);
+            this.lblOpMon.Name = "lblOpMon";
+            this.lblOpMon.Size = new System.Drawing.Size(58, 17);
+            this.lblOpMon.TabIndex = 42;
+            this.lblOpMon.Text = "Money: ";
+            // 
+            // lblYourMon
+            // 
+            this.lblYourMon.AutoSize = true;
+            this.lblYourMon.Location = new System.Drawing.Point(245, 285);
+            this.lblYourMon.Name = "lblYourMon";
+            this.lblYourMon.Size = new System.Drawing.Size(54, 17);
+            this.lblYourMon.TabIndex = 43;
+            this.lblYourMon.Text = "Money:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1245, 558);
-            this.Controls.Add(this.panelLogIn);
+            this.Controls.Add(this.lblYourMon);
+            this.Controls.Add(this.lblOpMon);
             this.Controls.Add(this.btnLeave);
             this.Controls.Add(this.tBoxRaise);
             this.Controls.Add(this.pb5User);
@@ -518,6 +540,8 @@
         private System.Windows.Forms.Button btnLogIn;
         private System.Windows.Forms.Panel panelLogIn;
         private System.Windows.Forms.Button btnLeave;
+        private System.Windows.Forms.Label lblOpMon;
+        private System.Windows.Forms.Label lblYourMon;
     }
 }
 

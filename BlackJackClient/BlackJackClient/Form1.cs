@@ -77,6 +77,7 @@ namespace BlackJackClient
                 curPlayer = thegame.Player2;
                 opponentPlayer = thegame.Player1;
             }
+            lblYourMon.Text = "Money: $" + curPlayer.Money.ToString();
             int count=0;
             count = curPlayer.PlayHand.Length;
             for(int i=0;i<count;i++)
@@ -87,6 +88,7 @@ namespace BlackJackClient
             {
                 return; 
             }
+            lblOpMon.Text = opponentPlayer.Money.ToString();
             labelPlayer.Text = opponentPlayer.UserName.Name;
             count = opponentPlayer.PlayHand.Length;
             if (count != 0)
@@ -223,6 +225,7 @@ namespace BlackJackClient
             btnStand.Enabled = false;
             btnReady.Enabled = true;
             btnRaise.Enabled = true;
+            btnLeave.Enabled = true;
         }
 
         private void EnableStuff()
@@ -231,6 +234,7 @@ namespace BlackJackClient
             btnStand.Enabled = true;
             btnReady.Enabled = false;
             btnRaise.Enabled = false;
+            btnLeave.Enabled = false;
         }
 
         public void UpdateGameList(Game[] gameList)
