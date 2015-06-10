@@ -13,7 +13,7 @@ using BlackJackClient.BlackjackService;
 
 namespace BlackJackClient
 {
-    [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant, UseSynchronizationContext = false)]
+    [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
     public partial class Form1 : Form, IBlackjackGameCallback, IChatCallback, IPortalCallback
     {
         private User user;

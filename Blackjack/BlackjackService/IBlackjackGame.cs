@@ -44,6 +44,8 @@ namespace BlackjackService
     [DataContract]
     public class Game
     {
+        int id = 0;
+
         [DataMember]
         public int GameId { get; set; }
 
@@ -64,6 +66,8 @@ namespace BlackjackService
 
         public Game(Player creator)
         {
+            GameId = id;
+            id++;
             Pot = 0;
             this.Player1 = creator;
             this.GameDeck = new Deck();
@@ -76,12 +80,12 @@ namespace BlackjackService
         public Player DetermineWinner()
         {
             Player winner = null;
-            if (this.Player1.HandVal > this.Player2.HandVal && (!this.Player1.bust || !this.Player2.bust))
+            if (this.Player1.HandVal > this.Player2.HandVal && (!this.Player1.bust))
             {
                 this.Player1.Money += this.Pot;
                 winner = this.Player1;
             }
-            else if (this.Player1.HandVal < this.Player2.HandVal && (!this.Player1.bust || !this.Player2.bust))
+            else if (this.Player1.HandVal < this.Player2.HandVal && (!this.Player2.bust))
             {
                 this.Player2.Money += this.Pot;
                 winner = this.Player2;
@@ -94,38 +98,48 @@ namespace BlackjackService
             this.Pot = 0;
             this.inRound = false;
             this.GameDeck = new Deck();
+            this.Player1.PlayHand = new List<Card>();
+            this.Player1.HandVal = 0;
+            this.Player1.Ready = false;
+            this.Player1.RoundDone = false;
+            this.Player2.PlayHand = new List<Card>();
+            this.Player2.HandVal = 0;
+            this.Player2.Ready = false;
+            this.Player2.RoundDone = false;
             return winner;
         }
 
-        public bool CalcVal(Player play)
+        public void CalcVal(Player play)
         {
             if (play.UserName == Player1.UserName)
             {
-                Player1 = play;
-                Player1.HandVal = 0;
-                foreach (Card i in Player1.PlayHand)
+                this.Player1 = play;
+                this.Player1.HandVal = 0;
+                foreach (Card i in this.Player1.PlayHand)
                 {
-                    Player1.HandVal += i.Value;
+                    this.Player1.HandVal += i.Value;
                 }
-                if (Player1.HandVal > 21)
+                if (this.Player1.HandVal > 21)
                 {
-                    return false;
+                    this.Player1.bust = true;
+                    this.Player1.RoundDone = true;
+                    this.Player2.RoundDone = true;
                 }
-                else return true;
             }
             else
             {
-                Player2 = play;
-                Player2.HandVal = 0;
-                foreach (Card i in Player2.PlayHand)
+                this.Player2 = play;
+                this.Player2.HandVal = 0;
+                foreach (Card i in this.Player2.PlayHand)
                 {
-                    Player2.HandVal += i.Value;
+                    this.Player2.HandVal += i.Value;
                 }
-                if (Player2.HandVal > 21)
+                if (this.Player2.HandVal > 21)
                 {
-                    return false;
+                    this.Player2.bust = true;
+                    this.Player1.RoundDone = true;
+                    this.Player2.RoundDone = true;
                 }
-                else return true;
             }
         }
 
@@ -139,6 +153,8 @@ namespace BlackjackService
             this.Player1.PlayHand.Add(this.GameDeck.getNextCard());
             this.Player2.PlayHand.Add(this.GameDeck.getNextCard());
             this.Player2.PlayHand.Add(this.GameDeck.getNextCard());
+            this.CalcVal(Player1);
+            this.CalcVal(Player2);
             }
         }
     }

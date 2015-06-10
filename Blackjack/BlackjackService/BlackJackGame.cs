@@ -32,25 +32,16 @@ namespace BlackjackService
         /// <param name="player"></param>
         public void Hit(Game game, Player player)
         {
-            bool temp;
             if (game.Player1.UserName.Name == player.UserName.Name)
             {
                 game.Player1.PlayHand.Add(game.GameDeck.getNextCard());
-                temp = game.CalcVal(game.Player1);
-                if (!temp)
-                {
-                    FireBustEvent(game, game.Player1);
-                }
+                game.CalcVal(game.Player1);
                 this.UpdateGames(game);
             }
             else
             {
                 game.Player2.PlayHand.Add(game.GameDeck.getNextCard());
-                temp = game.CalcVal(game.Player2);
-                if (!temp)
-                {
-                    FireBustEvent(game, game.Player2);
-                }
+                game.CalcVal(game.Player2);
                 this.UpdateGames(game);
             }
         }
@@ -71,6 +62,7 @@ namespace BlackjackService
             {
                 game.Player2.RoundDone = true;
             }
+            //GameList.Find(x => x.GameId == game.GameId) = game;
             UpdateGames(game);
         }
 
@@ -87,36 +79,8 @@ namespace BlackjackService
 
         public Player GetWinner(Game game)
         {
-            return GameList.Find(x => x.GameId == game.GameId).DetermineWinner();
+            return game.DetermineWinner();
         }
-
-        ///// <summary>
-        ///// checks which player won if none went bust
-        ///// </summary>
-        ///// <param name="game"></param>
-        //public Player DetermineWinner(Game game)
-        //{
-        //    Player winner = null;
-        //    if (GameList.Find(x => x.GameId == game.GameId).Player1.HandVal > GameList.Find(x => x.GameId == game.GameId).Player2.HandVal && (!GameList.Find(x=>x.GameId == game.GameId).Player1.bust || !GameList.Find(x=>x.GameId == game.GameId).Player2.bust))
-        //    {
-        //        GameList.Find(x => x.GameId == game.GameId).Player1.Money += GameList.Find(x => x.GameId == game.GameId).Pot;
-        //        winner = GameList.Find(x => x.GameId == game.GameId).Player1;
-        //    }
-        //    else if (GameList.Find(x => x.GameId == game.GameId).Player1.HandVal < GameList.Find(x => x.GameId == game.GameId).Player2.HandVal && (!GameList.Find(x => x.GameId == game.GameId).Player1.bust || !GameList.Find(x => x.GameId == game.GameId).Player2.bust))
-        //    {
-        //        GameList.Find(x => x.GameId == game.GameId).Player2.Money += GameList.Find(x => x.GameId == game.GameId).Pot;
-        //        winner = GameList.Find(x => x.GameId == game.GameId).Player2;
-        //    }
-        //    else
-        //    {
-        //        GameList.Find(x => x.GameId == game.GameId).Player1.Money += GameList.Find(x => x.GameId == game.GameId).Pot/2;
-        //        GameList.Find(x => x.GameId == game.GameId).Player2.Money += GameList.Find(x => x.GameId == game.GameId).Pot/2;
-        //    }
-        //    GameList.Find(x => x.GameId == game.GameId).Pot = 0;
-        //    GameList.Find(x => x.GameId == game.GameId).inRound = false;
-        //    GameList.Find(x => x.GameId == game.GameId).GameDeck = new Deck();
-        //    return winner;
-        //}
 
 
         /// <summary>
@@ -205,6 +169,7 @@ namespace BlackjackService
                 game.Player1.Ready = true;
             }
             game.StartRound();
+            //GameList.Find(x => x.GameId == game.GameId) = game;
             this.UpdateGames(game);
         }
 
