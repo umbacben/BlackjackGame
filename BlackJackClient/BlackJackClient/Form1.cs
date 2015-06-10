@@ -129,7 +129,16 @@ namespace BlackJackClient
 
         public void UpdateGame(Game game)
         {
-            
+            if(game!=null)
+            {
+                if(game.GameId==thegame.GameId)
+                {
+                    thegame = game;
+                    UpdateVisual();
+                }
+            }
         }
+
+
     }
 }
