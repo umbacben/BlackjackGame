@@ -91,10 +91,10 @@
             this.panelLobby.Controls.Add(this.btnSpectate);
             this.panelLobby.Controls.Add(this.btnCreateGame);
             this.panelLobby.Controls.Add(this.btnJoin);
-            this.panelLobby.Location = new System.Drawing.Point(13, 13);
+            this.panelLobby.Location = new System.Drawing.Point(2, 4);
             this.panelLobby.Margin = new System.Windows.Forms.Padding(4);
             this.panelLobby.Name = "panelLobby";
-            this.panelLobby.Size = new System.Drawing.Size(1045, 470);
+            this.panelLobby.Size = new System.Drawing.Size(985, 467);
             this.panelLobby.TabIndex = 3;
             // 
             // tbChat
@@ -114,9 +114,10 @@
             // 
             // btnChat
             // 
-            this.btnChat.Location = new System.Drawing.Point(3, 357);
+            this.btnChat.Font = new System.Drawing.Font("Algerian", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChat.Location = new System.Drawing.Point(72, 361);
             this.btnChat.Name = "btnChat";
-            this.btnChat.Size = new System.Drawing.Size(75, 23);
+            this.btnChat.Size = new System.Drawing.Size(86, 23);
             this.btnChat.TabIndex = 5;
             this.btnChat.Text = "Send";
             this.btnChat.UseVisualStyleBackColor = true;
@@ -133,14 +134,16 @@
             // labelPlayers
             // 
             this.labelPlayers.AutoSize = true;
+            this.labelPlayers.Font = new System.Drawing.Font("Alpha Echo", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPlayers.Location = new System.Drawing.Point(603, 21);
             this.labelPlayers.Name = "labelPlayers";
-            this.labelPlayers.Size = new System.Drawing.Size(77, 13);
+            this.labelPlayers.Size = new System.Drawing.Size(136, 17);
             this.labelPlayers.TabIndex = 3;
             this.labelPlayers.Text = "Players Online:";
             // 
             // btnSpectate
             // 
+            this.btnSpectate.Font = new System.Drawing.Font("Alpha Echo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSpectate.Location = new System.Drawing.Point(191, 301);
             this.btnSpectate.Name = "btnSpectate";
             this.btnSpectate.Size = new System.Drawing.Size(242, 54);
@@ -150,6 +153,7 @@
             // 
             // btnCreateGame
             // 
+            this.btnCreateGame.Font = new System.Drawing.Font("Alpha Echo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateGame.Location = new System.Drawing.Point(191, 144);
             this.btnCreateGame.Name = "btnCreateGame";
             this.btnCreateGame.Size = new System.Drawing.Size(242, 77);
@@ -160,6 +164,7 @@
             // 
             // btnJoin
             // 
+            this.btnJoin.Font = new System.Drawing.Font("Alpha Echo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJoin.Location = new System.Drawing.Point(191, 62);
             this.btnJoin.Name = "btnJoin";
             this.btnJoin.Size = new System.Drawing.Size(242, 77);
@@ -174,10 +179,10 @@
             this.panelLogIn.Controls.Add(this.btnLogIn);
             this.panelLogIn.Controls.Add(this.tbPass);
             this.panelLogIn.Controls.Add(this.tbUser);
-            this.panelLogIn.Location = new System.Drawing.Point(2, 9);
+            this.panelLogIn.Location = new System.Drawing.Point(2, 4);
             this.panelLogIn.Margin = new System.Windows.Forms.Padding(0);
             this.panelLogIn.Name = "panelLogIn";
-            this.panelLogIn.Size = new System.Drawing.Size(890, 430);
+            this.panelLogIn.Size = new System.Drawing.Size(915, 529);
             this.panelLogIn.TabIndex = 41;
             // 
             // btnLogIn
@@ -185,10 +190,10 @@
             this.btnLogIn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLogIn.BackgroundImage")));
             this.btnLogIn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnLogIn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLogIn.Location = new System.Drawing.Point(361, 258);
+            this.btnLogIn.Location = new System.Drawing.Point(354, 260);
             this.btnLogIn.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(130, 53);
+            this.btnLogIn.Size = new System.Drawing.Size(135, 51);
             this.btnLogIn.TabIndex = 2;
             this.btnLogIn.UseVisualStyleBackColor = true;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
@@ -203,9 +208,11 @@
             // 
             // tbUser
             // 
+            this.tbUser.BackColor = System.Drawing.SystemColors.Window;
+            this.tbUser.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbUser.Location = new System.Drawing.Point(379, 193);
             this.tbUser.Name = "tbUser";
-            this.tbUser.Size = new System.Drawing.Size(100, 20);
+            this.tbUser.Size = new System.Drawing.Size(100, 23);
             this.tbUser.TabIndex = 0;
             // 
             // btnExit
@@ -221,14 +228,17 @@
             // labelPot
             // 
             this.labelPot.AutoSize = true;
-            this.labelPot.Location = new System.Drawing.Point(680, 222);
+            this.labelPot.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPot.Location = new System.Drawing.Point(684, 221);
             this.labelPot.Name = "labelPot";
-            this.labelPot.Size = new System.Drawing.Size(62, 13);
+            this.labelPot.Size = new System.Drawing.Size(92, 17);
             this.labelPot.TabIndex = 34;
             this.labelPot.Text = "PotAmount:";
             // 
             // btnStand
             // 
+            this.btnStand.Font = new System.Drawing.Font("Alpha Echo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStand.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnStand.Location = new System.Drawing.Point(280, 345);
             this.btnStand.Name = "btnStand";
             this.btnStand.Size = new System.Drawing.Size(88, 36);
@@ -239,16 +249,21 @@
             // 
             // btnHit
             // 
+            this.btnHit.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnHit.Font = new System.Drawing.Font("Alpha Echo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnHit.Location = new System.Drawing.Point(186, 345);
+            this.btnHit.Margin = new System.Windows.Forms.Padding(0);
             this.btnHit.Name = "btnHit";
             this.btnHit.Size = new System.Drawing.Size(88, 36);
             this.btnHit.TabIndex = 32;
             this.btnHit.Text = "Hit";
-            this.btnHit.UseVisualStyleBackColor = true;
+            this.btnHit.UseVisualStyleBackColor = false;
             this.btnHit.Click += new System.EventHandler(this.btnHit_Click);
             // 
             // btnRaise
             // 
+            this.btnRaise.Font = new System.Drawing.Font("Alpha Echo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRaise.Location = new System.Drawing.Point(682, 264);
             this.btnRaise.Name = "btnRaise";
             this.btnRaise.Size = new System.Drawing.Size(93, 36);
@@ -260,25 +275,27 @@
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(249, 384);
+            this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUser.Location = new System.Drawing.Point(185, 392);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(26, 13);
+            this.labelUser.Size = new System.Drawing.Size(47, 24);
             this.labelUser.TabIndex = 28;
             this.labelUser.Text = "You";
             // 
             // labelPlayer
             // 
             this.labelPlayer.AutoSize = true;
-            this.labelPlayer.Location = new System.Drawing.Point(246, 26);
+            this.labelPlayer.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPlayer.Location = new System.Drawing.Point(184, 29);
             this.labelPlayer.Name = "labelPlayer";
-            this.labelPlayer.Size = new System.Drawing.Size(54, 13);
+            this.labelPlayer.Size = new System.Drawing.Size(91, 21);
             this.labelPlayer.TabIndex = 27;
             this.labelPlayer.Text = "Opponent";
             // 
             // pb3User
             // 
             this.pb3User.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb3User.Image = global::BlackJackClient.Properties.Resources.cardback;
+            this.pb3User.Image = ((System.Drawing.Image)(resources.GetObject("pb3User.Image")));
             this.pb3User.Location = new System.Drawing.Point(310, 249);
             this.pb3User.Name = "pb3User";
             this.pb3User.Size = new System.Drawing.Size(56, 84);
@@ -308,7 +325,7 @@
             // pb3Player
             // 
             this.pb3Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb3Player.Image = global::BlackJackClient.Properties.Resources.cardback;
+            this.pb3Player.Image = ((System.Drawing.Image)(resources.GetObject("pb3Player.Image")));
             this.pb3Player.Location = new System.Drawing.Point(310, 53);
             this.pb3Player.Name = "pb3Player";
             this.pb3Player.Size = new System.Drawing.Size(56, 84);
@@ -319,7 +336,7 @@
             // pb2Player
             // 
             this.pb2Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb2Player.Image = global::BlackJackClient.Properties.Resources.cardback;
+            this.pb2Player.Image = ((System.Drawing.Image)(resources.GetObject("pb2Player.Image")));
             this.pb2Player.Location = new System.Drawing.Point(249, 53);
             this.pb2Player.Name = "pb2Player";
             this.pb2Player.Size = new System.Drawing.Size(56, 84);
@@ -339,7 +356,7 @@
             // pb4Player
             // 
             this.pb4Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb4Player.Image = global::BlackJackClient.Properties.Resources.cardback;
+            this.pb4Player.Image = ((System.Drawing.Image)(resources.GetObject("pb4Player.Image")));
             this.pb4Player.Location = new System.Drawing.Point(373, 53);
             this.pb4Player.Name = "pb4Player";
             this.pb4Player.Size = new System.Drawing.Size(56, 84);
@@ -350,7 +367,7 @@
             // pb5Player
             // 
             this.pb5Player.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb5Player.Image = global::BlackJackClient.Properties.Resources.cardback;
+            this.pb5Player.Image = ((System.Drawing.Image)(resources.GetObject("pb5Player.Image")));
             this.pb5Player.Location = new System.Drawing.Point(435, 53);
             this.pb5Player.Name = "pb5Player";
             this.pb5Player.Size = new System.Drawing.Size(56, 84);
@@ -361,7 +378,7 @@
             // pb4User
             // 
             this.pb4User.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb4User.Image = global::BlackJackClient.Properties.Resources.cardback;
+            this.pb4User.Image = ((System.Drawing.Image)(resources.GetObject("pb4User.Image")));
             this.pb4User.Location = new System.Drawing.Point(372, 249);
             this.pb4User.Name = "pb4User";
             this.pb4User.Size = new System.Drawing.Size(56, 84);
@@ -372,7 +389,7 @@
             // pb5User
             // 
             this.pb5User.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pb5User.Image = global::BlackJackClient.Properties.Resources.cardback;
+            this.pb5User.Image = ((System.Drawing.Image)(resources.GetObject("pb5User.Image")));
             this.pb5User.Location = new System.Drawing.Point(434, 249);
             this.pb5User.Name = "pb5User";
             this.pb5User.Size = new System.Drawing.Size(56, 84);
@@ -382,6 +399,7 @@
             // 
             // btnReady
             // 
+            this.btnReady.Font = new System.Drawing.Font("Alpha Echo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReady.Location = new System.Drawing.Point(682, 306);
             this.btnReady.Name = "btnReady";
             this.btnReady.Size = new System.Drawing.Size(93, 36);
@@ -400,6 +418,7 @@
             // 
             // btnLeave
             // 
+            this.btnLeave.Font = new System.Drawing.Font("Alpha Echo", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLeave.Location = new System.Drawing.Point(682, 348);
             this.btnLeave.Margin = new System.Windows.Forms.Padding(2);
             this.btnLeave.Name = "btnLeave";
@@ -412,41 +431,44 @@
             // lblOpMon
             // 
             this.lblOpMon.AutoSize = true;
+            this.lblOpMon.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOpMon.Location = new System.Drawing.Point(184, 140);
             this.lblOpMon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOpMon.Name = "lblOpMon";
-            this.lblOpMon.Size = new System.Drawing.Size(45, 13);
+            this.lblOpMon.Size = new System.Drawing.Size(83, 24);
             this.lblOpMon.TabIndex = 42;
             this.lblOpMon.Text = "Money: ";
             // 
             // lblYourMon
             // 
             this.lblYourMon.AutoSize = true;
-            this.lblYourMon.Location = new System.Drawing.Point(184, 232);
+            this.lblYourMon.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYourMon.Location = new System.Drawing.Point(183, 222);
             this.lblYourMon.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblYourMon.Name = "lblYourMon";
-            this.lblYourMon.Size = new System.Drawing.Size(42, 13);
+            this.lblYourMon.Size = new System.Drawing.Size(76, 24);
             this.lblYourMon.TabIndex = 43;
             this.lblYourMon.Text = "Money:";
             // 
             // lbInGameChat
             // 
             this.lbInGameChat.FormattingEnabled = true;
-            this.lbInGameChat.Location = new System.Drawing.Point(34, 130);
+            this.lbInGameChat.Location = new System.Drawing.Point(34, 163);
             this.lbInGameChat.Name = "lbInGameChat";
             this.lbInGameChat.Size = new System.Drawing.Size(99, 147);
             this.lbInGameChat.TabIndex = 44;
             // 
             // tbInGameChat
             // 
-            this.tbInGameChat.Location = new System.Drawing.Point(34, 306);
+            this.tbInGameChat.Location = new System.Drawing.Point(34, 322);
             this.tbInGameChat.Name = "tbInGameChat";
             this.tbInGameChat.Size = new System.Drawing.Size(100, 20);
             this.tbInGameChat.TabIndex = 45;
             // 
             // btnInGameChat
             // 
-            this.btnInGameChat.Location = new System.Drawing.Point(58, 332);
+            this.btnInGameChat.Font = new System.Drawing.Font("Algerian", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInGameChat.Location = new System.Drawing.Point(58, 361);
             this.btnInGameChat.Name = "btnInGameChat";
             this.btnInGameChat.Size = new System.Drawing.Size(75, 23);
             this.btnInGameChat.TabIndex = 46;

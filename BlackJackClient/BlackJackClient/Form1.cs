@@ -119,6 +119,7 @@ namespace BlackJackClient
             }
             else
             {
+                //curPlayer = thegame.Player2;
                 panelLobby.Hide();
                 labelUser.Text = user.Name;
             }
@@ -194,13 +195,15 @@ namespace BlackJackClient
        
              Game game = new Game();
              game = null;
-             game = gList.Find(x => x.Player1.UserName.Name == playerName || x.Player2.UserName.Name == playerName );
-             
+             game = gList.Find(x => x.Player1.UserName.Name == playerName || x.Player2.UserName.Name == playerName);
 
-            if ( game!= null)//--------------------------------------------------------------------------------------
-            lbInGameChat.Items.Add(temp);
-            else
-                lbChat.Items.Add(temp);
+             if (game != null)
+             {
+                 lbInGameChat.Items.Add(temp);
+                 MessageBox.Show("Player1 name: " + game.Player1.UserName.Name + "Player2 name: " + game.Player2.UserName.Name);
+             }
+             else
+                 lbChat.Items.Add(temp);
         }
 
         public void UpdateGame(Game game)
