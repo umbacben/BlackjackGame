@@ -169,6 +169,7 @@
   <ItemGroup>
     <Content Include="images\betbox.jpg" />
     <Content Include="images\BlackJack.png" />
+    <Content Include="images\button_cancel.png" />
     <Content Include="images\dealer.jpg" />
     <Content Include="images\Lobby.jpg" />
     <Content Include="images\login-button.jpg" />

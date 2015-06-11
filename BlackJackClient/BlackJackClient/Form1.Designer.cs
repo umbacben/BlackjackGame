@@ -67,6 +67,7 @@
             this.lbInGameChat = new System.Windows.Forms.ListBox();
             this.tbInGameChat = new System.Windows.Forms.TextBox();
             this.btnInGameChat = new System.Windows.Forms.Button();
+            this.pBoxForm = new System.Windows.Forms.PictureBox();
             this.panelLobby.SuspendLayout();
             this.panelLogIn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb3User)).BeginInit();
@@ -79,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb5Player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb4User)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb5User)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxForm)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLobby
@@ -91,11 +93,14 @@
             this.panelLobby.Controls.Add(this.btnSpectate);
             this.panelLobby.Controls.Add(this.btnCreateGame);
             this.panelLobby.Controls.Add(this.btnJoin);
-            this.panelLobby.Location = new System.Drawing.Point(2, 4);
+            this.panelLobby.Location = new System.Drawing.Point(23, -1);
             this.panelLobby.Margin = new System.Windows.Forms.Padding(4);
             this.panelLobby.Name = "panelLobby";
-            this.panelLobby.Size = new System.Drawing.Size(985, 467);
+            this.panelLobby.Size = new System.Drawing.Size(984, 467);
             this.panelLobby.TabIndex = 3;
+            this.panelLobby.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelLobby_MouseDown);
+            this.panelLobby.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelLobby_MouseMove);
+            this.panelLobby.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelLobby_MouseUp);
             // 
             // tbChat
             // 
@@ -179,11 +184,14 @@
             this.panelLogIn.Controls.Add(this.btnLogIn);
             this.panelLogIn.Controls.Add(this.tbPass);
             this.panelLogIn.Controls.Add(this.tbUser);
-            this.panelLogIn.Location = new System.Drawing.Point(2, 4);
+            this.panelLogIn.Location = new System.Drawing.Point(9, -1);
             this.panelLogIn.Margin = new System.Windows.Forms.Padding(0);
             this.panelLogIn.Name = "panelLogIn";
             this.panelLogIn.Size = new System.Drawing.Size(915, 529);
             this.panelLogIn.TabIndex = 41;
+            this.panelLogIn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelLogIn_MouseDown);
+            this.panelLogIn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelLogIn_MouseMove);
+            this.panelLogIn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelLogIn_MouseUp);
             // 
             // btnLogIn
             // 
@@ -476,13 +484,25 @@
             this.btnInGameChat.UseVisualStyleBackColor = true;
             this.btnInGameChat.Click += new System.EventHandler(this.btnInGameChat_Click);
             // 
+            // pBoxForm
+            // 
+            this.pBoxForm.Image = ((System.Drawing.Image)(resources.GetObject("pBoxForm.Image")));
+            this.pBoxForm.Location = new System.Drawing.Point(1014, -1);
+            this.pBoxForm.Name = "pBoxForm";
+            this.pBoxForm.Size = new System.Drawing.Size(47, 38);
+            this.pBoxForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pBoxForm.TabIndex = 47;
+            this.pBoxForm.TabStop = false;
+            this.pBoxForm.Click += new System.EventHandler(this.pBoxForm_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(972, 472);
+            this.ClientSize = new System.Drawing.Size(1064, 472);
             this.Controls.Add(this.panelLogIn);
+            this.Controls.Add(this.pBoxForm);
             this.Controls.Add(this.btnInGameChat);
             this.Controls.Add(this.tbInGameChat);
             this.Controls.Add(this.panelLobby);
@@ -511,6 +531,9 @@
             this.Controls.Add(this.pb1Player);
             this.Name = "Form1";
             this.Text = "Blackjack";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.panelLobby.ResumeLayout(false);
             this.panelLobby.PerformLayout();
             this.panelLogIn.ResumeLayout(false);
@@ -525,6 +548,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb5Player)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb4User)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb5User)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pBoxForm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,6 +594,7 @@
         private System.Windows.Forms.ListBox lbInGameChat;
         private System.Windows.Forms.TextBox tbInGameChat;
         private System.Windows.Forms.Button btnInGameChat;
+        private System.Windows.Forms.PictureBox pBoxForm;
     }
 }
 
