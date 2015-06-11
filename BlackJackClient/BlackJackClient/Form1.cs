@@ -54,7 +54,7 @@ namespace BlackJackClient
             chatClient.SubscribeChat();
             portalClient = new PortalClient(context);
             portalClient.SubscribePortal();
-            panelLobby.Hide();
+            //panelLobby.Hide();
             blackjackClient.SubscribeGame();
             winner = new Player();
         }
@@ -122,6 +122,7 @@ namespace BlackJackClient
                 panelLobby.Hide();
                 labelUser.Text = user.Name;
             }
+            lbInGameChat.Items.Clear();
             DisableStuff();
         }
 
@@ -130,7 +131,6 @@ namespace BlackJackClient
             string message = tbChat.Text;
             tbChat.Text = "";
             chatClient.AddMessage(user.Name, message);
-            Console.Write("hello");
         }
 
         private void btnRaise_Click(object sender, EventArgs e)
@@ -168,6 +168,7 @@ namespace BlackJackClient
             panelLobby.Hide();
             labelUser.Text = user.Name;
             DisableStuff();
+            lbInGameChat.Items.Clear();
         }
 
         private void btnLogIn_Click(object sender, EventArgs e)
@@ -190,7 +191,16 @@ namespace BlackJackClient
         public void onMessageAdded(DateTime time, string playerName, string message)
         {
             string temp = ("(" + time.Hour +" : " + time.Minute +  ") " + playerName + " : " + message);
-            lbChat.Items.Add(temp);
+       
+             Game game = new Game();
+             game = null;
+             game = gList.Find(x => x.Player1.UserName.Name == playerName || x.Player2.UserName.Name == playerName );
+             
+
+            if ( game!= null)//--------------------------------------------------------------------------------------
+            lbInGameChat.Items.Add(temp);
+            else
+                lbChat.Items.Add(temp);
         }
 
         public void UpdateGame(Game game)
@@ -307,6 +317,13 @@ namespace BlackJackClient
             panelLobby.Show();
             panelLobby.BringToFront();
             portalClient.GetGameList();
+        }
+
+        private void btnInGameChat_Click(object sender, EventArgs e)
+        {
+            string message = tbInGameChat.Text;
+            tbInGameChat.Text = "";
+            chatClient.AddMessage(user.Name, message);
         }
     }
 }
