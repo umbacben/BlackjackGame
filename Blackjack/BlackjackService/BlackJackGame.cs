@@ -212,13 +212,13 @@ namespace BlackjackService
         /// </summary>
         /// <param name="playerName"></param>
         /// <param name="message"></param>
-        public void AddMessage(string playerName, string message)
+        public void AddMessage(int id, string playerName, string message)
         {
             chatCallbacks.ForEach(delegate(IChatCallback callback)
             {
                 if (((ICommunicationObject)callback).State == CommunicationState.Opened)
                 {
-                    callback.onMessageAdded(DateTime.Now, playerName, message);
+                    callback.onMessageAdded(id, DateTime.Now, playerName, message);
                 }
                 else
                 {

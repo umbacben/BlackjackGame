@@ -95,6 +95,7 @@
   <xs:element name="AddMessage">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
         <xs:element minOccurs="0" name="playerName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -103,6 +104,7 @@
   <xs:element name="onMessageAdded">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
         <xs:element minOccurs="0" name="dt" type="xs:dateTime" />
         <xs:element minOccurs="0" name="playerName" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />

@@ -584,17 +584,17 @@ namespace BlackJackClient.BlackjackService {
         System.Threading.Tasks.Task UnsubscribeChatAsync();
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IChat/AddMessage")]
-        void AddMessage(string playerName, string message);
+        void AddMessage(int id, string playerName, string message);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="BlackjackService/IChat/AddMessage")]
-        System.Threading.Tasks.Task AddMessageAsync(string playerName, string message);
+        System.Threading.Tasks.Task AddMessageAsync(int id, string playerName, string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IChatCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="BlackjackService/IChat/onMessageAdded", ReplyAction="BlackjackService/IChat/onMessageAddedResponse")]
-        void onMessageAdded(System.DateTime dt, string playerName, string message);
+        void onMessageAdded(int gameId, System.DateTime dt, string playerName, string message);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -641,12 +641,12 @@ namespace BlackJackClient.BlackjackService {
             return base.Channel.UnsubscribeChatAsync();
         }
         
-        public void AddMessage(string playerName, string message) {
-            base.Channel.AddMessage(playerName, message);
+        public void AddMessage(int id, string playerName, string message) {
+            base.Channel.AddMessage(id, playerName, message);
         }
         
-        public System.Threading.Tasks.Task AddMessageAsync(string playerName, string message) {
-            return base.Channel.AddMessageAsync(playerName, message);
+        public System.Threading.Tasks.Task AddMessageAsync(int id, string playerName, string message) {
+            return base.Channel.AddMessageAsync(id, playerName, message);
         }
     }
     

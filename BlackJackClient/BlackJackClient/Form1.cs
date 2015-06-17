@@ -135,7 +135,7 @@ namespace BlackJackClient
         {
             string message = tbChat.Text;
             tbChat.Text = "";
-            chatClient.AddMessage(user.Name, message);
+            chatClient.AddMessage(-1, user.Name, message);
         }
 
         private void btnRaise_Click(object sender, EventArgs e)
@@ -193,18 +193,17 @@ namespace BlackJackClient
             }
         }
 
-        public void onMessageAdded(DateTime time, string playerName, string message)
+        public void onMessageAdded(int id, DateTime time, string playerName, string message)
         {
             string temp = ("(" + time.Hour +" : " + time.Minute +  ") " + playerName + " : " + message);
-       
-             Game game = new Game();
-             game = null;
-             game = gList.Find(x => x.Player1.UserName.Name == playerName || x.Player2.UserName.Name == playerName);
 
-             if (game != null)
+             if (id !=-1)
              {
+                 if (id != thegame.GameId)
+                 {
+                     return;
+                 }
                  lbInGameChat.Items.Add(temp);
-                 MessageBox.Show("Player1 name: " + game.Player1.UserName.Name + "Player2 name: " + game.Player2.UserName.Name);
              }
              else
                  lbChat.Items.Add(temp);
@@ -330,8 +329,9 @@ namespace BlackJackClient
         {
             string message = tbInGameChat.Text;
             tbInGameChat.Text = "";
-            chatClient.AddMessage(user.Name, message);
+            chatClient.AddMessage(thegame.GameId, user.Name, message);
         }
+
         //Window Movement Events
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
