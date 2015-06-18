@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>770</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>BlackjackGameClient 	
+--
+BlackjackClient(callbackInstance: InstanceContext)
+BlackjackClient(callbackInstance: InstanceContext, binding: Binding, remoteAddress: EndpointAddress)
+BlackjackClient(callbackInstance: InstanceContext, endpointConfigurationName: string)
+BlackjackClient(callbackInstance: InstanceContext, endpointConfigurationName: string, remoteAddress: EndpointAddress)
+BlackjackClient(callbackInstance: InstanceContext, endpointConfigurationName: string, remoteAddress: string)
+Hit(game: Game, player: Player): void
+HitAsync(game: Game, player: Player): Task
+Stay(game: Game, player: Player): void
+StayAsync(game: Game, player: Player): Task
+IncreasePot(game: Game, money: int): void
+IncreasePotAsync(game: Game, money: int): Task
+GetWinner(game: Game): Player
+GetWinnerAsync(game: Game): Task&lt;Player&gt;
+LeaveGame(game: Game, player: Player): void
+LeaveGameAsync(game: Game, player: Player): Task
+ReadyPlayer(game: Game, player: Player): void
+ReadyPlayerAsync(game: Game, player: Player): Task
+SubscribeGame(): void
+SubscribeGameAsync(): Task
+UnsubscribeGame(): void
+UnsubscribeGameAsync(): Task</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>420</y>
+      <w>770</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>PortalClient
+--
+PortalClient(callbackInstance: InstanceContext)
+PortalClient(callbackInstance: InstanceContext, binding: Binding, remoteAddress: EndpointAddress)
+PortalClient(callbackInstance: InstanceContext, endpointConfigurationName: string)
+PortalClient(callbackInstance: InstanceContext, endpointConfigurationName: string, remoteAddress: EndpointAddress)
+PortalClient(callbackInstance: InstanceContext, endpointConfigurationName: string, remoteAddress: string)
+Login(user: String): User
+LoginAsync(user: String): Task&lt;User&gt;
+Register(user: String): User
+RegisterAsync(user: String): Task&lt;User&gt;
+Logout(user: User): void
+LogoutAsync(user: User): Task
+JoinGame(game: Game, user: User): bool
+JoinGameAsync(game: Game, user: User): Task&lt;bool&gt;
+CreateGame(user: User): Game
+CreateGameAsync(user: User): Task&lt;Game&gt;
+GetGameList(): void
+GetGameListAsync(): Task
+SubscribePortal(): void
+SubscribePortalAsync(): Task
+UnsubscribePortal(): void
+UnsubscribePortalAsync(): Task</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>840</y>
+      <w>770</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>ChatClient
+--
+ChatClient(callbackInstance: InstanceContext)
+ChatClient(callbackInstance: InstanceContext, binding: Binding, remoteAddress: EndpointAddress)
+ChatClient(callbackInstance: InstanceContext, endpointConfigurationName: string)
+ChatClient(callbackInstance: InstanceContext, endpointConfigurationName: string, remoteAddress: EndpointAddress)
+ChatClient(callbackInstance: InstanceContext, endpointConfigurationName: string, remoteAddress: string)
+SubscribeChat(): void
+SubscribeChatAsync(): Task
+AddMessage(id: int, playerName: string , message: string): void
+AddMessageAsync(id: int, playerName: string , message: string): Task
+UnsubscribeChat(): void
+UnsubscribeChatAsync(): Task</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>0</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IBlackjackCallback
+--
+UpdateGame(game: Game): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>0</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IPortalCallback
+--
+UpdateGameList(gameList: List&lt;Game&gt;): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1070</x>
+      <y>0</y>
+      <w>440</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IChatCallback
+--
+OnMessageAdded(id: int, playerName: string , message: string): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>800</x>
+      <y>180</y>
+      <w>330</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>Game
+--
++GameId: int
++Player1: Player
++Player2: Player
++inRound: bool
++Pot: int
++GameDeck: Deck
++ExtensionData: ExtensionDataObject
+--
++Game(id: int, creator: Player)
++DetermineWinner(): Player
++CalcVal(play: Player): void
++StartRound(): void
+--
++PropertyChanged: PropertyChangedEventHandler</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>180</y>
+      <w>330</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>User
+--
++Name: string
++ExtensionData: ExtensionDataObject
+--
++User(username: string)
+--
+PropertyChanged: PropertyChangedEventHandler</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>180</y>
+      <w>350</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>Player
+--
++CardHand: Card[]
++UserName: User
++HandVal: int
++RoundDone: bool
++Money: int
++Ready: bool
++bust: bool
++ExtensionData: ExtensionDataObject
+--
++Player(use: User)
+--
+PropertyChanged: PropertyChangedEventHandler</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>800</x>
+      <y>490</y>
+      <w>330</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Deck
+--
++CardList: Card[]
++ExtensionData: ExtensionDataObject
+--
++Deck()
++getNextCard(): Card
+--
++PropertyChanged: PropertyChangedEventHandler</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1160</x>
+      <y>490</y>
+      <w>330</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Card
+--
++Value: int
++PicLoc: String
++ExtensionData: ExtensionDataObject
+--
++Card(val: int, picloc: String)
+--
+PropertyChanged: PropertyChangedEventHandler</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>920</x>
+      <y>420</y>
+      <w>68</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;()
+r1=provide</panel_attributes>
+    <additional_attributes>40;30;40;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>920</x>
+      <y>110</y>
+      <w>68</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;()
+r1=provide</panel_attributes>
+    <additional_attributes>40;30;40;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>1280</x>
+      <y>110</y>
+      <w>68</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;()
+r1=provide</panel_attributes>
+    <additional_attributes>40;30;40;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>1280</x>
+      <y>420</y>
+      <w>68</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;()
+r1=provide</panel_attributes>
+    <additional_attributes>40;30;40;70</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>1660</x>
+      <y>110</y>
+      <w>68</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;()
+r1=provide</panel_attributes>
+    <additional_attributes>40;30;40;70</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1650</x>
+      <y>680</y>
+      <w>370</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IBlackjackGame
+--
+Hit(game: Game, player: Player): void
+HitAsync(game: Game, player: Player): Task
+Stay(game: Game, player: Player): void
+StayAsync(game: Game, player: Player): Task
+IncreasePot(game: Game, money: int): void
+IncreasePotAsync(game: Game, money: int): Task
+GetWinner(game: Game): Player
+GetWinnerAsync(game: Game):Task&lt;Player&gt;
+LeaveGame(game: Game, player: Player): void
+LeaveGameAsync(game: Game, player: Player): Task
+ReadyPlayer(game: Game, player: Player): void
+ReadyPlayerAsync(game: Game, player: Player): Task
+SubscribeGame(): void
+SubscribeGameAsync(): Task
+UnsubscribeGame(): void
+UnsubscribeGameAsync(): Task</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1180</x>
+      <y>680</y>
+      <w>450</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IChat
+--
+SubscribeChat(): void
+SubscribeChatAsync(): Task
+AddMessage(id: int, playerName: string , message: string): void
+AddMessageAsync(id: int, playerName: string , message: string): Task
+UnsubscribeChat(): void
+UnsubscribeChatAsync(): Task</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>800</x>
+      <y>680</y>
+      <w>360</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IPortal
+--
+Login(user: String): User
+LoginAsync(user: String): Task&lt;User&gt;
+Register(user: String): User
+RegisterAsync(user: String): Task&lt;User&gt;
+Logout(user: User): void
+LogoutAsync(user: User): Task
+JoinGame(game: Game, user: User): bool
+JoinGameAsync(game: Game, user: User): Task&lt;bool&gt;
+CreateGame(user: User): Game
+CreateGameAsync(user: User): Task&lt;Game&gt;
+GetGameList(): void
+GetGameListAsync(): Task
+SubscribePortal(): void
+SubscribePortalAsync(): Task
+UnsubscribePortal(): void
+UnsubscribePortalAsync(): Task</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>890</x>
+      <y>1040</y>
+      <w>140</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IPortalChannel
+--
+IPortal
+IClientChannel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1790</x>
+      <y>1040</y>
+      <w>170</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IBlackjackGameChannel
+--
+IBlackjackGame
+IClientChannel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1350</x>
+      <y>890</y>
+      <w>140</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IChatChannel
+--
+IChat
+IClientChannel</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>930</x>
+      <y>950</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>1390</x>
+      <y>790</y>
+      <w>50</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;100</additional_attributes>
+  </element>
+  <element>
+    <type>com.baselet.element.old.element.Relation</type>
+    <coordinates>
+      <x>1840</x>
+      <y>960</y>
+      <w>50</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;80</additional_attributes>
+  </element>
+</diagram>

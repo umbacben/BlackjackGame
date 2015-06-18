@@ -14,9 +14,9 @@ namespace BlackjackService
         List<IBlackJackGameCallBack> blackjackCallbacks = new List<IBlackJackGameCallBack>();
         List<IChatCallback> chatCallbacks = new List<IChatCallback>();
         List<IPortalChatback> portalCallbacks = new List<IPortalChatback>();
-        static Action<Game, Player> m_Event = delegate { };
         List<Game> GameList = new List<Game>();
         List<User> users = new List<User>();
+        int id = 0;
         #endregion
 
         /// <summary>
@@ -323,7 +323,8 @@ namespace BlackjackService
         public Game CreateGame(User user)
         {
             Player temp = new Player(user);
-            Game BJGame = new Game(temp);
+            Game BJGame = new Game(id, temp);
+            id++;
             BJGame.Player2 = new Player(new User(""));
             GameList.Add(BJGame);
             return BJGame;

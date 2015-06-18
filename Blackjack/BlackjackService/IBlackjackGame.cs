@@ -44,7 +44,6 @@ namespace BlackjackService
     [DataContract]
     public class Game
     {
-        int id = 0;
 
         [DataMember]
         public int GameId { get; set; }
@@ -64,10 +63,9 @@ namespace BlackjackService
         [DataMember]
         public Deck GameDeck { get; set; }
 
-        public Game(Player creator)
+        public Game(int id, Player creator)
         {
             GameId = id;
-            id++;
             Pot = 0;
             this.Player1 = creator;
             this.GameDeck = new Deck();
@@ -180,6 +178,7 @@ namespace BlackjackService
     {
         [DataMember]
         List<Card> CardList { get; set; }
+        
         public Deck()
         {
             CardList = new List<Card>();
@@ -257,11 +256,5 @@ namespace BlackjackService
     {
         [OperationContract(IsOneWay = true)]
         void UpdateGame(Game game);
-    }
-
-    public interface IBustEvent
-    {
-        [OperationContract(IsOneWay = true)]
-        void Event(Game game, Player player);
     }
 }

@@ -14,7 +14,7 @@ using BlackJackClient.BlackjackService;
 namespace BlackJackClient
 {
     [CallbackBehavior(ConcurrencyMode = ConcurrencyMode.Reentrant)]
-    public partial class Form1 : Form, IBlackjackGameCallback, IChatCallback, IPortalCallback
+    public partial class BlackjackForm : Form, IBlackjackGameCallback, IChatCallback, IPortalCallback
     {
         private User user;
         private BlackjackGameClient blackjackClient;
@@ -31,7 +31,7 @@ namespace BlackJackClient
         private Point dragCursorPoint;
         private Point dragFormPoint;
 
-        public Form1()
+        public BlackjackForm()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
@@ -398,8 +398,31 @@ namespace BlackJackClient
 
         private void pBoxForm_Click(object sender, EventArgs e)
         {
+            btnLogout_Click(sender, e);
             this.Close();
             Application.Exit();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            portalClient.Logout(user);
+        }
+
+        private void btnReg_Click(object sender, EventArgs e)
+        {
+            user = portalClient.Register(tbUser.Text);
+
+            if (user != null)
+            {
+                user.Name = tbUser.Text;
+                panelLogIn.Hide();
+                panelLobby.Show();
+                panelLobby.BringToFront();
+            }
+            else
+            {
+                MessageBox.Show("Unable to Register");
+            }
         }
     }
 }

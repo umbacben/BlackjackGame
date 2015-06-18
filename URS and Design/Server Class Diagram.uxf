@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>70</y>
+      <w>410</w>
+      <h>470</h>
+    </coordinates>
+    <panel_attributes>BlackJackGame
+--
+-blackjackCallbacks: List&lt;IBlackJackCallback&gt;
+-chatCallbacks: List&lt;IChatCallback&gt;
+-portalCallbacks: List&lt;IPortalCallback&gt;
+-GameList: List&lt;Game&gt;
+-users: List&lt;User&gt;
+-id :int
+--
++Hit(game: Game, player: Player): void
++Stay(game: Game, player: Player): void
++IncreasePot(game: Game, money: int): void
++GetWinner(game: Game): Player
++LeaveGame(game: Game, player: Player): void
+-checkGame(game: Game): bool
++ReadyPlayer(game: Game, player: Player): void
++SubscribeGame(): void
+-updateGame(game: Game): void
++UnsubscribeGame(): void
++SubscribeChat(): void
++AddMessage(id: int, playerName: string , message: string): void
++UnsubscribeChat(): void
++Login(user: String): User
++Register(user: String): User
++Logout(user: User): void
++JoinGame(game: Game, user: User): bool
++CreateGame(user: User): Game
++GetGameList(): void
++SubscribePortal(): void
++UnsubscribePortal(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>100</y>
+      <w>320</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IBlackjackGame
+--
+Hit(game: Game, player: Player): void
+Stay(game: Game, player: Player): void
+IncreasePot(game: Game, money: int): void
+GetWinner(game: Game): Player
+LeaveGame(game: Game, player: Player): void
+ReadyPlayer(game: Game, player: Player): void
+SubscribeGame(): void
+UnsubscribeGame(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>290</y>
+      <w>410</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IChat
+--
+SubscribeChat(): void
+AddMessage(id: int, playerName: string , message: string): void
+UnsubscribeChat(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>400</y>
+      <w>280</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IPortal
+--
+Login(user: String): User
+Register(user: String): User
+Logout(user: User): void
+JoinGame(game: Game, user: User): bool
+CreateGame(user: User): Game
+GetGameList(): void
+SubscribePortal(): void
+UnsubscribePortal(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>580</y>
+      <w>170</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>User
+--
++Name: string
+--
++User(username: string)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>140</x>
+      <y>630</y>
+      <w>200</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>Game
+--
++GameId: int
++Player1: Player
++Player2: Player
++inRound: bool
++Pot: int
++GameDeck: Deck
+--
++Game(id: int, creator: Player)
++DetermineWinner(): Player
++CalcVal(play: Player): void
++StartRound(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>750</y>
+      <w>190</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Card
+--
++Value: int
++PicLoc: String
+--
++Card(val: int, picloc: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>850</y>
+      <w>150</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Deck
+--
++CardList: List&lt;Card&gt;
+--
++Deck()
++getNextCard(): Card</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>670</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Player
+--
++CardHand: List&lt;Card&gt;
++UserName: User
++HandVal: int
++RoundDone: bool
++Money: int
++Ready: bool
++bust: bool
+--
++Player(use: User)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>160</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+m2=provide
+</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>160</y>
+      <w>120</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=require
+</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>450</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+m2=provide
+</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>450</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=require
+</panel_attributes>
+    <additional_attributes>100.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>320</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+m2=provide
+</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>320</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=)-
+m1=require
+</panel_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>720</y>
+      <w>130</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>610</y>
+      <w>130</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;100.0;50.0;100.0;50.0;10.0;110.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>330</x>
+      <y>780</y>
+      <w>130</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;110.0;110.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>770</y>
+      <w>150</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;130.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>790</y>
+      <w>160</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;100.0;70.0;100.0;70.0;10.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1030</x>
+      <y>540</y>
+      <w>220</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IBlackjackCallback
+--
+UpdateGame(game: Game): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>690</y>
+      <w>440</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IChatCallback
+--
+OnMessageAdded(id: int, playerName: string , message: string): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1030</x>
+      <y>610</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Interface&gt;&gt;
+IPortalCallback
+--
+UpdateGameList(gameList: List&lt;Game&gt;): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>530</y>
+      <w>30</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+</diagram>
